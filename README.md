@@ -34,6 +34,19 @@ This tool is used to create mockups for Mobile applications.
 
 [Balsamiq Homepage](https://balsamiq.com/)
 
+# **Git Workflow**
+-----
+When working on a part of the project make sure to:
+
+- ALWAYS create an ISSUE with the appropriate tag and add any relevant people as watchers. 
+- ALWAYS work on a different local branch, DO NOT push any changes directly to master.
+- ALWAYS create pull requests (PR) with an ISSUE attached to the PR.
+- ALWAYS squash commits before merging to MASTER. This will allow us to manage commits better on MASTER
+- ALWAYS rebase from latest MASTER before merging to MASTER.
+- ALWAYS get approval from at least one person before merging into MASTER
+
+Following these guidelines will allow us to catch merge conflicts and reduce the amount of work we do when trying to resolve errors within MASTER.
+
 # **Requirements for Yelp for Bathrooms (Name to be determined)**
 -----
 ## User Credentials
