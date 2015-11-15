@@ -1,39 +1,41 @@
-# Yelp For Bathrooms: May your poop be ever in your favor
+# **Yelp For Bathrooms: May your poop be ever in your favor**
+-----
 This is an application made for iOS platform. 
 
-# DEVELOPMENT LIBRARIES AND TOOLS
-
+# **Development Libraries and Tools**
+-----
 * Swift 	    - Framework
 * CocoaPods		- Dependency Manager
 * Synx          - File manager
 * Balsamiq		- Mockup Program
 
-## Purpose and Installation Instructions
-### CocoaPods
+## **Purpose and Installation Instructions**
+### **CocoaPods**
 This tool is used to download and manage dependencies used within the application. It uses a PodFile that can be modified to add more dependencies if needed. Thesee dependencies and CocoaPod related files are version controlled to get rid of the need of having to download the dependencies yourself on each computer.
+
+[Cocoapods Homepage](https://cocoapods.org/)
 #### First time installation Instructions:
 	$ sudo gem install cocoapods
 #### Use Instructions:
 	$ pod install
 Run in your project directory after modifying Podfile to include dependencies that are wanted.
-### First time Synx
+### **Synx**
 This tool is used to match the project folder to the xcode groups represented in the project nagivator. By default the file structure shown in the project explorer in Xcode does not modify the actual file structure stored in your drive. Use this whenever adding/modifying files in the project BEFORE merging into GIT. 
-URL: https://github.com/venmo/synx
-#### Installation Instructions:
+
+[Synx Github](https://github.com/venmo/synx)
+#### First time installation Instructions:
     $ gem install synx
 If you run into permission error run as superuser (sudo)
 #### Use Instructions:
     $ synx ../<project name>.xcodeproj
 Run synx on the project.xcodeproj file to reformat the file structure to the project nagivator structure.
-### Balsamiq
-This tool is used to download and manage dependencies used within the application. It uses a PodFile that can be modified to add more dependencies if needed. Thesee dependencies and CocoaPod related files are version controlled to get rid of the need of having to download the dependencies yourself on each computer.
+### **Balsamiq**
+This tool is used to create mockups for Mobile applications. 
 
+[Balsamiq Homepage](https://balsamiq.com/)
 
-# DEVELOPMENT PROGRESS
-- empty
-
-# Requirements for Yelp for Bathrooms (Name to be determined)
-
+# **Requirements for Yelp for Bathrooms (Name to be determined)**
+-----
 ## User Credentials
 1. Users can navigate through the app regardless of login credentials
 2. Users can not post any type of rating for a bathroom while not logged in
@@ -76,4 +78,4 @@ This tool is used to download and manage dependencies used within the applicatio
 1. A bathroom listing with a ratio of non existing flags to reviews  > 2 shall be marked as non-existent.
 2. A bathroom listing with a ratio of hard to find flags to reviews > 1 shall be marked as hard-to-find.
 3. A bathroom listing with a ratio of paid flags to reviews > .5 shall be marked as paid.
-4. A bathroom is by default flagged as public. 
+4. A bathroom is by default flagged as public.
