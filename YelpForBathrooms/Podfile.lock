@@ -1,10 +1,79 @@
 PODS:
+<<<<<<< HEAD
+  - Alamofire (3.1.3)
+=======
+>>>>>>> Removed .DS_Store from repository
+  - GoogleAppUtilities (1.0.0):
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleAuthUtilities (1.0.1):
+    - GoogleNetworkingUtilities (~> 1.0)
+    - GoogleSymbolUtilities (~> 1.0)
+  - GoogleMaps (1.10.5)
+  - GoogleNetworkingUtilities (1.0.0):
+    - GoogleSymbolUtilities (~> 1.0)
+<<<<<<< HEAD
+  - GooglePlacesAutocomplete (0.3.0)
+=======
+>>>>>>> Removed .DS_Store from repository
+  - GoogleSignIn (2.4.0):
+    - GoogleAppUtilities (~> 1.0)
+    - GoogleAuthUtilities (~> 1.0)
+    - GoogleNetworkingUtilities (~> 1.0)
+    - GoogleUtilities (~> 1.0)
+  - GoogleSymbolUtilities (1.0.3)
+  - GoogleUtilities (1.1.0):
+    - GoogleSymbolUtilities (~> 1.0.0)
+<<<<<<< HEAD
+  - SwiftHTTP (1.0.2)
+=======
+>>>>>>> Removed .DS_Store from repository
   - SwiftyJSON (2.3.1)
+  - YLTableView (1.0.3)
 
 DEPENDENCIES:
+<<<<<<< HEAD
+  - Alamofire (~> 3.0)
+  - GoogleMaps (~> 1.10.0)
+  - GooglePlacesAutocomplete (from `https://github.com/watsonbox/ios_google_places_autocomplete`)
+  - GoogleSignIn (~> 2.4.0)
+  - SwiftHTTP (~> 1.0.2)
+=======
+  - GoogleMaps (~> 1.10.0)
+  - GoogleSignIn (~> 2.4.0)
+>>>>>>> Removed .DS_Store from repository
   - SwiftyJSON (~> 2.3)
+  - YLTableView (~> 1.0)
+
+EXTERNAL SOURCES:
+  GooglePlacesAutocomplete:
+    :git: https://github.com/watsonbox/ios_google_places_autocomplete
+
+CHECKOUT OPTIONS:
+  GooglePlacesAutocomplete:
+    :commit: 3b24a37eca923c5d92253122f26a2cd41f10ec5a
+    :git: https://github.com/watsonbox/ios_google_places_autocomplete
 
 SPEC CHECKSUMS:
+<<<<<<< HEAD
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+=======
+>>>>>>> Removed .DS_Store from repository
+  GoogleAppUtilities: c01c6a5671e9da8b9d690fdaec5959d6c2aac699
+  GoogleAuthUtilities: 049ffd3a297cdffd271451b82fd4e75304f15ef3
+  GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
+  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
+<<<<<<< HEAD
+  GooglePlacesAutocomplete: 7694636fce561c9d8ac807b8e490d299a730a633
+  GoogleSignIn: 79929b51e6299c69f1197bbd9c7a1367d523ecd8
+  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
+  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  SwiftHTTP: 6d8ca031a9ce613a01e8f18b497503887b0b50c0
+=======
+  GoogleSignIn: 79929b51e6299c69f1197bbd9c7a1367d523ecd8
+  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
+  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+>>>>>>> Removed .DS_Store from repository
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  YLTableView: 0b10cf1d3af0c871a6836f525768b5153750e68a
 
 COCOAPODS: 0.39.0

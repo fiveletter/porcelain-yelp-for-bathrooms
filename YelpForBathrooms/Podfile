@@ -3,4 +3,13 @@ use_frameworks!
 
 target 'YelpForBathrooms' do
   pod 'SwiftyJSON', '~> 2.3'
+  pod 'GoogleSignIn', '~> 2.4.0'
+  pod 'GoogleMaps', '~> 1.10.0'
+<<<<<<< HEAD
+  pod 'SwiftHTTP', '~> 1.0.2'
+  pod 'Alamofire', '~> 3.0'
+  pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
+  pod 'YLTableView', '~> 1.0'
+=======
+>>>>>>> Removed .DS_Store from repository
 end

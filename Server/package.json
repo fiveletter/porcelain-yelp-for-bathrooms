@@ -1,0 +1,25 @@
+{
+  "name": "PorcelainServer",
+  "version": "0.0.1",
+  "devDependencies": {
+    "chai": "",
+    "grunt": "",
+    "grunt-contrib-jshint": "",
+    "grunt-mocha-test": "",
+    "jshint-stylish": "",
+    "mocha": ""
+  },
+  "dependencies": {
+    "body-parser": "",
+    "colors": "",
+    "colorspace": "",
+    "express": "",
+    "forever-monitor": "",
+    "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.6",
+    "image-type": "^2.1.0",
+    "jsonschema": "",
+    "mysql": "",
+    "read-chunk": "^1.0.1"
+  }
+}

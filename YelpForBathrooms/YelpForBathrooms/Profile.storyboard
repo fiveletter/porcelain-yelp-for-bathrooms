@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="feE-ZO-QPu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Screen-->
+        <scene sceneID="CYE-Oj-1iE">
+            <objects>
+                <viewController title="Profile Screen" wantsFullScreenLayout="YES" id="feE-ZO-QPu" customClass="ProfileViewController" customModule="YelpForBathrooms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JAe-St-UE3"/>
+                        <viewControllerLayoutGuide type="bottom" id="uTD-c2-KKM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="avk-kI-LR4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v9i-pW-uCH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.08235294118" green="0.6588235294" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Doge" translatesAutoresizingMaskIntoConstraints="NO" id="O5m-mO-6T8">
+                                <rect key="frame" x="225" y="75" width="150" height="150"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7u7-vz-QuF"/>
+                                    <constraint firstAttribute="width" secondItem="O5m-mO-6T8" secondAttribute="height" multiplier="1:1" id="QlR-Cu-pF5"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cnD-We-HJi">
+                                <rect key="frame" x="0.0" y="305" width="600" height="61"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-3j-cJW">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1P-gA-qP0">
+                                                <rect key="frame" x="84" y="0.0" width="33" height="37"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI5-Fr-8AG">
+                                                <rect key="frame" x="73" y="37" width="55" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FMA-Jc-cO9">
+                                        <rect key="frame" x="200" y="0.0" width="200" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ub-3w-Etn">
+                                                <rect key="frame" x="84" y="0.0" width="33" height="37"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovr-yJ-SE8">
+                                                <rect key="frame" x="80" y="37" width="40" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-f8-0rL">
+                                        <rect key="frame" x="400" y="0.0" width="200" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjf-Zv-ebA">
+                                                <rect key="frame" x="84" y="0.0" width="33" height="37"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dislikes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf4-38-Eux">
+                                                <rect key="frame" x="71" y="37" width="59" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9h-fM-RWU">
+                                <rect key="frame" x="120" y="434" width="360" height="60"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Y8z-ft-G4D"/>
+                                    <constraint firstAttribute="height" constant="30" id="igl-p4-KKj"/>
+                                    <constraint firstAttribute="width" constant="80" id="kt0-kT-lSl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="38"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Y8z-ft-G4D"/>
+                                        <exclude reference="igl-p4-KKj"/>
+                                        <exclude reference="kt0-kT-lSl"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="logOut" destination="feE-ZO-QPu" eventType="touchUpInside" id="erW-DN-Doa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Five Letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="qUs-dh-dyW">
+                                <rect key="frame" x="242" y="225" width="116" height="41"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="width" secondItem="avk-kI-LR4" secondAttribute="width" multiplier="3:5" id="1N2-Ed-vGD"/>
+                            <constraint firstItem="cnD-We-HJi" firstAttribute="top" secondItem="O5m-mO-6T8" secondAttribute="bottom" constant="80" id="2NB-Vl-jsD"/>
+                            <constraint firstItem="uTD-c2-KKM" firstAttribute="top" secondItem="v9h-fM-RWU" secondAttribute="bottom" constant="106" id="85N-n1-gWs"/>
+                            <constraint firstItem="cnD-We-HJi" firstAttribute="width" secondItem="avk-kI-LR4" secondAttribute="width" id="BAS-8y-fVo"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="top" secondItem="cnD-We-HJi" secondAttribute="bottom" constant="68.5" id="CnC-3Q-K76"/>
+                            <constraint firstItem="v9i-pW-uCH" firstAttribute="bottom" secondItem="uTD-c2-KKM" secondAttribute="top" id="E6A-IR-c98"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="ENO-Yw-jRv"/>
+                            <constraint firstItem="O5m-mO-6T8" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="3:12" id="EZo-W9-xZ5"/>
+                            <constraint firstItem="FMA-Jc-cO9" firstAttribute="top" secondItem="qUs-dh-dyW" secondAttribute="bottom" constant="39" id="Hhj-Da-Cov"/>
+                            <constraint firstItem="v9i-pW-uCH" firstAttribute="centerX" secondItem="v9h-fM-RWU" secondAttribute="centerX" id="IfB-by-wgl"/>
+                            <constraint firstItem="qUs-dh-dyW" firstAttribute="top" secondItem="O5m-mO-6T8" secondAttribute="bottom" id="OMm-fA-nfx"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="1:9" id="PGb-PX-tBa"/>
+                            <constraint firstItem="cnD-We-HJi" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="PeH-dY-oUd"/>
+                            <constraint firstItem="O5m-mO-6T8" firstAttribute="centerX" secondItem="avk-kI-LR4" secondAttribute="centerX" id="Rs1-eE-Iem"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="1:10" id="VG9-iU-2tC"/>
+                            <constraint firstItem="qUs-dh-dyW" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="WOc-z6-VDT"/>
+                            <constraint firstItem="v9i-pW-uCH" firstAttribute="leading" secondItem="avk-kI-LR4" secondAttribute="leading" id="hs5-Qv-Vql"/>
+                            <constraint firstItem="v9i-pW-uCH" firstAttribute="top" secondItem="avk-kI-LR4" secondAttribute="top" id="ibR-R4-st5"/>
+                            <constraint firstItem="O5m-mO-6T8" firstAttribute="centerY" secondItem="avk-kI-LR4" secondAttribute="centerY" multiplier="1:2" id="j2p-h8-vgd"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="width" secondItem="v9i-pW-uCH" secondAttribute="width" id="pYd-dE-F34"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="leading" secondItem="avk-kI-LR4" secondAttribute="leading" constant="50" id="sZh-Mi-i9W"/>
+                            <constraint firstItem="O5m-mO-6T8" firstAttribute="width" secondItem="avk-kI-LR4" secondAttribute="width" multiplier="1:3" id="tqv-rP-OUZ"/>
+                            <constraint firstAttribute="trailing" secondItem="v9h-fM-RWU" secondAttribute="trailing" constant="50" id="zZf-5Y-p9r"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EZo-W9-xZ5"/>
+                                <exclude reference="tqv-rP-OUZ"/>
+                                <exclude reference="PGb-PX-tBa"/>
+                                <exclude reference="pYd-dE-F34"/>
+                                <exclude reference="sZh-Mi-i9W"/>
+                                <exclude reference="zZf-5Y-p9r"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="v9i-pW-uCH" id="GMf-iQ-Bk2"/>
+                        <outlet property="dislikesLabel" destination="Pf4-38-Eux" id="EAy-c1-7dm"/>
+                        <outlet property="likesLabel" destination="ovr-yJ-SE8" id="ddo-D0-6pM"/>
+                        <outlet property="logoutButton" destination="v9h-fM-RWU" id="nMv-5r-xkD"/>
+                        <outlet property="nameLabel" destination="qUs-dh-dyW" id="i66-FX-LsZ"/>
+                        <outlet property="numOfDislikesLabel" destination="gjf-Zv-ebA" id="Exk-AT-gVy"/>
+                        <outlet property="numOfLikesLabel" destination="6Ub-3w-Etn" id="VYi-cK-V0T"/>
+                        <outlet property="numOfReviewsLabel" destination="y1P-gA-qP0" id="e3J-UM-NVR"/>
+                        <outlet property="profileImageView" destination="O5m-mO-6T8" id="36X-Np-bNA"/>
+                        <outlet property="reviewLabel" destination="cI5-Fr-8AG" id="vqj-Cj-vwg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JZa-IX-gpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577" y="424"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Doge" width="537" height="529"/>
+    </resources>
+</document>

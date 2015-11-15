@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
+            if let myDict = NSDictionary(contentsOfFile: path) {
+                GMSServices.provideAPIKey(myDict["GOOGLE_API_KEY"] as! String)
+            }
+        }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Removed .DS_Store from repository
         return true
     }
 
@@ -39,6 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication,
+        openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+            return GIDSignIn.sharedInstance().handleURL(url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
     }
 
 

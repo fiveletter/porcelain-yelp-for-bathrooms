@@ -52,3 +52,11 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
+.DS_Store
+<<<<<<< HEAD
+=======
+
+# Server node modules
+Server/node_modules
+Server/cred/mysql_db.cred
+>>>>>>> Removed .DS_Store from repository
