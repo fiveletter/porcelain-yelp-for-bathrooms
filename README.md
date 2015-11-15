@@ -39,7 +39,7 @@ This tool is used to create mockups for Mobile applications.
 When working on a part of the project make sure to:
 
 - ALWAYS create an ISSUE with the appropriate tag and add any relevant people as watchers. 
-- ALWAYS work on a different local branch, DO NOT push any changes directly to master.
+- ALWAYS work on a different local branch, DO NOT push any changes directly to master. Branch naming convention <handle>/<objective> ex. fiveletter/login_screen
 - ALWAYS create pull requests (PR) with an ISSUE attached to the PR.
 - ALWAYS squash commits before merging to MASTER. This will allow us to manage commits better on MASTER
 - ALWAYS rebase from latest MASTER before merging to MASTER.
