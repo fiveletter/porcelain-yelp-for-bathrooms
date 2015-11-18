@@ -13,7 +13,8 @@
 		902088A61BF80C25006F0808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A41BF80C25006F0808 /* Main.storyboard */; };
 		902088A81BF80C25006F0808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902088A71BF80C25006F0808 /* Assets.xcassets */; };
 		902088AB1BF80C25006F0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A91BF80C25006F0808 /* LaunchScreen.storyboard */; };
-		902088B61BF811B3006F0808 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* Model.swift */; };
+		902088B61BF811B3006F0808 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* DummyModel.swift */; };
+		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,8 @@
 		902088A71BF80C25006F0808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902088AA1BF80C25006F0808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902088AC1BF80C25006F0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		902088B51BF811B3006F0808 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		902088B51BF811B3006F0808 /* DummyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
+		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		E20E0462DBB95791F2669A61 /* Pods-YelpForBathrooms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpForBathrooms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YelpForBathrooms/Pods-YelpForBathrooms.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,9 +82,10 @@
 		9020889F1BF80C25006F0808 /* YelpForBathrooms */ = {
 			isa = PBXGroup;
 			children = (
+				90DF30311BFD13C800A82A9E /* Views */,
+				902088B31BF81108006F0808 /* Controllers */,
 				902088B41BF81143006F0808 /* Models */,
 				902088B21BF810F1006F0808 /* SupportingFiles */,
-				902088B31BF81108006F0808 /* ViewControllers */,
 				902088A71BF80C25006F0808 /* Assets.xcassets */,
 				902088A41BF80C25006F0808 /* Main.storyboard */,
 			);
@@ -99,20 +102,28 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		902088B31BF81108006F0808 /* ViewControllers */ = {
+		902088B31BF81108006F0808 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				902088A21BF80C25006F0808 /* ViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		902088B41BF81143006F0808 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				902088B51BF811B3006F0808 /* Model.swift */,
+				902088B51BF811B3006F0808 /* DummyModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		90DF30311BFD13C800A82A9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				90DF30321BFD13F300A82A9E /* DummyView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902088B61BF811B3006F0808 /* Model.swift in Sources */,
+				902088B61BF811B3006F0808 /* DummyModel.swift in Sources */,
+				90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */,
 				902088A31BF80C25006F0808 /* ViewController.swift in Sources */,
 				902088A11BF80C25006F0808 /* AppDelegate.swift in Sources */,
 			);
