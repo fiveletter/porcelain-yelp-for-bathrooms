@@ -15,6 +15,8 @@
 		902088AB1BF80C25006F0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A91BF80C25006F0808 /* LaunchScreen.storyboard */; };
 		902088B61BF811B3006F0808 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* DummyModel.swift */; };
 		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
+		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
+		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		902088AC1BF80C25006F0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902088B51BF811B3006F0808 /* DummyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
+		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E20E0462DBB95791F2669A61 /* Pods-YelpForBathrooms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpForBathrooms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YelpForBathrooms/Pods-YelpForBathrooms.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,10 +86,11 @@
 		9020889F1BF80C25006F0808 /* YelpForBathrooms */ = {
 			isa = PBXGroup;
 			children = (
-				90DF30311BFD13C800A82A9E /* Views */,
 				902088B31BF81108006F0808 /* Controllers */,
+				90DF30361BFD2A4100A82A9E /* Extensions */,
 				902088B41BF81143006F0808 /* Models */,
 				902088B21BF810F1006F0808 /* SupportingFiles */,
+				90DF30311BFD13C800A82A9E /* Views */,
 				902088A71BF80C25006F0808 /* Assets.xcassets */,
 				902088A41BF80C25006F0808 /* Main.storyboard */,
 			);
@@ -105,6 +110,7 @@
 		902088B31BF81108006F0808 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */,
 				902088A21BF80C25006F0808 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -123,7 +129,15 @@
 			children = (
 				90DF30321BFD13F300A82A9E /* DummyView.swift */,
 			);
-			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		90DF30361BFD2A4100A82A9E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */,
 				902088B61BF811B3006F0808 /* DummyModel.swift in Sources */,
 				90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */,
+				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
 				902088A31BF80C25006F0808 /* ViewController.swift in Sources */,
 				902088A11BF80C25006F0808 /* AppDelegate.swift in Sources */,
 			);
