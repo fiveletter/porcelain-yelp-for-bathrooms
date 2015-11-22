@@ -49,9 +49,6 @@ class MapViewController: UIViewController {
             case "profileSegue":
                 let profileViewController = segue.destinationViewController as! ProfileViewController
                 profileViewController.model = model;
-            case "loginSegue":
-                let loginViewController = segue.destinationViewController as! LoginViewController
-                
             default:
                 print("NO OP")
             }

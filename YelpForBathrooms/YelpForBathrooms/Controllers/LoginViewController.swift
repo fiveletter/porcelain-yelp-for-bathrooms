@@ -15,10 +15,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        var myDict: NSDictionary?
+        if let path = NSBundle.mainBundle().pathForResource("GoogleService-Info", ofType: "plist") {
+            myDict = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = myDict {
+            GIDSignIn.sharedInstance().clientID = dict["CLIENT_ID"] as! String
+        }
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().clientID = "672822966449-efaa1229enfq2o5kfbbr1p82k7vdacm5.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().signInSilently()
     }
 
