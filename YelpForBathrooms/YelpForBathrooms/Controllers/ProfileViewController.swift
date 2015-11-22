@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        navigationController?.hidesBarsOnTap = true
         
         print("model: \(model)")
         
