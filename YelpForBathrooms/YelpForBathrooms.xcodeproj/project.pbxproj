@@ -9,11 +9,20 @@
 /* Begin PBXBuildFile section */
 		5DD760A6927974BF59DC49EA /* Pods_YelpForBathrooms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6339D452ECD4FBCEC40FDC59 /* Pods_YelpForBathrooms.framework */; };
 		902088A11BF80C25006F0808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088A01BF80C25006F0808 /* AppDelegate.swift */; };
-		902088A31BF80C25006F0808 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088A21BF80C25006F0808 /* ViewController.swift */; };
 		902088A61BF80C25006F0808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A41BF80C25006F0808 /* Main.storyboard */; };
 		902088A81BF80C25006F0808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902088A71BF80C25006F0808 /* Assets.xcassets */; };
 		902088AB1BF80C25006F0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A91BF80C25006F0808 /* LaunchScreen.storyboard */; };
 		902088B61BF811B3006F0808 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* DummyModel.swift */; };
+		902B80AC1C013FB2002041CE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902B80AB1C013FB2002041CE /* Profile.storyboard */; };
+		903CEAB31C014701003BC6FF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB11C014701003BC6FF /* Login.storyboard */; };
+		903CEAB51C014ADB003BC6FF /* AddBathroom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */; };
+		903CEAB81C014E1E003BC6FF /* BathroomDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */; };
+		903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */; };
+		903CEABD1C0152C7003BC6FF /* AddBathroomReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */; };
+		903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */; };
+		903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC01C0154D6003BC6FF /* LoginViewController.swift */; };
+		903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */; };
+		908097F01C01422A002275CF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908097EF1C01422A002275CF /* MapViewController.swift */; };
 		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
 		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
 		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
@@ -24,12 +33,21 @@
 		6339D452ECD4FBCEC40FDC59 /* Pods_YelpForBathrooms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YelpForBathrooms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9020889D1BF80C25006F0808 /* YelpForBathrooms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpForBathrooms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902088A01BF80C25006F0808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		902088A21BF80C25006F0808 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		902088A51BF80C25006F0808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		902088A71BF80C25006F0808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902088AA1BF80C25006F0808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902088AC1BF80C25006F0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902088B51BF811B3006F0808 /* DummyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
+		902B80AB1C013FB2002041CE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		903CEAB21C014701003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddBathroom.storyboard; sourceTree = "<group>"; };
+		903CEAB71C014E1E003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BathroomDetails.storyboard; sourceTree = "<group>"; };
+		903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetailsViewController.swift; sourceTree = "<group>"; };
+		903CEABC1C0152C7003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddBathroomReview.storyboard; sourceTree = "<group>"; };
+		903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomReviewViewController.swift; sourceTree = "<group>"; };
+		903CEAC01C0154D6003BC6FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomViewController.swift; sourceTree = "<group>"; };
+		908097EF1C01422A002275CF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -86,13 +104,13 @@
 		9020889F1BF80C25006F0808 /* YelpForBathrooms */ = {
 			isa = PBXGroup;
 			children = (
+				902B80AA1C013F9B002041CE /* Storyboards */,
 				902088B31BF81108006F0808 /* Controllers */,
 				90DF30361BFD2A4100A82A9E /* Extensions */,
 				902088B41BF81143006F0808 /* Models */,
 				902088B21BF810F1006F0808 /* SupportingFiles */,
 				90DF30311BFD13C800A82A9E /* Views */,
 				902088A71BF80C25006F0808 /* Assets.xcassets */,
-				902088A41BF80C25006F0808 /* Main.storyboard */,
 			);
 			path = YelpForBathrooms;
 			sourceTree = "<group>";
@@ -111,7 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */,
-				902088A21BF80C25006F0808 /* ViewController.swift */,
+				908097EF1C01422A002275CF /* MapViewController.swift */,
+				903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */,
+				903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */,
+				903CEAC01C0154D6003BC6FF /* LoginViewController.swift */,
+				903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +144,19 @@
 				902088B51BF811B3006F0808 /* DummyModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		902B80AA1C013F9B002041CE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				902088A41BF80C25006F0808 /* Main.storyboard */,
+				903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */,
+				903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */,
+				903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */,
+				903CEAB11C014701003BC6FF /* Login.storyboard */,
+				902B80AB1C013FB2002041CE /* Profile.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		90DF30311BFD13C800A82A9E /* Views */ = {
@@ -202,8 +237,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				902B80AC1C013FB2002041CE /* Profile.storyboard in Resources */,
 				902088AB1BF80C25006F0808 /* LaunchScreen.storyboard in Resources */,
+				903CEABD1C0152C7003BC6FF /* AddBathroomReview.storyboard in Resources */,
 				902088A81BF80C25006F0808 /* Assets.xcassets in Resources */,
+				903CEAB31C014701003BC6FF /* Login.storyboard in Resources */,
+				903CEAB51C014ADB003BC6FF /* AddBathroom.storyboard in Resources */,
+				903CEAB81C014E1E003BC6FF /* BathroomDetails.storyboard in Resources */,
 				902088A61BF80C25006F0808 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,12 +303,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */,
 				90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */,
 				902088B61BF811B3006F0808 /* DummyModel.swift in Sources */,
 				90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */,
 				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
-				902088A31BF80C25006F0808 /* ViewController.swift in Sources */,
+				903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */,
+				903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */,
 				902088A11BF80C25006F0808 /* AppDelegate.swift in Sources */,
+				908097F01C01422A002275CF /* MapViewController.swift in Sources */,
+				903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +335,30 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		903CEAB11C014701003BC6FF /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				903CEAB21C014701003BC6FF /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				903CEAB71C014E1E003BC6FF /* Base */,
+			);
+			name = BathroomDetails.storyboard;
+			sourceTree = "<group>";
+		};
+		903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				903CEABC1C0152C7003BC6FF /* Base */,
+			);
+			name = AddBathroomReview.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

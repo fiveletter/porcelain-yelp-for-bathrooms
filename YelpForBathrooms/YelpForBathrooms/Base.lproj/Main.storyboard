@@ -1,133 +1,138 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QBc-QN-LHx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rBy-kR-G1Q">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YelpForBathrooms" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Root View" id="AXP-DH-gGY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1316" y="451"/>
-        </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="vDM-z9-MXK">
-            <objects>
-                <viewController id="aRR-yd-ltp" customClass="ProfileViewController" customModule="YelpForBathrooms" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="D4G-Y8-3kw"/>
-                        <viewControllerLayoutGuide type="bottom" id="O4T-QS-OMB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3ox-eG-CBw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HHy-6G-bM6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.082352941176470587" green="0.6588235294117647" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Doge" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-HE-MND">
-                                <rect key="frame" x="225" y="75" width="150" height="150"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="b6x-HE-MND" secondAttribute="height" multiplier="1:1" id="DIH-Nz-2AE"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htz-jI-ndd">
-                                <rect key="frame" x="50" y="427.5" width="500" height="66.5"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="1CO-Bg-CLM"/>
-                                    <constraint firstAttribute="width" constant="70" id="Bxb-40-3lp"/>
-                                    <constraint firstAttribute="height" constant="30" id="sac-tt-niJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="38"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="1CO-Bg-CLM"/>
-                                        <exclude reference="Bxb-40-3lp"/>
-                                        <exclude reference="sac-tt-niJ"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HHy-6G-bM6" firstAttribute="bottom" secondItem="O4T-QS-OMB" secondAttribute="top" id="1U7-e7-lox"/>
-                            <constraint firstAttribute="trailing" secondItem="htz-jI-ndd" secondAttribute="trailing" constant="50" id="3QV-Vd-XHp"/>
-                            <constraint firstItem="b6x-HE-MND" firstAttribute="centerY" secondItem="3ox-eG-CBw" secondAttribute="centerY" multiplier="1:2" id="7Zb-yH-cD9"/>
-                            <constraint firstItem="htz-jI-ndd" firstAttribute="width" secondItem="HHy-6G-bM6" secondAttribute="width" id="7kz-Fv-8Gu"/>
-                            <constraint firstItem="HHy-6G-bM6" firstAttribute="leading" secondItem="3ox-eG-CBw" secondAttribute="leading" id="7vy-5H-ULA"/>
-                            <constraint firstItem="htz-jI-ndd" firstAttribute="centerX" secondItem="b6x-HE-MND" secondAttribute="centerX" id="9oj-NV-3w9"/>
-                            <constraint firstItem="O4T-QS-OMB" firstAttribute="top" secondItem="htz-jI-ndd" secondAttribute="bottom" constant="106" id="Iqd-aG-btm"/>
-                            <constraint firstItem="b6x-HE-MND" firstAttribute="height" secondItem="3ox-eG-CBw" secondAttribute="height" multiplier="3:12" id="MtX-6E-tnR"/>
-                            <constraint firstItem="HHy-6G-bM6" firstAttribute="centerX" secondItem="htz-jI-ndd" secondAttribute="centerX" id="Urf-f6-yzF"/>
-                            <constraint firstItem="htz-jI-ndd" firstAttribute="height" secondItem="3ox-eG-CBw" secondAttribute="height" multiplier="1:9" id="ZH5-NO-eYK"/>
-                            <constraint firstItem="b6x-HE-MND" firstAttribute="width" secondItem="3ox-eG-CBw" secondAttribute="width" multiplier="1:3" id="crD-RQ-GmA"/>
-                            <constraint firstItem="htz-jI-ndd" firstAttribute="leading" secondItem="3ox-eG-CBw" secondAttribute="leading" constant="50" id="j6T-Gy-01b"/>
-                            <constraint firstItem="b6x-HE-MND" firstAttribute="centerX" secondItem="3ox-eG-CBw" secondAttribute="centerX" id="qe5-02-fq7"/>
-                            <constraint firstItem="HHy-6G-bM6" firstAttribute="top" secondItem="3ox-eG-CBw" secondAttribute="top" id="zN1-C9-3e5"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="crD-RQ-GmA"/>
-                                <exclude reference="7kz-Fv-8Gu"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="backgroundImageView" destination="HHy-6G-bM6" id="lcR-gp-hDz"/>
-                        <outlet property="logoutButton" destination="htz-jI-ndd" id="hfL-EC-a0s"/>
-                        <outlet property="profileImageView" destination="b6x-HE-MND" id="mIy-vO-kmF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wfq-7k-2VV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2038" y="451"/>
-        </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Tvx-Ba-h5T">
+        <scene sceneID="S0E-KF-nRo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QBc-QN-LHx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M7B-Up-41B">
+                <navigationController id="rBy-kR-G1Q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g6s-Ac-Rvu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Bzh-Q4-Iah"/>
+                        <segue destination="v3o-GQ-Ftr" kind="relationship" relationship="rootViewController" id="N1e-5t-0w1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y1l-sd-uKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFn-Cr-fYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="451"/>
+            <point key="canvasLocation" x="-570" y="54"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="jXb-xO-ySU">
+            <objects>
+                <viewController id="v3o-GQ-Ftr" customClass="MapViewController" customModule="YelpForBathrooms" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="60m-vi-jCO"/>
+                        <viewControllerLayoutGuide type="bottom" id="MaF-6F-bJy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jZ9-qb-nHe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-7u-CYd">
+                                <rect key="frame" x="536" y="20" width="44" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Profile"/>
+                                <connections>
+                                    <action selector="openProfileScreen" destination="v3o-GQ-Ftr" eventType="touchUpInside" id="Nnf-2t-Zbt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ7-hW-OUY">
+                                <rect key="frame" x="20" y="20" width="99" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Add Bathroom"/>
+                                <connections>
+                                    <action selector="addBathroom" destination="v3o-GQ-Ftr" eventType="touchUpInside" id="zgJ-TQ-Oan"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIi-DL-elQ">
+                                <rect key="frame" x="20" y="562" width="48" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Search"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsd-nN-CMZ">
+                                <rect key="frame" x="76" y="562" width="504" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="a1p-7u-CYd" secondAttribute="trailing" id="1zL-8a-UNr"/>
+                            <constraint firstItem="uZ7-hW-OUY" firstAttribute="top" secondItem="60m-vi-jCO" secondAttribute="bottom" id="2QI-2f-eyH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bsd-nN-CMZ" secondAttribute="trailing" constant="407" id="8cV-Wp-r96"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bsd-nN-CMZ" secondAttribute="trailing" id="DyD-30-1M4"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="uZ7-hW-OUY" secondAttribute="leading" id="G2W-P6-yws"/>
+                            <constraint firstItem="bsd-nN-CMZ" firstAttribute="leading" secondItem="SIi-DL-elQ" secondAttribute="trailing" constant="8" id="OIk-2A-AL3"/>
+                            <constraint firstItem="MaF-6F-bJy" firstAttribute="top" secondItem="SIi-DL-elQ" secondAttribute="bottom" constant="8" id="e0G-9J-f0J"/>
+                            <constraint firstItem="a1p-7u-CYd" firstAttribute="top" secondItem="60m-vi-jCO" secondAttribute="bottom" id="hzM-dX-4VC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uZ7-hW-OUY" secondAttribute="trailing" constant="514" id="j6U-bm-WGr"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="uZ7-hW-OUY" secondAttribute="leading" id="jR4-vX-WzQ"/>
+                            <constraint firstItem="bsd-nN-CMZ" firstAttribute="centerY" secondItem="SIi-DL-elQ" secondAttribute="centerY" id="lQG-RJ-3wY"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="SIi-DL-elQ" secondAttribute="leading" id="lbt-6l-Zk4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="j6U-bm-WGr"/>
+                                <exclude reference="jR4-vX-WzQ"/>
+                                <exclude reference="8cV-Wp-r96"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rts-Ay-jBs"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="m2p-YY-mLl" kind="show" identifier="profileSegue" id="Td3-co-rGD"/>
+                        <segue destination="xZl-Ux-QIh" kind="show" identifier="loginSegue" id="sfQ-Oz-9MU"/>
+                        <segue destination="SNY-HD-YyO" kind="show" identifier="addBathroomSegue" id="oR1-R3-eye"/>
+                        <segue destination="eJO-ih-auO" kind="show" identifier="bathroomDetailsSegue" id="7wT-ZF-MF9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lrt-nY-nqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273" y="60"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="0GZ-jk-47g">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="m2p-YY-mLl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="c8R-b6-3SK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kIr-ue-moj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792" y="-207"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="Agx-VY-6xY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="xZl-Ux-QIh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eq0-yd-9II" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882" y="-127"/>
+        </scene>
+        <!--AddBathroom-->
+        <scene sceneID="HKb-uO-G0L">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddBathroom" id="SNY-HD-YyO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNa-Pu-h1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949" y="-33"/>
+        </scene>
+        <!--BathroomDetails-->
+        <scene sceneID="7Yq-Il-ypa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BathroomDetails" id="eJO-ih-auO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyK-NZ-st0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="60"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Doge" width="537" height="529"/>
-    </resources>
 </document>
