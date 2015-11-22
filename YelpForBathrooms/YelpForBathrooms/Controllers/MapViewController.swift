@@ -26,11 +26,11 @@ class MapViewController: UIViewController {
     @IBAction func openProfileScreen() {
         
         if logged_in{
-            self.performSegueWithIdentifier("bathroomDetailsSegue", sender: self)
+            self.performSegueWithIdentifier("profileSegue", sender: self)
         }
         else
         {
-            self.performSegueWithIdentifier("story2", sender: self)
+            self.performSegueWithIdentifier("loginSegue", sender: self)
         }
     }
     @IBAction func addBathroom() {

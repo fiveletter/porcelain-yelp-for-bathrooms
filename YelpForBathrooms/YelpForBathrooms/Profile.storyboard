@@ -28,11 +28,78 @@
                                 <rect key="frame" x="225" y="75" width="150" height="150"/>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7u7-vz-QuF"/>
                                     <constraint firstAttribute="width" secondItem="O5m-mO-6T8" secondAttribute="height" multiplier="1:1" id="QlR-Cu-pF5"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cnD-We-HJi">
+                                <rect key="frame" x="0.0" y="305" width="600" height="61"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-3j-cJW">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1P-gA-qP0">
+                                                <rect key="frame" x="84" y="0.0" width="33" height="37"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI5-Fr-8AG">
+                                                <rect key="frame" x="73" y="37" width="55" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FMA-Jc-cO9">
+                                        <rect key="frame" x="200" y="0.0" width="200" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ub-3w-Etn">
+                                                <rect key="frame" x="84" y="0.0" width="33" height="37"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovr-yJ-SE8">
+                                                <rect key="frame" x="73" y="37" width="55" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-f8-0rL">
+                                        <rect key="frame" x="400" y="0.0" width="200" height="61"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjf-Zv-ebA">
+                                                <rect key="frame" x="84" y="0.0" width="33" height="37"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf4-38-Eux">
+                                                <rect key="frame" x="73" y="37" width="55" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9h-fM-RWU">
-                                <rect key="frame" x="50" y="427.5" width="500" height="66.5"/>
+                                <rect key="frame" x="120" y="434" width="360" height="60"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Y8z-ft-G4D"/>
@@ -55,13 +122,19 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="width" secondItem="avk-kI-LR4" secondAttribute="width" multiplier="3:5" id="1N2-Ed-vGD"/>
+                            <constraint firstItem="cnD-We-HJi" firstAttribute="top" secondItem="O5m-mO-6T8" secondAttribute="bottom" constant="80" id="2NB-Vl-jsD"/>
                             <constraint firstItem="uTD-c2-KKM" firstAttribute="top" secondItem="v9h-fM-RWU" secondAttribute="bottom" constant="106" id="85N-n1-gWs"/>
+                            <constraint firstItem="cnD-We-HJi" firstAttribute="width" secondItem="avk-kI-LR4" secondAttribute="width" id="BAS-8y-fVo"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="top" secondItem="cnD-We-HJi" secondAttribute="bottom" constant="68.5" id="CnC-3Q-K76"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="bottom" secondItem="uTD-c2-KKM" secondAttribute="top" id="E6A-IR-c98"/>
                             <constraint firstItem="v9h-fM-RWU" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="ENO-Yw-jRv"/>
                             <constraint firstItem="O5m-mO-6T8" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="3:12" id="EZo-W9-xZ5"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="centerX" secondItem="v9h-fM-RWU" secondAttribute="centerX" id="IfB-by-wgl"/>
                             <constraint firstItem="v9h-fM-RWU" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="1:9" id="PGb-PX-tBa"/>
+                            <constraint firstItem="cnD-We-HJi" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="PeH-dY-oUd"/>
                             <constraint firstItem="O5m-mO-6T8" firstAttribute="centerX" secondItem="avk-kI-LR4" secondAttribute="centerX" id="Rs1-eE-Iem"/>
+                            <constraint firstItem="v9h-fM-RWU" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="1:10" id="VG9-iU-2tC"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="leading" secondItem="avk-kI-LR4" secondAttribute="leading" id="hs5-Qv-Vql"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="top" secondItem="avk-kI-LR4" secondAttribute="top" id="ibR-R4-st5"/>
                             <constraint firstItem="O5m-mO-6T8" firstAttribute="centerY" secondItem="avk-kI-LR4" secondAttribute="centerY" multiplier="1:2" id="j2p-h8-vgd"/>
@@ -72,8 +145,12 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="EZo-W9-xZ5"/>
                                 <exclude reference="tqv-rP-OUZ"/>
+                                <exclude reference="PGb-PX-tBa"/>
                                 <exclude reference="pYd-dE-F34"/>
+                                <exclude reference="sZh-Mi-i9W"/>
+                                <exclude reference="zZf-5Y-p9r"/>
                             </mask>
                         </variation>
                     </view>
