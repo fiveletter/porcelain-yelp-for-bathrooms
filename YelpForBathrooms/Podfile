@@ -3,4 +3,6 @@ use_frameworks!
 
 target 'YelpForBathrooms' do
   pod 'SwiftyJSON', '~> 2.3'
+  pod 'GoogleSignIn', '~> 2.4.0'
+  pod 'GoogleMaps', '~> 1.10.0'
 end

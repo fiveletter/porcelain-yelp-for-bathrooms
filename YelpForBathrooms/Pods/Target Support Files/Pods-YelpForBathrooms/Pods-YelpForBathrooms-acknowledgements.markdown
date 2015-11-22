@@ -1,6 +1,41 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## GoogleAppUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleAuthUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleMaps
+
+If you use the Google Maps SDK for iOS in your application, you must
+include the attribution text as part of a legal notices section in your
+application. Including legal notices as an independent menu item, or as
+part of an "About" menu item, is recommended.
+
+You can get the attribution text by making a call to
+[GMSServices openSourceLicenseInfo].
+
+
+## GoogleNetworkingUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleSignIn
+
+Copyright 2015 Google Inc. All Rights Reserved.
+
+## GoogleSymbolUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleUtilities
+
+Copyright 2015 Google Inc.
+
 ## SwiftyJSON
 
 The MIT License (MIT)

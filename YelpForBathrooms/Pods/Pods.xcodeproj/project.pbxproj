@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CBE03BC3AE82DB5260EC235F561FAB4 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CBE03BC3AE82DB5260EC235F561FAB4 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CD5C55AF4237505B6D396C6DDAB150 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22FC90CC9FE2EB4103B47AE7CC02B3E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		71822CBA9A253904CAA48AE57576C5A9 /* Pods-YelpForBathrooms-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDBC678C4FC4FAF0F151528CFE35C26 /* Pods-YelpForBathrooms-dummy.m */; };
 		878CB7DB969771E09F150E68F297AE02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		9FBE94A5BFE94B5FDDAEEF384C9B08A2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */; };
+		9FBE94A5BFE94B5FDDAEEF384C9B08A2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D3420347361081E6A7DFEC7FF2854 /* SwiftyJSON.swift */; };
 		BCC1572453AF0756E32FF3A96D87E415 /* Pods-YelpForBathrooms-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE34E6C12F26E7D025039420A37EE665 /* Pods-YelpForBathrooms-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D2C8666C0ECBED7CFBF40D5D1E3DF58C /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */; };
+		D2C8666C0ECBED7CFBF40D5D1E3DF58C /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F85DF138F95A5B444DA1DC5E51CE9412 /* SwiftyJSON-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,27 +27,62 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		1027C6A7DAC64A02E57605BCE0C530A5 /* GoogleSignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleSignIn.h; path = Headers/Public/GoogleSignIn.h; sourceTree = "<group>"; };
+		10B972D69C2FB13238DE0980271C8B85 /* libGTM_AddressBook.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_AddressBook.a; path = Libraries/libGTM_AddressBook.a; sourceTree = "<group>"; };
+		126509AD16D4C84FB1275F78FE2FB05C /* libGTM_iPhone.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_iPhone.a; path = Libraries/libGTM_iPhone.a; sourceTree = "<group>"; };
+		134F1EB16A51F47B0A0B3F2AE779EBB4 /* libOpenInChrome.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libOpenInChrome.a; path = Libraries/libOpenInChrome.a; sourceTree = "<group>"; };
+		14CD5C55AF4237505B6D396C6DDAB150 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		205C1ED599AD24ADA7E46A669364FD25 /* Pods-YelpForBathrooms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YelpForBathrooms.debug.xcconfig"; sourceTree = "<group>"; };
-		2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
-		32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		22C0730BC3674E3EA65EB22B206E83D1 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		239DB3538DC4F14A00F9E97FD0D0BFD6 /* libSignIn.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libSignIn.a; path = Libraries/libSignIn.a; sourceTree = "<group>"; };
+		2C8466CCC71456C8A84F0A5110062DB5 /* GIDSignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDSignIn.h; path = Headers/Public/GIDSignIn.h; sourceTree = "<group>"; };
+		322A462821B49FB1053FBF7AFBBF8B45 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		32AD757085361DF6AE3AA3938E430E8B /* libGTM_Regex.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_Regex.a; path = Libraries/libGTM_Regex.a; sourceTree = "<group>"; };
+		33C15B1D653D76C747CC4AD78E236415 /* libGTM_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_core.a; path = Libraries/libGTM_core.a; sourceTree = "<group>"; };
+		3BF0243F8D2AD94570DAC32E80052597 /* libGTMSessionFetcher_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMSessionFetcher_core.a; path = Libraries/libGTMSessionFetcher_core.a; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4324E0F00D49DA55D339708F26EE089C /* GIDAuthentication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDAuthentication.h; path = Headers/Public/GIDAuthentication.h; sourceTree = "<group>"; };
+		4D0FB2B98E9AF17B8F1D065DD50CE824 /* libGTM_NSStringXML.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSStringXML.a; path = Libraries/libGTM_NSStringXML.a; sourceTree = "<group>"; };
 		4F105A6AA417758CB911C8185551BFAA /* Pods-YelpForBathrooms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YelpForBathrooms.release.xcconfig"; sourceTree = "<group>"; };
+		53791832CE2F4EB6C2C372C19ABDAAF2 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		546ED7A0448C1424A823A2EA291D4760 /* libGTM_StringEncoding.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_StringEncoding.a; path = Libraries/libGTM_StringEncoding.a; sourceTree = "<group>"; };
+		573761F079DB291AB5CAE490DAAEF6F4 /* libGTM_SystemVersion.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_SystemVersion.a; path = Libraries/libGTM_SystemVersion.a; sourceTree = "<group>"; };
+		602382ABED6501782FF27B9F21C0C89C /* libGSDK_Overload.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGSDK_Overload.a; path = Libraries/libGSDK_Overload.a; sourceTree = "<group>"; };
+		656CDA0BF86A3082C4D45635D1CB9672 /* GIDSignInButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDSignInButton.h; path = Headers/Public/GIDSignInButton.h; sourceTree = "<group>"; };
+		6AA30FC4D35C71A1FA91F6523ADD4393 /* libGTM_NSStringHTML.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSStringHTML.a; path = Libraries/libGTM_NSStringHTML.a; sourceTree = "<group>"; };
+		6E4C656CBA0E9C01619C403C61286C67 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		8695F05B506D01BA6CD98A08891FA3B0 /* libGTM_DebugUtils.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_DebugUtils.a; path = Libraries/libGTM_DebugUtils.a; sourceTree = "<group>"; };
+		922A068315E0CF3B34C3BFBF5DEEEDF7 /* libGTM_RoundedRectPath.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_RoundedRectPath.a; path = Libraries/libGTM_RoundedRectPath.a; sourceTree = "<group>"; };
 		93C58E2C7243179FFBA2D149EFD19FED /* Pods-YelpForBathrooms-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YelpForBathrooms-resources.sh"; sourceTree = "<group>"; };
+		9853C4F7A3F018DF0908282A1D25B399 /* libGTMStackTrace.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMStackTrace.a; path = Libraries/libGTMStackTrace.a; sourceTree = "<group>"; };
+		A0C0E7DDB3C63281AF048E997D850B63 /* libGTMSessionFetcher_full.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMSessionFetcher_full.a; path = Libraries/libGTMSessionFetcher_full.a; sourceTree = "<group>"; };
 		A21F03CF5645F7880154310BB5920D5E /* Pods-YelpForBathrooms-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YelpForBathrooms-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A36A9661375E585021E0D1C6AA58DF64 /* Pods_YelpForBathrooms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YelpForBathrooms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B5B193521ED04ECD8473A08D1C2B0C /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FF0B90E647C15A26BBC828B037880C /* libGIPNSURL+FIFE.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGIPNSURL+FIFE.a"; path = "Libraries/libGIPNSURL+FIFE.a"; sourceTree = "<group>"; };
 		A7897A224B81A7B2BCCD8D3C08F86112 /* Pods-YelpForBathrooms-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YelpForBathrooms-acknowledgements.plist"; sourceTree = "<group>"; };
+		AC3D3420347361081E6A7DFEC7FF2854 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		B20E836C6434AFEAF3E8883240AD0CB6 /* GIDGoogleUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDGoogleUser.h; path = Headers/Public/GIDGoogleUser.h; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC32FC0312F61F244D10AA894A1D0499 /* libGTM_KVO.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_KVO.a; path = Libraries/libGTM_KVO.a; sourceTree = "<group>"; };
+		C0FAF5B6AB7F7458296ADBFB8D68FB6B /* libGTM_GTMURLBuilder.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_GTMURLBuilder.a; path = Libraries/libGTM_GTMURLBuilder.a; sourceTree = "<group>"; };
 		C5274F7A8454A422AA112D2B8215F098 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C80EBD5EEB86BE08C7FEDDBB5C4FBCE3 /* libGTM_NSData+zlib.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_NSData+zlib.a"; path = "Libraries/libGTM_NSData+zlib.a"; sourceTree = "<group>"; };
 		CBEB945B269E085F5DDD62DF07FBFFB8 /* Pods-YelpForBathrooms.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YelpForBathrooms.modulemap"; sourceTree = "<group>"; };
-		D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		CC20C521B2D6149BA22D5ABC92976CD7 /* libGTM_UIFont+LineHeight.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_UIFont+LineHeight.a"; path = "Libraries/libGTM_UIFont+LineHeight.a"; sourceTree = "<group>"; };
+		CED3BECD95CA0BA8A8E9EF5FADC09E0D /* libGTMOAuth2_external.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMOAuth2_external.a; path = Libraries/libGTMOAuth2_external.a; sourceTree = "<group>"; };
+		CF25628F839614607B944E3A3F313F1A /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		DB5AB45025B0D207651947AD4B4B57C9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFDBC678C4FC4FAF0F151528CFE35C26 /* Pods-YelpForBathrooms-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YelpForBathrooms-dummy.m"; sourceTree = "<group>"; };
 		E29C06D2966847BD8F9692F6A667FB86 /* Pods-YelpForBathrooms-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YelpForBathrooms-frameworks.sh"; sourceTree = "<group>"; };
+		E8CFA0E601CC038D41A49793B9C8F5B8 /* GIDProfileData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDProfileData.h; path = Headers/Public/GIDProfileData.h; sourceTree = "<group>"; };
+		EA83C3FCB1F1EFCE8C255CD68A1A281D /* libGTM_NSDictionary+URLArguments.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_NSDictionary+URLArguments.a"; path = "Libraries/libGTM_NSDictionary+URLArguments.a"; sourceTree = "<group>"; };
+		EBE21FF2808156E297219D88E7169A22 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
 		EE34E6C12F26E7D025039420A37EE665 /* Pods-YelpForBathrooms-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YelpForBathrooms-umbrella.h"; sourceTree = "<group>"; };
+		F3792F3B4B28B76E58D71902B98D7E79 /* libGTMOAuth2_internal.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMOAuth2_internal.a; path = Libraries/libGTMOAuth2_internal.a; sourceTree = "<group>"; };
+		F6D63C28986E9BE82885564EF727859E /* UIViewController+SignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+SignIn.h"; path = "Headers/Public/UIViewController+SignIn.h"; sourceTree = "<group>"; };
+		F85DF138F95A5B444DA1DC5E51CE9412 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		F9E2622061A1A48ED69E8FC933574356 /* libGTM_NSScannerJSON.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSScannerJSON.a; path = Libraries/libGTM_NSScannerJSON.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +105,109 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E709430FA05734A3A32F30B0CB1542B /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				228D5F8AE2DE3C053D16348F37D6441A /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		108999D98037F83758A9FC57BD26D1ED /* GoogleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				4324E0F00D49DA55D339708F26EE089C /* GIDAuthentication.h */,
+				B20E836C6434AFEAF3E8883240AD0CB6 /* GIDGoogleUser.h */,
+				E8CFA0E601CC038D41A49793B9C8F5B8 /* GIDProfileData.h */,
+				2C8466CCC71456C8A84F0A5110062DB5 /* GIDSignIn.h */,
+				656CDA0BF86A3082C4D45635D1CB9672 /* GIDSignInButton.h */,
+				1027C6A7DAC64A02E57605BCE0C530A5 /* GoogleSignIn.h */,
+				F6D63C28986E9BE82885564EF727859E /* UIViewController+SignIn.h */,
+				8DF0CF6B8B3BC1D6F99CD707A8425A13 /* Frameworks */,
+				A1FCEB5D3C8758DFB2B74AFABF52E974 /* Resources */,
+			);
+			path = GoogleSignIn;
+			sourceTree = "<group>";
+		};
+		1BD036B85108C82DAAE64F83C80AA1EE /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				9B6C9A0A2B3D1BBC687BAF8E2CB98B85 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		1EAE8D28593B6E21C6EE8C74764D9AB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E4C656CBA0E9C01619C403C61286C67 /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		228D5F8AE2DE3C053D16348F37D6441A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BF0243F8D2AD94570DAC32E80052597 /* libGTMSessionFetcher_core.a */,
+				A0C0E7DDB3C63281AF048E997D850B63 /* libGTMSessionFetcher_full.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27145909DE51A14EABEFC5965EC24CDB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB5AB45025B0D207651947AD4B4B57C9 /* Info.plist */,
+				CF25628F839614607B944E3A3F313F1A /* SwiftyJSON.modulemap */,
+				22C0730BC3674E3EA65EB22B206E83D1 /* SwiftyJSON.xcconfig */,
+				F85DF138F95A5B444DA1DC5E51CE9412 /* SwiftyJSON-dummy.m */,
+				322A462821B49FB1053FBF7AFBBF8B45 /* SwiftyJSON-prefix.pch */,
+				14CD5C55AF4237505B6D396C6DDAB150 /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
+		3EDD76C6ED9F30DAA48351CF2EDC6C4F /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D3420347361081E6A7DFEC7FF2854 /* SwiftyJSON.swift */,
+				27145909DE51A14EABEFC5965EC24CDB /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		435515BA5E13C8CF8F72D47FD3F5227B /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				1EAE8D28593B6E21C6EE8C74764D9AB5 /* Frameworks */,
+				D730118DF915F4C3A012790CC9697D52 /* Resources */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		4ED0231D124AD3FDF11DCE1C197EEEE4 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				6C998526FA242683EE67FA86C2251EA9 /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
 		55F6396D01B629D868B3C8383AFEB8B1 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				6B3529C8F1B5B54F8FC25D11895F0250 /* Pods-YelpForBathrooms */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		602465812D5446DA23E494AE98BB6DEE /* GoogleAuthUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				E4A8DD500C13C93890054E8E46F5D7AD /* Frameworks */,
+			);
+			path = GoogleAuthUtilities;
 			sourceTree = "<group>";
 		};
 		6B3529C8F1B5B54F8FC25D11895F0250 /* Pods-YelpForBathrooms */ = {
@@ -96,13 +228,28 @@
 			path = "Target Support Files/Pods-YelpForBathrooms";
 			sourceTree = "<group>";
 		};
-		70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */ = {
+		6C998526FA242683EE67FA86C2251EA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */,
-				8EC39E1DC11846207722B71AAFE40F98 /* Support Files */,
+				10B972D69C2FB13238DE0980271C8B85 /* libGTM_AddressBook.a */,
+				33C15B1D653D76C747CC4AD78E236415 /* libGTM_core.a */,
+				8695F05B506D01BA6CD98A08891FA3B0 /* libGTM_DebugUtils.a */,
+				C0FAF5B6AB7F7458296ADBFB8D68FB6B /* libGTM_GTMURLBuilder.a */,
+				126509AD16D4C84FB1275F78FE2FB05C /* libGTM_iPhone.a */,
+				BC32FC0312F61F244D10AA894A1D0499 /* libGTM_KVO.a */,
+				C80EBD5EEB86BE08C7FEDDBB5C4FBCE3 /* libGTM_NSData+zlib.a */,
+				EA83C3FCB1F1EFCE8C255CD68A1A281D /* libGTM_NSDictionary+URLArguments.a */,
+				F9E2622061A1A48ED69E8FC933574356 /* libGTM_NSScannerJSON.a */,
+				6AA30FC4D35C71A1FA91F6523ADD4393 /* libGTM_NSStringHTML.a */,
+				4D0FB2B98E9AF17B8F1D065DD50CE824 /* libGTM_NSStringXML.a */,
+				32AD757085361DF6AE3AA3938E430E8B /* libGTM_Regex.a */,
+				922A068315E0CF3B34C3BFBF5DEEEDF7 /* libGTM_RoundedRectPath.a */,
+				546ED7A0448C1424A823A2EA291D4760 /* libGTM_StringEncoding.a */,
+				573761F079DB291AB5CAE490DAAEF6F4 /* libGTM_SystemVersion.a */,
+				CC20C521B2D6149BA22D5ABC92976CD7 /* libGTM_UIFont+LineHeight.a */,
+				9853C4F7A3F018DF0908282A1D25B399 /* libGTMStackTrace.a */,
 			);
-			path = SwiftyJSON;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -110,24 +257,51 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */,
+				F1EA764DBB313D47414EA1444BC2A304 /* Pods */,
 				C510C6B550E45608A97BAEE287CD5007 /* Products */,
 				55F6396D01B629D868B3C8383AFEB8B1 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8EC39E1DC11846207722B71AAFE40F98 /* Support Files */ = {
+		882FE84636D2B13A1895D0A06F241884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */,
-				D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */,
-				2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */,
-				32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */,
-				BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */,
-				05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */,
+				134F1EB16A51F47B0A0B3F2AE779EBB4 /* libOpenInChrome.a */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DF0CF6B8B3BC1D6F99CD707A8425A13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FF0B90E647C15A26BBC828B037880C /* libGIPNSURL+FIFE.a */,
+				239DB3538DC4F14A00F9E97FD0D0BFD6 /* libSignIn.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F88D5ED3B4B9D2898A193B1B5AC8A52 /* GoogleAppUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				882FE84636D2B13A1895D0A06F241884 /* Frameworks */,
+			);
+			path = GoogleAppUtilities;
+			sourceTree = "<group>";
+		};
+		9B6C9A0A2B3D1BBC687BAF8E2CB98B85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				602382ABED6501782FF27B9F21C0C89C /* libGSDK_Overload.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1FCEB5D3C8758DFB2B74AFABF52E974 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EBE21FF2808156E297219D88E7169A22 /* GoogleSignIn.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -136,14 +310,6 @@
 				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
@@ -161,6 +327,38 @@
 				A3B5B193521ED04ECD8473A08D1C2B0C /* SwiftyJSON.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D730118DF915F4C3A012790CC9697D52 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				53791832CE2F4EB6C2C372C19ABDAAF2 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E4A8DD500C13C93890054E8E46F5D7AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CED3BECD95CA0BA8A8E9EF5FADC09E0D /* libGTMOAuth2_external.a */,
+				F3792F3B4B28B76E58D71902B98D7E79 /* libGTMOAuth2_internal.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1EA764DBB313D47414EA1444BC2A304 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F88D5ED3B4B9D2898A193B1B5AC8A52 /* GoogleAppUtilities */,
+				602465812D5446DA23E494AE98BB6DEE /* GoogleAuthUtilities */,
+				435515BA5E13C8CF8F72D47FD3F5227B /* GoogleMaps */,
+				0E709430FA05734A3A32F30B0CB1542B /* GoogleNetworkingUtilities */,
+				108999D98037F83758A9FC57BD26D1ED /* GoogleSignIn */,
+				1BD036B85108C82DAAE64F83C80AA1EE /* GoogleSymbolUtilities */,
+				4ED0231D124AD3FDF11DCE1C197EEEE4 /* GoogleUtilities */,
+				3EDD76C6ED9F30DAA48351CF2EDC6C4F /* SwiftyJSON */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,7 +581,7 @@
 		};
 		D8EF7F757C664FDC4B213664ED374F02 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 22C0730BC3674E3EA65EB22B206E83D1 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -410,7 +608,7 @@
 		};
 		E8821BF2300AFBD99A783047DCF305CF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 22C0730BC3674E3EA65EB22B206E83D1 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
