@@ -9,8 +9,8 @@
 import Foundation
 
 class UserManager {
-    private var email : String?
-    private var name : String?
+    var email : String?
+    var name : String?
     
     init(){
         

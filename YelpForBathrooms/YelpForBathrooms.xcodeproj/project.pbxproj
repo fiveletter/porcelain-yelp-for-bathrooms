@@ -218,7 +218,7 @@
 				TargetAttributes = {
 					9020889C1BF80C25006F0808 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = ZTCBX83C8J;
+						DevelopmentTeam = XCSBUYNY82;
 					};
 				};
 			};
@@ -462,10 +462,14 @@
 			baseConfigurationReference = E20E0462DBB95791F2669A61 /* Pods-YelpForBathrooms.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YelpForBathrooms/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-219.letter.five.YelpForBathrooms";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.sjsu.Belp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = YelpForBathrooms/SupportingFiles/BridgingHeader.h;
 			};
 			name = Debug;
@@ -475,10 +479,14 @@
 			baseConfigurationReference = 50F9ADFFD6C5B26A52BA2B18 /* Pods-YelpForBathrooms.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YelpForBathrooms/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-219.letter.five.YelpForBathrooms";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.sjsu.Belp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = YelpForBathrooms/SupportingFiles/BridgingHeader.h;
 			};
 			name = Release;
