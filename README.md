@@ -8,6 +8,7 @@ This is an application made for iOS platform.
 * CocoaPods		- Dependency Manager
 * Synx          - File manager
 * Balsamiq		- Mockup Program
+* Draw.io       - Diagramming platform
 
 ## **Purpose and Installation Instructions**
 ### **CocoaPods**
