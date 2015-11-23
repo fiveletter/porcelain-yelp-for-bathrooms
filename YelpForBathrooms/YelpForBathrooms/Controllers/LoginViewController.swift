@@ -18,12 +18,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         
         if let path = NSBundle.mainBundle().pathForResource("GoogleService-Info", ofType: "plist") {
             if let myDict = NSDictionary(contentsOfFile: path) {
-                 GIDSignIn.sharedInstance().clientID = myDict["CLIENT_ID"] as! String
+                GIDSignIn.sharedInstance().clientID = myDict["CLIENT_ID"] as! String
             }
         }
+        GIDSignIn.sharedInstance().signInSilently()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signInSilently()
     }
 
     override func didReceiveMemoryWarning() {

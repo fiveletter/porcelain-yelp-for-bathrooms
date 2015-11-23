@@ -41,7 +41,7 @@
                     </view>
                     <connections>
                         <outlet property="signInButton" destination="qFt-WC-NMZ" id="Bku-2w-D6P"/>
-                        <segue destination="0fF-fC-QPK" kind="show" identifier="profileSegue" id="NSY-Pc-aDd"/>
+                        <segue destination="0fF-fC-QPK" kind="showDetail" identifier="profileSegue" customClass="NavigationReplacementSegue" customModule="YelpForBathrooms" customModuleProvider="target" action="showViewController:sender:" id="NSY-Pc-aDd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Be2-Pm-iLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
