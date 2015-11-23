@@ -9,18 +9,9 @@
 import Foundation
 
 class UserManager {
+// MARK: - PROPERTIES
+    
     var email : String?
-    var name : String?
-    
-    init(){
-        
-    }
-    
-    init(userEmail : String?, userName: String?) {
-        email = userEmail
-        name = userName
-    }
-    
     var IsSignedIn : Bool {
         get {
             if let _ = email?.isEmpty, _ = name?.isEmpty {
@@ -29,6 +20,25 @@ class UserManager {
             return false
         }
     }
+    var name : String?
+
+// MARK: - INITIALIZERS
+    init(){
+        NOOP("Does nothing")
+    }
+    
+    init(userEmail : String?, userName: String?) {
+        email = userEmail
+        name = userName
+    }
+
+// MARK: - ACCESSORS
+    func logOut() {
+        email = nil
+        name = nil
+    }
+
+// MARK: - SINGLETON
     class var sharedInstance : UserManager {
         struct Singleton {
             static let instance = UserManager()

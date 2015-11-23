@@ -117,6 +117,9 @@
                                         <exclude reference="kt0-kT-lSl"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="logOut" destination="feE-ZO-QPu" eventType="touchUpInside" id="erW-DN-Doa"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Five Letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="qUs-dh-dyW">
                                 <rect key="frame" x="242" y="225" width="116" height="41"/>
@@ -179,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZa-IX-gpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="437"/>
+            <point key="canvasLocation" x="1577" y="424"/>
         </scene>
     </scenes>
     <resources>

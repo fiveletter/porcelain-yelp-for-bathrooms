@@ -10,33 +10,27 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // ImageViews
-    @IBOutlet weak var profileImageView: UIImageView!
+// MARK: - PROPERTIES
+
     @IBOutlet weak var backgroundImageView: UIImageView!
-    
-    // Buttons
-    @IBOutlet weak var logoutButton: UIButton!
-    
-    // Labels
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var numOfReviewsLabel: UILabel!
-    @IBOutlet weak var numOfLikesLabel: UILabel!
-    @IBOutlet weak var numOfDislikesLabel: UILabel!
-    @IBOutlet weak var reviewLabel: UILabel!
-    @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var dislikesLabel: UILabel!
-    
-    // Controller Variables
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numOfDislikesLabel: UILabel!
+    @IBOutlet weak var numOfLikesLabel: UILabel!
+    @IBOutlet weak var numOfReviewsLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var reviewLabel: UILabel!
     var model: Int = 0
 
+// MARK: - LIFECYCLE FUNCTIONS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let width = profileImageView.frame.size.width
-        let height = profileImageView.frame.size.height
-        print("WIDTH: \(width) \tHEIGHT: \(height)")
         
         // Set label strings
-        nameLabel.text = "FIVE LETTER FIVE"
+        nameLabel.text = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")[0].capitalizedString
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,11 +53,15 @@ class ProfileViewController: UIViewController {
         profileImageView.layer.borderWidth = 3.0
         profileImageView.layer.borderColor = UIColor.colorFromHexRGBValue(0x16ADA7).CGColor
     }
+    
+// MARK: - VIEW CONTROLLER
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func logOut() {
+        GIDSignIn.sharedInstance().signOut()
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        UserManager.sharedInstance.logOut()
     }
+    // MARK: - STYLE
     
     func setTextColorOfView(color: UIColor){
         nameLabel.textColor = color
@@ -73,16 +71,7 @@ class ProfileViewController: UIViewController {
         reviewLabel.textColor = color
         likesLabel.textColor = color
         dislikesLabel.textColor = color
+        logoutButton.titleLabel?.textColor = color
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
