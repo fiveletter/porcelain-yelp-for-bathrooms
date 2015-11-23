@@ -9,9 +9,24 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    // ImageViews
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    // Buttons
     @IBOutlet weak var logoutButton: UIButton!
+    
+    // Labels
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numOfReviewsLabel: UILabel!
+    @IBOutlet weak var numOfLikesLabel: UILabel!
+    @IBOutlet weak var numOfDislikesLabel: UILabel!
+    @IBOutlet weak var reviewLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var dislikesLabel: UILabel!
+    
+    // Controller Variables
     var model: Int = 0
 
     override func viewDidLoad() {
@@ -19,14 +34,18 @@ class ProfileViewController: UIViewController {
         let width = profileImageView.frame.size.width
         let height = profileImageView.frame.size.height
         print("WIDTH: \(width) \tHEIGHT: \(height)")
+        
+        // Set label strings
+        nameLabel.text = "FIVE LETTER FIVE"
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.hidesBarsOnTap = true
         
-        print("model: \(model)")
-        
+        // Label style
+        setTextColorOfView(UIColor.whiteColor())
+
         // Background style
         backgroundImageView.layer.backgroundColor = UIColor.colorFromHexRGBValue(0x233046).CGColor
         
@@ -46,7 +65,16 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func setTextColorOfView(color: UIColor){
+        nameLabel.textColor = color
+        numOfReviewsLabel.textColor = color
+        numOfLikesLabel.textColor = color
+        numOfDislikesLabel.textColor = color
+        reviewLabel.textColor = color
+        likesLabel.textColor = color
+        dislikesLabel.textColor = color
+    }
+    
     /*
     // MARK: - Navigation
 
