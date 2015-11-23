@@ -117,7 +117,17 @@
                                         <exclude reference="kt0-kT-lSl"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="logOut" destination="feE-ZO-QPu" eventType="touchUpInside" id="erW-DN-Doa"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Five Letter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="qUs-dh-dyW">
+                                <rect key="frame" x="242" y="225" width="116" height="41"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,11 +140,14 @@
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="bottom" secondItem="uTD-c2-KKM" secondAttribute="top" id="E6A-IR-c98"/>
                             <constraint firstItem="v9h-fM-RWU" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="ENO-Yw-jRv"/>
                             <constraint firstItem="O5m-mO-6T8" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="3:12" id="EZo-W9-xZ5"/>
+                            <constraint firstItem="FMA-Jc-cO9" firstAttribute="top" secondItem="qUs-dh-dyW" secondAttribute="bottom" constant="39" id="Hhj-Da-Cov"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="centerX" secondItem="v9h-fM-RWU" secondAttribute="centerX" id="IfB-by-wgl"/>
+                            <constraint firstItem="qUs-dh-dyW" firstAttribute="top" secondItem="O5m-mO-6T8" secondAttribute="bottom" id="OMm-fA-nfx"/>
                             <constraint firstItem="v9h-fM-RWU" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="1:9" id="PGb-PX-tBa"/>
                             <constraint firstItem="cnD-We-HJi" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="PeH-dY-oUd"/>
                             <constraint firstItem="O5m-mO-6T8" firstAttribute="centerX" secondItem="avk-kI-LR4" secondAttribute="centerX" id="Rs1-eE-Iem"/>
                             <constraint firstItem="v9h-fM-RWU" firstAttribute="height" secondItem="avk-kI-LR4" secondAttribute="height" multiplier="1:10" id="VG9-iU-2tC"/>
+                            <constraint firstItem="qUs-dh-dyW" firstAttribute="centerX" secondItem="O5m-mO-6T8" secondAttribute="centerX" id="WOc-z6-VDT"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="leading" secondItem="avk-kI-LR4" secondAttribute="leading" id="hs5-Qv-Vql"/>
                             <constraint firstItem="v9i-pW-uCH" firstAttribute="top" secondItem="avk-kI-LR4" secondAttribute="top" id="ibR-R4-st5"/>
                             <constraint firstItem="O5m-mO-6T8" firstAttribute="centerY" secondItem="avk-kI-LR4" secondAttribute="centerY" multiplier="1:2" id="j2p-h8-vgd"/>
@@ -156,13 +169,20 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="v9i-pW-uCH" id="GMf-iQ-Bk2"/>
+                        <outlet property="dislikesLabel" destination="Pf4-38-Eux" id="EAy-c1-7dm"/>
+                        <outlet property="likesLabel" destination="ovr-yJ-SE8" id="ddo-D0-6pM"/>
                         <outlet property="logoutButton" destination="v9h-fM-RWU" id="nMv-5r-xkD"/>
+                        <outlet property="nameLabel" destination="qUs-dh-dyW" id="i66-FX-LsZ"/>
+                        <outlet property="numOfDislikesLabel" destination="gjf-Zv-ebA" id="Exk-AT-gVy"/>
+                        <outlet property="numOfLikesLabel" destination="6Ub-3w-Etn" id="VYi-cK-V0T"/>
+                        <outlet property="numOfReviewsLabel" destination="y1P-gA-qP0" id="e3J-UM-NVR"/>
                         <outlet property="profileImageView" destination="O5m-mO-6T8" id="36X-Np-bNA"/>
+                        <outlet property="reviewLabel" destination="cI5-Fr-8AG" id="vqj-Cj-vwg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZa-IX-gpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="437"/>
+            <point key="canvasLocation" x="1577" y="424"/>
         </scene>
     </scenes>
     <resources>

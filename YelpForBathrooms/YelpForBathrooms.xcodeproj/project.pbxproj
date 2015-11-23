@@ -23,6 +23,7 @@
 		903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC01C0154D6003BC6FF /* LoginViewController.swift */; };
 		903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */; };
 		908097F01C01422A002275CF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908097EF1C01422A002275CF /* MapViewController.swift */; };
+		90842D1A1C02DB6B00E20655 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90842D191C02DB6B00E20655 /* Common.swift */; };
 		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
 		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
 		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
@@ -51,6 +52,7 @@
 		903CEAC01C0154D6003BC6FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomViewController.swift; sourceTree = "<group>"; };
 		908097EF1C01422A002275CF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		90842D191C02DB6B00E20655 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -125,11 +127,12 @@
 		902088B21BF810F1006F0808 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				902088A01BF80C25006F0808 /* AppDelegate.swift */,
-				902088AC1BF80C25006F0808 /* Info.plist */,
 				902088A91BF80C25006F0808 /* LaunchScreen.storyboard */,
-				9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */,
+				902088A01BF80C25006F0808 /* AppDelegate.swift */,
 				9A5D1D101C015B5400EDCA7F /* BridgingHeader.h */,
+				902088AC1BF80C25006F0808 /* Info.plist */,
+				9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */,
+				90842D191C02DB6B00E20655 /* Common.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */,
 				90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */,
+				90842D1A1C02DB6B00E20655 /* Common.swift in Sources */,
 				902088B61BF811B3006F0808 /* DummyModel.swift in Sources */,
 				90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */,
 				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
