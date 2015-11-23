@@ -25,7 +25,7 @@ class MapViewController: UIViewController {
     }
     @IBAction func openProfileScreen() {
         
-        if logged_in{
+        if UserManager.sharedInstance.IsSignedIn {
             self.performSegueWithIdentifier("profileSegue", sender: self)
         }
         else
