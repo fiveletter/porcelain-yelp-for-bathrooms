@@ -1,0 +1,19 @@
+{
+  "name": "PorcelainServer",
+  "version": "0.0.1",
+  "devDependencies": {
+    "chai": "",
+    "grunt": "",
+    "grunt-contrib-jshint": "",
+    "grunt-mocha-test": "",
+    "jshint-stylish": "",
+    "mocha": ""
+  },
+  "dependencies": {
+    "colors": "",
+    "colorspace": "",
+    "express": "",
+    "mysql": "",
+    "forever-monitor": ""
+  }
+}
