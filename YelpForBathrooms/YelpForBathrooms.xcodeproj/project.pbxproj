@@ -29,6 +29,7 @@
 		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
 		9A5D1D0F1C015AB000EDCA7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */; };
 		9A8D56271C02A67500648C18 /* NavigationReplacementSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */; };
+		9A8D56291C03706200648C18 /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D56281C03706200648C18 /* Flags.swift */; };
 		9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9EC451C02621200A7F7CE /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A5D1D101C015B5400EDCA7F /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationReplacementSegue.swift; sourceTree = "<group>"; };
+		9A8D56281C03706200648C18 /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
 		9AF9EC451C02621200A7F7CE /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E20E0462DBB95791F2669A61 /* Pods-YelpForBathrooms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpForBathrooms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YelpForBathrooms/Pods-YelpForBathrooms.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				902088B51BF811B3006F0808 /* DummyModel.swift */,
 				9AF9EC451C02621200A7F7CE /* UserManager.swift */,
 				9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */,
+				9A8D56281C03706200648C18 /* Flags.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				908097F01C01422A002275CF /* MapViewController.swift in Sources */,
 				9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */,
 				903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */,
+				9A8D56291C03706200648C18 /* Flags.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
