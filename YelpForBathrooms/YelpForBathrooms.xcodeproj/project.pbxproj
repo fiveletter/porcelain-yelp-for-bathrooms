@@ -66,8 +66,8 @@
 		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IBathroomRetriever.swift; path = Models/IBathroomRetriever.swift; sourceTree = "<group>"; };
-		9A1C7DFA1C04F7D200B0D410 /* IBathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IBathroomDetailRetriever.swift; path = Models/IBathroomDetailRetriever.swift; sourceTree = "<group>"; };
+		9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBathroomRetriever.swift; sourceTree = "<group>"; };
+		9A1C7DFA1C04F7D200B0D410 /* IBathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBathroomDetailRetriever.swift; sourceTree = "<group>"; };
 		9A1C7DFC1C04F7E100B0D410 /* BathroomDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetail.swift; sourceTree = "<group>"; };
 		9A1C7DFE1C04F84600B0D410 /* BathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomRetriever.swift; sourceTree = "<group>"; };
 		9A1C7E001C04F8A400B0D410 /* HttpRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRetriever.swift; sourceTree = "<group>"; };
@@ -133,12 +133,12 @@
 		9020889F1BF80C25006F0808 /* YelpForBathrooms */ = {
 			isa = PBXGroup;
 			children = (
-				9A6028E91C0578E6000D42DF /* Fakes */,
-				9A6028E81C0578CC000D42DF /* Protocols */,
-				902B80AA1C013F9B002041CE /* Storyboards */,
 				902088B31BF81108006F0808 /* Controllers */,
 				90DF30361BFD2A4100A82A9E /* Extensions */,
+				9A6028E91C0578E6000D42DF /* Fakes */,
 				902088B41BF81143006F0808 /* Models */,
+				9A6028E81C0578CC000D42DF /* Protocols */,
+				902B80AA1C013F9B002041CE /* Storyboards */,
 				902088B21BF810F1006F0808 /* SupportingFiles */,
 				90DF30311BFD13C800A82A9E /* Views */,
 				902088A71BF80C25006F0808 /* Assets.xcassets */,
@@ -149,12 +149,12 @@
 		902088B21BF810F1006F0808 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				902088A91BF80C25006F0808 /* LaunchScreen.storyboard */,
 				902088A01BF80C25006F0808 /* AppDelegate.swift */,
 				9A5D1D101C015B5400EDCA7F /* BridgingHeader.h */,
-				902088AC1BF80C25006F0808 /* Info.plist */,
-				9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */,
 				90842D191C02DB6B00E20655 /* Common.swift */,
+				9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */,
+				902088AC1BF80C25006F0808 /* Info.plist */,
+				902088A91BF80C25006F0808 /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -162,12 +162,12 @@
 		902088B31BF81108006F0808 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */,
-				908097EF1C01422A002275CF /* MapViewController.swift */,
-				903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */,
 				903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */,
-				903CEAC01C0154D6003BC6FF /* LoginViewController.swift */,
 				903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */,
+				903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */,
+				903CEAC01C0154D6003BC6FF /* LoginViewController.swift */,
+				908097EF1C01422A002275CF /* MapViewController.swift */,
+				90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,14 +176,14 @@
 			isa = PBXGroup;
 			children = (
 				902088B51BF811B3006F0808 /* Bathroom.swift */,
-				9AF9EC451C02621200A7F7CE /* UserManager.swift */,
-				9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */,
-				9A8D56281C03706200648C18 /* Flags.swift */,
 				9A1C7DFC1C04F7E100B0D410 /* BathroomDetail.swift */,
-				9A1C7DFE1C04F84600B0D410 /* BathroomRetriever.swift */,
-				9A1C7E001C04F8A400B0D410 /* HttpRetriever.swift */,
 				9A6028EE1C05798D000D42DF /* BathroomDetailRetriever.swift */,
+				9A1C7DFE1C04F84600B0D410 /* BathroomRetriever.swift */,
+				9A8D56281C03706200648C18 /* Flags.swift */,
+				9A1C7E001C04F8A400B0D410 /* HttpRetriever.swift */,
+				9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */,
 				9A6028F01C057CA2000D42DF /* Review.swift */,
+				9AF9EC451C02621200A7F7CE /* UserManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,14 +191,14 @@
 		902B80AA1C013F9B002041CE /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				902088A41BF80C25006F0808 /* Main.storyboard */,
-				903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */,
-				903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */,
 				903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */,
+				903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */,
+				903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */,
 				903CEAB11C014701003BC6FF /* Login.storyboard */,
+				902088A41BF80C25006F0808 /* Main.storyboard */,
 				902B80AB1C013FB2002041CE /* Profile.storyboard */,
 			);
-			name = Storyboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		90DF30311BFD13C800A82A9E /* Views */ = {
@@ -220,19 +220,19 @@
 		9A6028E81C0578CC000D42DF /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */,
 				9A1C7DFA1C04F7D200B0D410 /* IBathroomDetailRetriever.swift */,
+				9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */,
 			);
-			name = Protocols;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		9A6028E91C0578E6000D42DF /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
-				9A6028EA1C057912000D42DF /* FakeBathroomRetriever.swift */,
 				9A6028EC1C057920000D42DF /* FakeBathroomDetailRetriever.swift */,
+				9A6028EA1C057912000D42DF /* FakeBathroomRetriever.swift */,
 			);
-			name = Fakes;
+			path = Fakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +417,7 @@
 				903CEAB21C014701003BC6FF /* Base */,
 			);
 			name = Login.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */ = {
@@ -425,6 +426,7 @@
 				903CEAB71C014E1E003BC6FF /* Base */,
 			);
 			name = BathroomDetails.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */ = {
@@ -433,6 +435,7 @@
 				903CEABC1C0152C7003BC6FF /* Base */,
 			);
 			name = AddBathroomReview.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
