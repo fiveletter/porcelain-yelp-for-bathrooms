@@ -1,8 +1,8 @@
 //
-//  Model.swift
+//  BathroomDetailRetriever.swift
 //  YelpForBathrooms
 //
-//  Created by Vince Ly on 11/14/15.
+//  Created by Mitchell Waldman on 11/24/15.
 //  Copyright © 2015 Five Letter. All rights reserved.
 //
 

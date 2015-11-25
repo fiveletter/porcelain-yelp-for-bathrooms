@@ -42,6 +42,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         } else {
             UserManager.sharedInstance.email = user.profile.email
             UserManager.sharedInstance.name = user.profile.name
+            UserManager.sharedInstance.userToken = user.authentication.idToken
             self.performSegueWithIdentifier("profileSegue", sender: self)
         }
     }

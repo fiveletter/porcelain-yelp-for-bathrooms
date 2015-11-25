@@ -21,7 +21,7 @@ class UserManager {
         }
     }
     var name : String?
-
+    var userToken : String?
 // MARK: - INITIALIZERS
     init(){
         NOOP("Does nothing")

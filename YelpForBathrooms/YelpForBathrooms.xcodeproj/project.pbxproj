@@ -12,7 +12,7 @@
 		902088A61BF80C25006F0808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A41BF80C25006F0808 /* Main.storyboard */; };
 		902088A81BF80C25006F0808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902088A71BF80C25006F0808 /* Assets.xcassets */; };
 		902088AB1BF80C25006F0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A91BF80C25006F0808 /* LaunchScreen.storyboard */; };
-		902088B61BF811B3006F0808 /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* DummyModel.swift */; };
+		902088B61BF811B3006F0808 /* Bathroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* Bathroom.swift */; };
 		902B80AC1C013FB2002041CE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902B80AB1C013FB2002041CE /* Profile.storyboard */; };
 		903CEAB31C014701003BC6FF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB11C014701003BC6FF /* Login.storyboard */; };
 		903CEAB51C014ADB003BC6FF /* AddBathroom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */; };
@@ -27,7 +27,16 @@
 		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
 		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
 		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
+		9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */; };
+		9A1C7DFB1C04F7D200B0D410 /* IBathroomDetailRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7DFA1C04F7D200B0D410 /* IBathroomDetailRetriever.swift */; };
+		9A1C7DFD1C04F7E100B0D410 /* BathroomDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7DFC1C04F7E100B0D410 /* BathroomDetail.swift */; };
+		9A1C7DFF1C04F84600B0D410 /* BathroomRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7DFE1C04F84600B0D410 /* BathroomRetriever.swift */; };
+		9A1C7E011C04F8A400B0D410 /* HttpRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7E001C04F8A400B0D410 /* HttpRetriever.swift */; };
 		9A5D1D0F1C015AB000EDCA7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */; };
+		9A6028EB1C057912000D42DF /* FakeBathroomRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028EA1C057912000D42DF /* FakeBathroomRetriever.swift */; };
+		9A6028ED1C057920000D42DF /* FakeBathroomDetailRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028EC1C057920000D42DF /* FakeBathroomDetailRetriever.swift */; };
+		9A6028EF1C05798D000D42DF /* BathroomDetailRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028EE1C05798D000D42DF /* BathroomDetailRetriever.swift */; };
+		9A6028F11C057CA2000D42DF /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028F01C057CA2000D42DF /* Review.swift */; };
 		9A8D56271C02A67500648C18 /* NavigationReplacementSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */; };
 		9A8D56291C03706200648C18 /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D56281C03706200648C18 /* Flags.swift */; };
 		9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9EC451C02621200A7F7CE /* UserManager.swift */; };
@@ -42,7 +51,7 @@
 		902088A71BF80C25006F0808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902088AA1BF80C25006F0808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		902088AC1BF80C25006F0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		902088B51BF811B3006F0808 /* DummyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
+		902088B51BF811B3006F0808 /* Bathroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bathroom.swift; sourceTree = "<group>"; };
 		902B80AB1C013FB2002041CE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		903CEAB21C014701003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddBathroom.storyboard; sourceTree = "<group>"; };
@@ -57,8 +66,17 @@
 		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IBathroomRetriever.swift; path = Models/IBathroomRetriever.swift; sourceTree = "<group>"; };
+		9A1C7DFA1C04F7D200B0D410 /* IBathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IBathroomDetailRetriever.swift; path = Models/IBathroomDetailRetriever.swift; sourceTree = "<group>"; };
+		9A1C7DFC1C04F7E100B0D410 /* BathroomDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetail.swift; sourceTree = "<group>"; };
+		9A1C7DFE1C04F84600B0D410 /* BathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomRetriever.swift; sourceTree = "<group>"; };
+		9A1C7E001C04F8A400B0D410 /* HttpRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRetriever.swift; sourceTree = "<group>"; };
 		9A5D1D0E1C015AB000EDCA7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A5D1D101C015B5400EDCA7F /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		9A6028EA1C057912000D42DF /* FakeBathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeBathroomRetriever.swift; sourceTree = "<group>"; };
+		9A6028EC1C057920000D42DF /* FakeBathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeBathroomDetailRetriever.swift; sourceTree = "<group>"; };
+		9A6028EE1C05798D000D42DF /* BathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetailRetriever.swift; sourceTree = "<group>"; };
+		9A6028F01C057CA2000D42DF /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationReplacementSegue.swift; sourceTree = "<group>"; };
 		9A8D56281C03706200648C18 /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
 		9AF9EC451C02621200A7F7CE /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -115,6 +133,8 @@
 		9020889F1BF80C25006F0808 /* YelpForBathrooms */ = {
 			isa = PBXGroup;
 			children = (
+				9A6028E91C0578E6000D42DF /* Fakes */,
+				9A6028E81C0578CC000D42DF /* Protocols */,
 				902B80AA1C013F9B002041CE /* Storyboards */,
 				902088B31BF81108006F0808 /* Controllers */,
 				90DF30361BFD2A4100A82A9E /* Extensions */,
@@ -155,10 +175,15 @@
 		902088B41BF81143006F0808 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				902088B51BF811B3006F0808 /* DummyModel.swift */,
+				902088B51BF811B3006F0808 /* Bathroom.swift */,
 				9AF9EC451C02621200A7F7CE /* UserManager.swift */,
 				9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */,
 				9A8D56281C03706200648C18 /* Flags.swift */,
+				9A1C7DFC1C04F7E100B0D410 /* BathroomDetail.swift */,
+				9A1C7DFE1C04F84600B0D410 /* BathroomRetriever.swift */,
+				9A1C7E001C04F8A400B0D410 /* HttpRetriever.swift */,
+				9A6028EE1C05798D000D42DF /* BathroomDetailRetriever.swift */,
+				9A6028F01C057CA2000D42DF /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,6 +215,24 @@
 				90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9A6028E81C0578CC000D42DF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */,
+				9A1C7DFA1C04F7D200B0D410 /* IBathroomDetailRetriever.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		9A6028E91C0578E6000D42DF /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				9A6028EA1C057912000D42DF /* FakeBathroomRetriever.swift */,
+				9A6028EC1C057920000D42DF /* FakeBathroomDetailRetriever.swift */,
+			);
+			name = Fakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,17 +365,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */,
+				9A6028EB1C057912000D42DF /* FakeBathroomRetriever.swift in Sources */,
 				90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */,
+				9A1C7DFF1C04F84600B0D410 /* BathroomRetriever.swift in Sources */,
 				90842D1A1C02DB6B00E20655 /* Common.swift in Sources */,
-				902088B61BF811B3006F0808 /* DummyModel.swift in Sources */,
+				902088B61BF811B3006F0808 /* Bathroom.swift in Sources */,
+				9A1C7DFD1C04F7E100B0D410 /* BathroomDetail.swift in Sources */,
+				9A6028F11C057CA2000D42DF /* Review.swift in Sources */,
 				90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */,
+				9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */,
 				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
 				903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */,
 				903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */,
+				9A1C7DFB1C04F7D200B0D410 /* IBathroomDetailRetriever.swift in Sources */,
 				902088A11BF80C25006F0808 /* AppDelegate.swift in Sources */,
 				9A8D56271C02A67500648C18 /* NavigationReplacementSegue.swift in Sources */,
+				9A6028EF1C05798D000D42DF /* BathroomDetailRetriever.swift in Sources */,
 				908097F01C01422A002275CF /* MapViewController.swift in Sources */,
+				9A6028ED1C057920000D42DF /* FakeBathroomDetailRetriever.swift in Sources */,
 				9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */,
+				9A1C7E011C04F8A400B0D410 /* HttpRetriever.swift in Sources */,
 				903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */,
 				9A8D56291C03706200648C18 /* Flags.swift in Sources */,
 			);
