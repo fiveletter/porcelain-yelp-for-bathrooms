@@ -8,8 +8,8 @@
 
 import UIKit
 import GoogleMaps
-
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+import Alamofire
+class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
 // MARK: - PROPERTIES
 
@@ -17,6 +17,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     var model: Int = 1219
     let locationManager = CLLocationManager()
+    let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
     var logged_in = true
 
 // MARK: - LIFECYCLE FUNCTIONS
@@ -28,7 +29,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         
         searchTextField.delegate = self
-
+        mapView.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -87,6 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
+
         }
     }
     
@@ -94,10 +96,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         if let location = locations.first {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             locationManager.stopUpdatingLocation()
+            populateMapWithBathrooms()
         }
     }
 
-// TODO:
+// MARK: - GMSMapViewDelgate methods
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        let infoWindow = NSBundle.mainBundle().loadNibNamed("BathroomSnippetView", owner: self, options: nil).first! as! BathroomSnippetView
+        let bathroom = marker.userData as! Bathroom
+        infoWindow.title.text = bathroom.title
+        infoWindow.rating.text = bathroom.rating.description
+        infoWindow.flags.text = bathroom.flags.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
+        return infoWindow
+    }
+// MARK: - BATHROOM MGMT
+    func populateMapWithBathrooms(){
+        print("Populating map with bathrooms: ")
+        mapView.clear()
+        bathroomRetriever.GetBathrooms(mapView.projection.visibleRegion()){
+            bathrooms in
+            print("Received bathrooms: \(bathrooms)")
+            for bathroom in bathrooms! {
+                print("Bathroom : \(bathroom.title)")
+                let marker = GMSMarker(position: bathroom.location)
+                marker.userData = bathroom
+                marker.map = self.mapView
+            }
+        }
+    }
+    
     @IBAction func addBathroom() {
         NOOP("TODO")
     }

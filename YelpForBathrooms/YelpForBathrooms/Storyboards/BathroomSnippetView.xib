@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BathroomSnippetView" customModule="YelpForBathrooms" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="98"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-Gs-NAW">
+                    <rect key="frame" x="0.0" y="8" width="200" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wmj-uz-NCi">
+                    <rect key="frame" x="0.0" y="30" width="200" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-44-z1i">
+                    <rect key="frame" x="0.0" y="52" width="200" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="wmj-uz-NCi" secondAttribute="bottom" constant="47" id="Cy8-k3-LRw"/>
+                <constraint firstItem="wmj-uz-NCi" firstAttribute="leading" secondItem="GAs-Gs-NAW" secondAttribute="leading" id="Hd0-bh-lM1"/>
+                <constraint firstItem="wmj-uz-NCi" firstAttribute="trailing" secondItem="GAs-Gs-NAW" secondAttribute="trailing" id="Lzx-3b-2Yk"/>
+                <constraint firstAttribute="trailing" secondItem="wmj-uz-NCi" secondAttribute="trailing" id="USF-HP-UAu"/>
+                <constraint firstItem="xgv-44-z1i" firstAttribute="width" secondItem="wmj-uz-NCi" secondAttribute="width" id="bMx-ve-UKT"/>
+                <constraint firstItem="xgv-44-z1i" firstAttribute="trailing" secondItem="wmj-uz-NCi" secondAttribute="trailing" id="bUa-Uu-DPS"/>
+                <constraint firstItem="wmj-uz-NCi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dUz-pf-qlk"/>
+                <constraint firstItem="xgv-44-z1i" firstAttribute="leading" secondItem="wmj-uz-NCi" secondAttribute="leading" id="dng-Fd-i6Q"/>
+                <constraint firstItem="wmj-uz-NCi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fjO-I7-bd6"/>
+                <constraint firstItem="wmj-uz-NCi" firstAttribute="top" secondItem="GAs-Gs-NAW" secondAttribute="bottom" constant="1" id="tDD-YR-eP3"/>
+                <constraint firstItem="xgv-44-z1i" firstAttribute="top" secondItem="wmj-uz-NCi" secondAttribute="bottom" constant="1" id="zQK-fI-3zW"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="3"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.2156862745" green="0.50196078430000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="fjO-I7-bd6"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="flags" destination="xgv-44-z1i" id="xLs-92-9eK"/>
+                <outlet property="rating" destination="wmj-uz-NCi" id="xXn-2c-ZpR"/>
+                <outlet property="title" destination="GAs-Gs-NAW" id="Lad-6B-L9c"/>
+            </connections>
+            <point key="canvasLocation" x="517" y="289"/>
+        </view>
+    </objects>
+</document>
