@@ -38,7 +38,7 @@ module.exports = function(grunt) {
           "module": true
         }
       },
-        target: ['Gruntfile.js', 'Server.js', 'modules/**/*.js']
+        target: ['Gruntfile.js', 'Server.js']
     }
   });
   grunt.registerTask('default', ['jshint','mochaTest']);
