@@ -77,34 +77,39 @@ app.post('/bathroom/create', function(req, res){
 
     var createBathroom = function(new_data) {
         return new Promise((resolve, reject) => {
-            console.log("CREATING BATHROOM");
             connection.query(`INSERT INTO Bathrooms (Longitude, Latitude, Title, ImagePath) VALUES
                 (${new_data.Longitude}, ${new_data.Latitude}, '${new_data.Title}', '${new_data.ImagePath}')`, 
             function(err, rows, fields) {
-                if (err) { throw err; }
+                if (err) { 
+                    reject(err);
+                    return;
+                }
                 console.log("CREATED BATHROOM!!!");
                 resolve([rows.insertId, new_data]);
             });
         });
     };
     var createRating = function(combined_data) {
-        console.log(`CREATING RATING`, combined_data);
         // TODO: Base64 -> jpg conversion and storage
         connection.query(`INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment) VALUES
         (${combined_data[1].Rating}, ${combined_data[1].ProfileID}, ${combined_data[0]}, '${combined_data[1].Comment}')`, 
         function(err, rows, fields) {
-            if (err) { throw err; }
+            if (err) { 
+                res.end(JSON.stringify(jres));
+                return;
+            }
             var jres = {
                 "BathroomID": combined_data[0], 
                 "RatingID": rows.insertId
             };
-            console.log("CREATED RATING!!!");
             res.end(JSON.stringify(jres));
         });
     };
 
     if(results.errors.length == 0) {
-        createBathroom(req.body).then(createRating);
+        createBathroom(req.body).then(createRating).catch(function(err) {
+            res.end(JSON.stringify(err));
+        });
     } else {
         res.end(JSON.stringify(results.errors));
     }
@@ -131,7 +136,10 @@ app.post('/bathroom/retrieve', function(req, res){
         ${BathroomFlagSubQuery}
         FROM Bathrooms`, 
         function(err, rows, fields) {
-            if (err) { throw err; }
+            if (err) { 
+                res.end(JSON.stringify(jres));
+                return; 
+            }
             res.end(JSON.stringify(rows));
         });
     } else {
