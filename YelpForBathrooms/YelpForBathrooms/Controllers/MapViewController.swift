@@ -14,6 +14,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 // MARK: - PROPERTIES
 
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var searchTextField: UITextField!
     var model: Int = 1219
     let locationManager = CLLocationManager()
     var logged_in = true
@@ -25,6 +26,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        
+        searchTextField.delegate = self
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +48,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         {
             self.performSegueWithIdentifier("loginSegue", sender: self)
         }
+    }
+    
+    func keyboardWillShow(notification: NSNotification){
+        adjustViewForKeyboard(true, notification: notification)
+    }
+    
+    func keyboardWillHide(notification: NSNotification){
+        adjustViewForKeyboard(false, notification: notification)
+    }
+    
+    func adjustViewForKeyboard(show: Bool, notification: NSNotification){
+        let userInfo = notification.userInfo ??  [:]
+        let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        let adjustmentHeight = (CGRectGetHeight(keyboardFrame)*(show ? -1:1))
+        self.view.frame.origin.y += adjustmentHeight
     }
     
 // MARK: - NAVIGATION
@@ -81,3 +102,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         NOOP("TODO")
     }
 }
+
+extension MapViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
