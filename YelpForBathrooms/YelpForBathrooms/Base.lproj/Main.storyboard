@@ -140,6 +140,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="xqM-W3-K4r" id="Caq-HD-bie"/>
+                        <outlet property="searchTextField" destination="bsd-nN-CMZ" id="N4l-sY-sv0"/>
                         <segue destination="m2p-YY-mLl" kind="show" identifier="profileSegue" id="Td3-co-rGD"/>
                         <segue destination="xZl-Ux-QIh" kind="show" identifier="loginSegue" id="sfQ-Oz-9MU"/>
                         <segue destination="SNY-HD-YyO" kind="show" identifier="addBathroomSegue" id="oR1-R3-eye"/>
