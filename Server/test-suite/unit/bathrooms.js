@@ -4,6 +4,7 @@ describe('Profiles', function () {
 	// Loading Libraries
 	var mysql = require('mysql');
 	var http = require('http');
+	var fs = require('fs');
 
 	var options = {
 		hostname: '127.0.0.1',
@@ -15,12 +16,11 @@ describe('Profiles', function () {
 		}
     };
 
-	var connection = mysql.createConnection({
-	  host     : 'localhost',
-	  user     : 'root',
-	  password : '',
-	  database : 'Porcelain'
-	});
+	var connection = mysql.createConnection(
+	    JSON.parse(
+	        fs.readFileSync("cred/mysql_db.cred")
+	    )
+	);
 
 	connection.connect();
 
