@@ -7,7 +7,7 @@ describe('Profiles', function () {
 
 	var options = {
 		hostname: '127.0.0.1',
-		port: 9000,
+		port: 10000,
 		path: '',
 		method: 'POST',
 		headers: {
@@ -78,7 +78,7 @@ describe('Profiles', function () {
 			});
 
 			req.on('error', function (e) {
-				expect(true).to.be.false;
+				expect("Request to have an error").to.be.false;
 			});
 
 			var request = {
@@ -129,7 +129,7 @@ describe('Profiles', function () {
 		});
 
 		req.on('error', function (e) {
-			expect(true).to.be.false;
+			expect("Request to have an error").to.be.false;
 		});
 
 		var request = {

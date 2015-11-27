@@ -1,5 +1,5 @@
 //// Constants
-const PORT = 9000;
+const PORT = 10000;
 //// Requires
 var express     = require('express');
 var fs          = require('fs');
@@ -8,17 +8,16 @@ var bodyParser  = require('body-parser');
 var Validator   = require('jsonschema').Validator;
 var mysql       = require('mysql');
 //// Setup
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'Porcelain'
-});
+var connection = mysql.createConnection(
+    JSON.parse(
+        fs.readFileSync("cred/mysql_db.cred")
+    )
+);
 connection.connect();
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 // Init validator
 var v = new Validator();
 
@@ -95,7 +94,7 @@ app.post('/bathroom/create', function(req, res){
         (${combined_data[1].Rating}, ${combined_data[1].ProfileID}, ${combined_data[0]}, '${combined_data[1].Comment}')`, 
         function(err, rows, fields) {
             if (err) { 
-                res.end(JSON.stringify(jres));
+                res.end(JSON.stringify(err));
                 return;
             }
             var jres = {
@@ -106,7 +105,7 @@ app.post('/bathroom/create', function(req, res){
         });
     };
 
-    if(results.errors.length == 0) {
+    if(results.errors.length === 0) {
         createBathroom(req.body).then(createRating).catch(function(err) {
             res.end(JSON.stringify(err));
         });
@@ -131,13 +130,13 @@ app.post('/bathroom/retrieve', function(req, res){
     
     var results = v.validate(req.body, schema);
 
-    if(results.errors.length == 0) {
+    if(results.errors.length === 0) {
         connection.query(`SELECT BathroomID, Longitude, Latitude, Title, ImagePath,
         ${BathroomFlagSubQuery}
         FROM Bathrooms`, 
         function(err, rows, fields) {
             if (err) { 
-                res.end(JSON.stringify(jres));
+                res.end(JSON.stringify(err));
                 return; 
             }
             res.end(JSON.stringify(rows));
@@ -201,5 +200,5 @@ app.post('/profile/delete', function(req, res){
 });
 
 app.listen(PORT);
-console.log('Listening at http://localhost:' + PORT)
+console.log('Listening at http://localhost:' + PORT);
 //connection.end();

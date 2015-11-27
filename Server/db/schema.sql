@@ -31,10 +31,8 @@ CREATE TABLE `Bathrooms` (
   `Title` varchar(150) NOT NULL,
   `ImagePath` varchar(300) NOT NULL,
   PRIMARY KEY (`BathroomID`),
-  UNIQUE KEY `ImgURI_UNIQUE` (`ImagePath`),
-  UNIQUE KEY `ToiletID_UNIQUE` (`BathroomID`),
   UNIQUE KEY `Title_UNIQUE` (`Title`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +41,7 @@ CREATE TABLE `Bathrooms` (
 
 LOCK TABLES `Bathrooms` WRITE;
 /*!40000 ALTER TABLE `Bathrooms` DISABLE KEYS */;
-INSERT INTO `Bathrooms` VALUES (1,-121.881,37.3369,'SJSU Engineering Bathroom','');
+INSERT INTO `Bathrooms` VALUES (1,-121.881,37.3369,'SJSU Engineering Bathroom',''),(3,0,0,'UNIT Test-1',''),(4,0,0,'UNIT Test0',''),(5,1,0,'uit',''),(7,0,0,'UNIT Test 1',''),(8,0,0,'UNIT TEST 2',''),(14,0,0,'UNIT TEST 3',''),(15,0,0,'UNIT TEST 4',''),(17,0,0,'UNIT TEST 5',''),(18,0,0,'UNIT TEST 6',''),(19,-121,37,'KHALIL-TEST','undefined');
 /*!40000 ALTER TABLE `Bathrooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +109,7 @@ CREATE TABLE `Profiles` (
   PRIMARY KEY (`ProfileID`),
   UNIQUE KEY `GoogleHash_UNIQUE` (`GoogleHash`),
   UNIQUE KEY `ProfilesID_UNIQUE` (`ProfileID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +139,7 @@ CREATE TABLE `RatingFlags` (
   KEY `fk_RatingFlags_PorcelainRatings_idx` (`RatingID`),
   CONSTRAINT `fk_RatingFlags_PorcelainFlags` FOREIGN KEY (`FlagID`) REFERENCES `Flags` (`FlagsID`) ON DELETE CASCADE,
   CONSTRAINT `fk_RatingFlags_PorcelainRatings` FOREIGN KEY (`RatingID`) REFERENCES `Ratings` (`RatingID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +148,7 @@ CREATE TABLE `RatingFlags` (
 
 LOCK TABLES `RatingFlags` WRITE;
 /*!40000 ALTER TABLE `RatingFlags` DISABLE KEYS */;
+INSERT INTO `RatingFlags` VALUES (1,4,1);
 /*!40000 ALTER TABLE `RatingFlags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +162,7 @@ DROP TABLE IF EXISTS `Ratings`;
 CREATE TABLE `Ratings` (
   `RatingID` int(11) NOT NULL AUTO_INCREMENT,
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `Rating` float NOT NULL DEFAULT '-1',
+  `Rating` int(11) NOT NULL DEFAULT '-1',
   `ProfileID` int(11) NOT NULL,
   `BathroomID` int(11) NOT NULL,
   `Comment` varchar(5000) DEFAULT NULL COMMENT 'Not every rating will have a comment but every comment will have a rating.',
@@ -171,10 +170,8 @@ CREATE TABLE `Ratings` (
   PRIMARY KEY (`RatingID`),
   UNIQUE KEY `RatingID_UNIQUE` (`RatingID`),
   KEY `ProfileID_idx` (`ProfileID`),
-  KEY `ToiletID_idx` (`BathroomID`),
-  CONSTRAINT `fk_Ratings_1` FOREIGN KEY (`ProfileID`) REFERENCES `Profiles` (`ProfileID`) ON DELETE CASCADE,
-  CONSTRAINT `fk_Ratings_2` FOREIGN KEY (`BathroomID`) REFERENCES `Bathrooms` (`BathroomID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `ToiletID_idx` (`BathroomID`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,6 +180,7 @@ CREATE TABLE `Ratings` (
 
 LOCK TABLES `Ratings` WRITE;
 /*!40000 ALTER TABLE `Ratings` DISABLE KEYS */;
+INSERT INTO `Ratings` VALUES (1,'2015-11-24 22:57:00',2,1,1,'comment',''),(2,'2015-11-25 19:35:03',3,1,19,'KHALIL-TESTING-COMMENT',NULL);
 /*!40000 ALTER TABLE `Ratings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -195,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-23 12:29:19
+-- Dump completed on 2015-11-25 12:26:36

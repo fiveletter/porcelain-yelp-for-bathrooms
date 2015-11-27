@@ -56,3 +56,4 @@ fastlane/screenshots
 
 # Server node modules
 Server/node_modules
+Server/cred/mysql_db.cred
