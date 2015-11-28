@@ -15,7 +15,7 @@ class Bathroom {
     var id : Int
     var title : String
     var location : CLLocationCoordinate2D
-    var rating : Float
+    var rating : Double
     var flags : [Flag]
     
 //  MARK: - INITIALIZERS
@@ -27,7 +27,7 @@ class Bathroom {
         flags = [];
     }
     
-    init(Id: Int, Title: String, Location: CLLocationCoordinate2D, Rating : Float, Flags: [Flag]){
+    init(Id: Int, Title: String, Location: CLLocationCoordinate2D, Rating : Double, Flags: [Flag]){
         id = Id
         title = Title
         location = Location

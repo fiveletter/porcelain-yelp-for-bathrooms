@@ -12,7 +12,7 @@ import GoogleMaps
 class BathroomRetriever : IBathroomRetriever {
     static var httpRetriever = HttpRetriever()
     
-    func GetBathrooms(location: CLLocation, radius: CGFloat) -> [Bathroom]? {
+    func GetBathrooms(area: GMSVisibleRegion) -> [Bathroom]? {
         return nil;
     }
 }

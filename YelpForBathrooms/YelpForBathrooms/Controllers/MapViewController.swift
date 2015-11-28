@@ -17,6 +17,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     var model: Int = 1219
     let locationManager = CLLocationManager()
+    let bathroomRetriever : IBathroomRetriever = FakeBathroomRetriever()
     var logged_in = true
 
 // MARK: - LIFECYCLE FUNCTIONS
@@ -87,6 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
+
         }
     }
     
@@ -94,10 +96,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         if let location = locations.first {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             locationManager.stopUpdatingLocation()
+            populateMapWithBathrooms()
         }
     }
 
-// TODO:
+// MARK: - GMSMapViewDelgate methods
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        let infoWindow = NSBundle.mainBundle().loadNibNamed("BathroomSnippedView", owner: self, options: nil).first! as! BathroomSnippetView
+        infoWindow.title.text = "\(marker.position.latitude) \(marker.position.longitude)"
+        return infoWindow
+    }
+// MARK: - BATHROOM MGMT
+    func populateMapWithBathrooms(){
+        print("Populating map with bathrooms: ")
+        mapView.clear()
+        let bathrooms = bathroomRetriever.GetBathrooms(mapView.projection.visibleRegion())
+        for bathroom in bathrooms! {
+            print("Bathroom : \(bathroom.title)")
+            let marker = GMSMarker(position: bathroom.location)
+            marker.title = bathroom.title
+            marker.map = mapView
+        }
+    }
+    
     @IBAction func addBathroom() {
         NOOP("TODO")
     }

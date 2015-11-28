@@ -10,5 +10,5 @@ import Foundation
 import GoogleMaps
 
 protocol IBathroomRetriever {
-    func GetBathrooms(location: CLLocation, radius:CGFloat) -> [Bathroom]?
+    func GetBathrooms(area:GMSVisibleRegion) -> [Bathroom]?
 }

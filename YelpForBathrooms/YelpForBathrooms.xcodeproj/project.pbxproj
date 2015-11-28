@@ -37,6 +37,8 @@
 		9A6028ED1C057920000D42DF /* FakeBathroomDetailRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028EC1C057920000D42DF /* FakeBathroomDetailRetriever.swift */; };
 		9A6028EF1C05798D000D42DF /* BathroomDetailRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028EE1C05798D000D42DF /* BathroomDetailRetriever.swift */; };
 		9A6028F11C057CA2000D42DF /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6028F01C057CA2000D42DF /* Review.swift */; };
+		9A77058A1C060D070021CC24 /* BathroomSnippetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7705891C060D070021CC24 /* BathroomSnippetView.swift */; };
+		9A77058C1C060D550021CC24 /* BathroomSnippetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A77058B1C060D550021CC24 /* BathroomSnippetView.xib */; };
 		9A8D56271C02A67500648C18 /* NavigationReplacementSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */; };
 		9A8D56291C03706200648C18 /* Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D56281C03706200648C18 /* Flags.swift */; };
 		9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9EC451C02621200A7F7CE /* UserManager.swift */; };
@@ -77,6 +79,8 @@
 		9A6028EC1C057920000D42DF /* FakeBathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeBathroomDetailRetriever.swift; sourceTree = "<group>"; };
 		9A6028EE1C05798D000D42DF /* BathroomDetailRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetailRetriever.swift; sourceTree = "<group>"; };
 		9A6028F01C057CA2000D42DF /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		9A7705891C060D070021CC24 /* BathroomSnippetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomSnippetView.swift; sourceTree = "<group>"; };
+		9A77058B1C060D550021CC24 /* BathroomSnippetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BathroomSnippetView.xib; sourceTree = "<group>"; };
 		9A8D56261C02A67500648C18 /* NavigationReplacementSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationReplacementSegue.swift; sourceTree = "<group>"; };
 		9A8D56281C03706200648C18 /* Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flags.swift; sourceTree = "<group>"; };
 		9AF9EC451C02621200A7F7CE /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				903CEAB11C014701003BC6FF /* Login.storyboard */,
 				902088A41BF80C25006F0808 /* Main.storyboard */,
 				902B80AB1C013FB2002041CE /* Profile.storyboard */,
+				9A77058B1C060D550021CC24 /* BathroomSnippetView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				90DF30321BFD13F300A82A9E /* DummyView.swift */,
+				9A7705891C060D070021CC24 /* BathroomSnippetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 				903CEABD1C0152C7003BC6FF /* AddBathroomReview.storyboard in Resources */,
 				902088A81BF80C25006F0808 /* Assets.xcassets in Resources */,
 				903CEAB31C014701003BC6FF /* Login.storyboard in Resources */,
+				9A77058C1C060D550021CC24 /* BathroomSnippetView.xib in Resources */,
 				903CEAB51C014ADB003BC6FF /* AddBathroom.storyboard in Resources */,
 				903CEAB81C014E1E003BC6FF /* BathroomDetails.storyboard in Resources */,
 				902088A61BF80C25006F0808 /* Main.storyboard in Resources */,
@@ -386,6 +393,7 @@
 				9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */,
 				9A1C7E011C04F8A400B0D410 /* HttpRetriever.swift in Sources */,
 				903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */,
+				9A77058A1C060D070021CC24 /* BathroomSnippetView.swift in Sources */,
 				9A8D56291C03706200648C18 /* Flags.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
