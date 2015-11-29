@@ -21,15 +21,17 @@ class UserManager {
         }
     }
     var name : String?
-
+    var userToken : String?
+    var profileId : Int?
 // MARK: - INITIALIZERS
     init(){
         NOOP("Does nothing")
     }
     
-    init(userEmail : String?, userName: String?) {
+    init(userEmail : String?, userName: String?, id: Int?) {
         email = userEmail
         name = userName
+        profileId = id
     }
 
 // MARK: - ACCESSORS

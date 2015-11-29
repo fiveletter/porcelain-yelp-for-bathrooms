@@ -13,7 +13,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
 // MARK: - PROPERTIES
     
     @IBOutlet weak var signInButton: GIDSignInButton!
-    
+    var profileRetriever : IProfileRetriever = ProfileRetriever()
 // MARK: - LIFECYCLE FUNCTIONS
     
     override func viewDidLoad() {
@@ -42,6 +42,23 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         } else {
             UserManager.sharedInstance.email = user.profile.email
             UserManager.sharedInstance.name = user.profile.name
+            UserManager.sharedInstance.userToken = user.authentication.idToken
+            var fullNameArr = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")
+            var firstName = fullNameArr![0]
+            var lastName = fullNameArr![1]
+            profileRetriever.getProfileId(user.profile.email){
+                profileId -> Void in
+                if let id = profileId {
+                    UserManager.sharedInstance.profileId = id
+                } else {
+                    self.profileRetriever.createProfile(firstName, last: lastName, email: UserManager.sharedInstance.email!){
+                        (profileId) -> Void in
+                        if let id = profileId {
+                            UserManager.sharedInstance.profileId = id
+                        }
+                    }
+                }
+            }
             self.performSegueWithIdentifier("profileSegue", sender: self)
         }
     }
