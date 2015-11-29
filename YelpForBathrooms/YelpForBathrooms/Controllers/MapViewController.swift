@@ -15,6 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var searchTextField: UITextField!
+    
     var model: Int = 1219
     let locationManager = CLLocationManager()
     let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
@@ -39,6 +40,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
 // MARK: - VIEW CONTROLLER
+    @IBAction func searchBathrooms(sender: UIButton) {
+        //Check if search label is filled with an address
+        //Will want to move map to that location before populating bathrooms
+        populateMapWithBathrooms()
+    }
     
     @IBAction func openProfileScreen() {
         
