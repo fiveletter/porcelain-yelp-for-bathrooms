@@ -1,6 +1,6 @@
 "use strict";
 
-describe('Profiles', function () {
+describe('Bathrooms', function () {
 	// Loading Libraries
 	var mysql = require('mysql');
 	var http = require('http');
