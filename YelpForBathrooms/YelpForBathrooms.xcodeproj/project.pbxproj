@@ -23,7 +23,6 @@
 		903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC01C0154D6003BC6FF /* LoginViewController.swift */; };
 		903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */; };
 		90842D1A1C02DB6B00E20655 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90842D191C02DB6B00E20655 /* Common.swift */; };
-		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
 		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
 		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
 		9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */; };
@@ -76,7 +75,6 @@
 		903CEAC01C0154D6003BC6FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomViewController.swift; sourceTree = "<group>"; };
 		90842D191C02DB6B00E20655 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBathroomRetriever.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				9A7705891C060D070021CC24 /* BathroomSnippetView.swift */,
-				90DF30321BFD13F300A82A9E /* DummyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
