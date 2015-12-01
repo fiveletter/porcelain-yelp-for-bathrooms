@@ -35,9 +35,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         
         mapView.delegate = self
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,21 +59,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         {
             self.performSegueWithIdentifier("loginSegue", sender: self)
         }
-    }
-    
-    func keyboardWillShow(notification: NSNotification){
-        adjustViewForKeyboard(true, notification: notification)
-    }
-    
-    func keyboardWillHide(notification: NSNotification){
-        adjustViewForKeyboard(false, notification: notification)
-    }
-    
-    func adjustViewForKeyboard(show: Bool, notification: NSNotification){
-        let userInfo = notification.userInfo ??  [:]
-        let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
-        let adjustmentHeight = (CGRectGetHeight(keyboardFrame)*(show ? -1:1))
-        self.view.frame.origin.y += adjustmentHeight
     }
     
 // MARK: - NAVIGATION
@@ -122,6 +104,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         infoWindow.flags.text = bathroom.flags.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
         return infoWindow
     }
+    
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        performSegueWithIdentifier("bathroomDetailsSegue", sender: marker)
+    }
+
 // MARK: - BATHROOM MGMT
     func populateMapWithBathrooms(){
         print("Populating map with bathrooms: ")
