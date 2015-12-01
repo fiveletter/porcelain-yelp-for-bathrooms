@@ -17,7 +17,7 @@ class BathroomRetriever : IBathroomRetriever {
         let url : String = UrlManager.BATHROOM_RETRIEVE
         var bathrooms = [Bathroom]()
         let parameters = GetBathroomRetrievalParametersFromArea(area)
-        httpRetriever.makeRetrievalRequest(url, options: parameters) { (data) -> Void in
+        httpRetriever.makeRetrievalRequest(url, options: parameters) { data -> Void in
             let json = JSON(data: data)
             for (_, subJson): (String, JSON) in json {
                 let bathroomId = subJson["BathroomID"].int
@@ -51,7 +51,7 @@ class BathroomRetriever : IBathroomRetriever {
         }
     }
     
-    func GetBathroomRetrievalParametersFromArea(area:GMSVisibleRegion) -> Dictionary<String, AnyObject>{
+    private func GetBathroomRetrievalParametersFromArea(area:GMSVisibleRegion) -> Dictionary<String, AnyObject>{
         var params = [String:AnyObject]()
         let maxLat = max(area.farLeft.latitude, area.farRight.latitude, area.nearLeft.latitude, area.nearRight.latitude)
         let minLat = min(area.farLeft.latitude, area.farRight.latitude, area.nearLeft.latitude, area.nearRight.latitude)

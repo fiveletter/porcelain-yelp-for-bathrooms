@@ -18,7 +18,7 @@ class BathroomDetailRetriever : IBathroomDetailRetriever {
         var reviews = [Review]()
         var parameters = [String: AnyObject]()
         parameters["BathroomID"] = bathroomId
-        httpRetriever.makeRetrievalRequest(url, options: parameters) { (data) -> Void in
+        httpRetriever.makeRetrievalRequest(url, options: parameters) { data -> Void in
             let json = JSON(data: data)
             for (_, subJson): (String, JSON) in json {
                 let ratingId = subJson["RatingID"].int

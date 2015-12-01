@@ -16,7 +16,7 @@ class Review {
     var username : String
     var bathroomId : Int
     var comment : String
-    var picture : String //Url
+    var picture : String //base64
     var flags : [Flag]
     
 //  MARK: - INITIALIZERS
