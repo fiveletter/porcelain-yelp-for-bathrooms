@@ -85,11 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-YelpForBathrooms/Alamofire.framework"
+  install_framework "Pods-YelpForBathrooms/GooglePlacesAutocomplete.framework"
   install_framework "Pods-YelpForBathrooms/SwiftHTTP.framework"
   install_framework "Pods-YelpForBathrooms/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-YelpForBathrooms/Alamofire.framework"
+  install_framework "Pods-YelpForBathrooms/GooglePlacesAutocomplete.framework"
   install_framework "Pods-YelpForBathrooms/SwiftHTTP.framework"
   install_framework "Pods-YelpForBathrooms/SwiftyJSON.framework"
 fi

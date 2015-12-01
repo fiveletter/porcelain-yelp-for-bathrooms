@@ -14,7 +14,7 @@ class UserManager {
     var email : String?
     var IsSignedIn : Bool {
         get {
-            if let _ = email?.isEmpty, _ = name?.isEmpty {
+            if let _ = email?.isEmpty, _ = name?.isEmpty, _ = userToken?.isEmpty {
                 return true
             }
             return false
@@ -28,16 +28,19 @@ class UserManager {
         NOOP("Does nothing")
     }
     
-    init(userEmail : String?, userName: String?, id: Int?) {
+    init(userEmail : String?, userName: String?, id: Int?, token: String?) {
         email = userEmail
         name = userName
         profileId = id
+        userToken = token
     }
 
 // MARK: - ACCESSORS
     func logOut() {
         email = nil
         name = nil
+        profileId = nil
+        userToken = nil
     }
 
 // MARK: - SINGLETON

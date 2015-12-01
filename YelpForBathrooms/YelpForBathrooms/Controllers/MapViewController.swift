@@ -9,28 +9,33 @@
 import UIKit
 import GoogleMaps
 import Alamofire
+import GooglePlacesAutocomplete
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
 // MARK: - PROPERTIES
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var searchTextField: UITextField!
-    
+    var searchAddress : String = ""
     var model: Int = 1219
     let locationManager = CLLocationManager()
     let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
+    let gpaViewController = GooglePlacesAutocomplete(apiKey: ConfigManager.GOOGLE_PLACES_API_KEY, placeType: .Address)
     var logged_in = true
 
 // MARK: - LIFECYCLE FUNCTIONS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        gpaViewController.placeDelegate = self
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        searchTextField.delegate = self
         mapView.delegate = self
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -41,9 +46,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
 // MARK: - VIEW CONTROLLER
     @IBAction func searchBathrooms(sender: UIButton) {
-        //Check if search label is filled with an address
-        //Will want to move map to that location before populating bathrooms
         populateMapWithBathrooms()
+    }
+    
+    @IBAction func searchAddress(sender: UIButton) {
+        presentViewController(gpaViewController, animated: true, completion: nil)
     }
     
     @IBAction func openProfileScreen() {
@@ -143,3 +150,22 @@ extension MapViewController: UITextFieldDelegate{
     }
 }
 
+extension MapViewController: GooglePlacesAutocompleteDelegate {
+    func placeSelected(place: Place) {
+        print(place.description)
+        place.getDetails{ (placeDetails) in
+            self.mapView.animateToLocation(CLLocationCoordinate2D(latitude: placeDetails.latitude, longitude: placeDetails.longitude))
+            self.populateMapWithBathrooms()
+            self.searchAddress = placeDetails.description
+        }
+        place.getDetails { details in
+            print(details)
+        }
+        placeViewClosed()
+    }
+    
+    func placeViewClosed() {
+        dismissViewControllerAnimated(true, completion: nil)
+        populateMapWithBathrooms()
+    }
+}

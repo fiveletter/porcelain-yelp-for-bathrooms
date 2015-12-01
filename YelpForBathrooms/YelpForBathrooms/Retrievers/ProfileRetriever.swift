@@ -12,8 +12,7 @@ import SwiftyJSON
 class ProfileRetriever : IProfileRetriever {
     var httpRetriever : IHttpRetriever = HttpRetriever()
     func getProfileId(email: String, completion: (Int? -> Void)) {
-        httpRetriever.makeRetrievalRequest(UrlManager.PROFILE_RETRIEVE, options: ["Email" : email]){
-           (data) -> Void in
+        httpRetriever.makeRetrievalRequest(UrlManager.PROFILE_RETRIEVE, options: ["Email" : email]){ data -> Void in
             let json = JSON(data: data)
             if let profileId = json["ProfileID"].int {
                 completion(profileId)

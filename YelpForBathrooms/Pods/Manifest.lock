@@ -8,6 +8,7 @@ PODS:
   - GoogleMaps (1.10.5)
   - GoogleNetworkingUtilities (1.0.0):
     - GoogleSymbolUtilities (~> 1.0)
+  - GooglePlacesAutocomplete (0.3.0)
   - GoogleSignIn (2.4.0):
     - GoogleAppUtilities (~> 1.0)
     - GoogleAuthUtilities (~> 1.0)
@@ -22,9 +23,19 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - GoogleMaps (~> 1.10.0)
+  - GooglePlacesAutocomplete (from `https://github.com/watsonbox/ios_google_places_autocomplete`)
   - GoogleSignIn (~> 2.4.0)
   - SwiftHTTP (~> 1.0.2)
   - SwiftyJSON (~> 2.3)
+
+EXTERNAL SOURCES:
+  GooglePlacesAutocomplete:
+    :git: https://github.com/watsonbox/ios_google_places_autocomplete
+
+CHECKOUT OPTIONS:
+  GooglePlacesAutocomplete:
+    :commit: 3b24a37eca923c5d92253122f26a2cd41f10ec5a
+    :git: https://github.com/watsonbox/ios_google_places_autocomplete
 
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
@@ -32,6 +43,7 @@ SPEC CHECKSUMS:
   GoogleAuthUtilities: 049ffd3a297cdffd271451b82fd4e75304f15ef3
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
+  GooglePlacesAutocomplete: 7694636fce561c9d8ac807b8e490d299a730a633
   GoogleSignIn: 79929b51e6299c69f1197bbd9c7a1367d523ecd8
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10

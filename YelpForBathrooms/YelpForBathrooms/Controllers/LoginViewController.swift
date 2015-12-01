@@ -44,8 +44,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             UserManager.sharedInstance.name = user.profile.name
             UserManager.sharedInstance.userToken = user.authentication.idToken
             var fullNameArr = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")
-            var firstName = fullNameArr![0]
-            var lastName = fullNameArr![1]
+            let firstName = fullNameArr![0]
+            let lastName = fullNameArr![1]
             profileRetriever.getProfileId(user.profile.email){
                 profileId -> Void in
                 if let id = profileId {

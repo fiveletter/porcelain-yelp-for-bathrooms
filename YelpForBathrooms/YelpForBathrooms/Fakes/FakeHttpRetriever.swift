@@ -13,7 +13,7 @@ class FakeHttpRetriever : IHttpRetriever {
     func makeRetrievalRequest(url: String, options: Dictionary<String, AnyObject>, success: ((data: NSData!) -> Void)) {
         if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")
         {
-            if let myDict = NSDictionary(contentsOfFile: path)
+            if let _ = NSDictionary(contentsOfFile: path)
             {
                 if(url == UrlManager.BATHROOM_RETRIEVE)
                 {
