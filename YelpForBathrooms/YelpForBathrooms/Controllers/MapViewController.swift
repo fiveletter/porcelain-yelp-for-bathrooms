@@ -128,7 +128,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @IBAction func addBathroom() {
-        NOOP("TODO")
+        performSegueWithIdentifier("addBathroomSegue", sender: self)
     }
 }
 
