@@ -20,7 +20,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     var searchAddress : String = ""
     var model: Int = 1219
     let locationManager = CLLocationManager()
-    let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
+    let bathroomRetriever : IBathroomRetriever = FakeBathroomRetriever()
     let gpaViewController = GooglePlacesAutocomplete(apiKey: ConfigManager.GOOGLE_PLACES_API_KEY, placeType: .Address)
     var logged_in = true
 
@@ -83,7 +83,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             locationManager.startUpdatingLocation()
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
-
+            
         }
     }
     
@@ -121,6 +121,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     print("Bathroom : \(bathroom.title)")
                     let marker = GMSMarker(position: bathroom.location)
                     marker.userData = bathroom
+                    marker.appearAnimation = kGMSMarkerAnimationPop
                     marker.map = self.mapView
                 }
             }
@@ -128,7 +129,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @IBAction func addBathroom() {
-        NOOP("TODO")
+        performSegueWithIdentifier("addBathroomSegue", sender: self)
     }
 }
 

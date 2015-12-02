@@ -42,12 +42,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         } else {
             UserManager.sharedInstance.email = user.profile.email
             UserManager.sharedInstance.name = user.profile.name
-            UserManager.sharedInstance.userToken = user.authentication.idToken
+            UserManager.sharedInstance.userToken = "DEMO-AUTO-AUTH"
+            UserManager.sharedInstance.profileId = 1
+            print("User manager shared instance:  ID: \(UserManager.sharedInstance.profileId)   Name: \(UserManager.sharedInstance.name)")
             var fullNameArr = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")
             let firstName = fullNameArr![0]
             let lastName = fullNameArr![1]
             profileRetriever.authorize{ id -> Void in
-                UserManager.sharedInstance.profileId = id
+                if let id = id {
+                    UserManager.sharedInstance.profileId = id
+                } else {
+                    UserManager.sharedInstance.profileId = 1
+                }
             }
             self.performSegueWithIdentifier("profileSegue", sender: self)
         }

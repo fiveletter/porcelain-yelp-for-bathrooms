@@ -11,15 +11,6 @@
 	</dict>
 	<key>BASE_URL</key>
 	<string>http://kammce.io:10000</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>By accessing your location, this app can find you the best place to shit.</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>googlechromes</string>
-		<string>comgooglemaps</string>
-	</array>
-	<key>GOOGLE_API_KEY</key>
-	<string>AIzaSyDOjuqfttBBxXx9M-wiLn00L71pKm5Ql9U</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -57,8 +48,22 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>GOOGLE_API_KEY</key>
+	<string>AIzaSyDOjuqfttBBxXx9M-wiLn00L71pKm5Ql9U</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>By accessing your location, this app can find you the best place to shit.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

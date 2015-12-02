@@ -22,8 +22,9 @@
 		903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */; };
 		903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC01C0154D6003BC6FF /* LoginViewController.swift */; };
 		903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */; };
+		90548B2E1C0D1178008E2DAD /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90548B2D1C0D1178008E2DAD /* RatingView.swift */; };
+		90548B301C0D8FE7008E2DAD /* ImageChooserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */; };
 		90842D1A1C02DB6B00E20655 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90842D191C02DB6B00E20655 /* Common.swift */; };
-		90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30321BFD13F300A82A9E /* DummyView.swift */; };
 		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
 		90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */; };
 		9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */; };
@@ -45,6 +46,7 @@
 		9A8DAC151C0AD43600E22C67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DAC141C0AD43600E22C67 /* MapViewController.swift */; };
 		9A8DAC171C0CA2C100E22C67 /* BathroomWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DAC161C0CA2C100E22C67 /* BathroomWriter.swift */; };
 		9A9260301C0A6256005F8FC8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92602F1C0A6256005F8FC8 /* UIViewExtension.swift */; };
+		9A9EE91C1C0EC13700D2A14E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EE91B1C0EC13700D2A14E /* LocationManager.swift */; };
 		9AC1615C1C0D756D00925DB6 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1615B1C0D756D00925DB6 /* ConfigManager.swift */; };
 		9AC1615E1C0D767200925DB6 /* ReviewWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1615D1C0D767200925DB6 /* ReviewWriter.swift */; };
 		9AC161601C0D7D5300925DB6 /* IBathroomWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1615F1C0D7D5300925DB6 /* IBathroomWriter.swift */; };
@@ -75,8 +77,9 @@
 		903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomReviewViewController.swift; sourceTree = "<group>"; };
 		903CEAC01C0154D6003BC6FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomViewController.swift; sourceTree = "<group>"; };
+		90548B2D1C0D1178008E2DAD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageChooserButton.swift; sourceTree = "<group>"; };
 		90842D191C02DB6B00E20655 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		90DF30321BFD13F300A82A9E /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		90DF30371BFD2A5600A82A9E /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9A1C7DF81C04F72800B0D410 /* IBathroomRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBathroomRetriever.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		9A8DAC141C0AD43600E22C67 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9A8DAC161C0CA2C100E22C67 /* BathroomWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomWriter.swift; sourceTree = "<group>"; };
 		9A92602F1C0A6256005F8FC8 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		9A9EE91B1C0EC13700D2A14E /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9AC1615B1C0D756D00925DB6 /* ConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		9AC1615D1C0D767200925DB6 /* ReviewWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriter.swift; sourceTree = "<group>"; };
 		9AC1615F1C0D7D5300925DB6 /* IBathroomWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBathroomWriter.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				9A6028F01C057CA2000D42DF /* Review.swift */,
 				9AFA9D311C0AB031003F45FE /* UrlManager.swift */,
 				9AF9EC451C02621200A7F7CE /* UserManager.swift */,
+				9A9EE91B1C0EC13700D2A14E /* LocationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,8 +238,9 @@
 		90DF30311BFD13C800A82A9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				90548B2D1C0D1178008E2DAD /* RatingView.swift */,
 				9A7705891C060D070021CC24 /* BathroomSnippetView.swift */,
-				90DF30321BFD13F300A82A9E /* DummyView.swift */,
+				90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 				903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */,
 				9A6028EB1C057912000D42DF /* FakeBathroomRetriever.swift in Sources */,
 				90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */,
+				90548B2E1C0D1178008E2DAD /* RatingView.swift in Sources */,
 				9A1C7DFF1C04F84600B0D410 /* BathroomRetriever.swift in Sources */,
 				9AC161601C0D7D5300925DB6 /* IBathroomWriter.swift in Sources */,
 				90842D1A1C02DB6B00E20655 /* Common.swift in Sources */,
@@ -426,7 +433,6 @@
 				9AC161621C0D7D9700925DB6 /* IReviewWriter.swift in Sources */,
 				9A1C7DFD1C04F7E100B0D410 /* BathroomDetail.swift in Sources */,
 				9A6028F11C057CA2000D42DF /* Review.swift in Sources */,
-				90DF30331BFD13F300A82A9E /* DummyView.swift in Sources */,
 				9AC1615E1C0D767200925DB6 /* ReviewWriter.swift in Sources */,
 				9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */,
 				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
@@ -445,12 +451,14 @@
 				9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */,
 				9A9260301C0A6256005F8FC8 /* UIViewExtension.swift in Sources */,
 				9A1C7E011C04F8A400B0D410 /* HttpRetriever.swift in Sources */,
+				90548B301C0D8FE7008E2DAD /* ImageChooserButton.swift in Sources */,
 				903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */,
 				9A77058A1C060D070021CC24 /* BathroomSnippetView.swift in Sources */,
 				9AFA9D2C1C0A93D0003F45FE /* IHttpRetriever.swift in Sources */,
 				9A8DAC171C0CA2C100E22C67 /* BathroomWriter.swift in Sources */,
 				9A8D56291C03706200648C18 /* Flags.swift in Sources */,
 				9AC1615C1C0D756D00925DB6 /* ConfigManager.swift in Sources */,
+				9A9EE91C1C0EC13700D2A14E /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

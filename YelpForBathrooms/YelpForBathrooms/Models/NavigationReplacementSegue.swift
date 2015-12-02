@@ -15,6 +15,6 @@ class NavigationReplacementSegue: UIStoryboardSegue {
         let navigationController = sourceViewController.navigationController;
         // Pop to root view controller (not animated) before pushing
         navigationController?.popToRootViewControllerAnimated(false);
-        navigationController?.pushViewController(destinationController, animated: true);
+        navigationController?.showViewController(destinationController, sender: navigationController!);
     }
 }
