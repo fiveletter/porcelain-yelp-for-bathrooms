@@ -19,7 +19,7 @@ class BathroomDetail : Bathroom {
         super.init()
     }
     
-    init(Id: Int, Title: String, Location: CLLocationCoordinate2D, Rating : Double, Flags: [Flag], Reviews: [Review]){
+    init(Id: Int, Title: String, Location: CLLocationCoordinate2D, Rating : Double?, Flags: [Flag]?, Reviews: [Review]){
         reviews = Reviews
         super.init(Id: Id, Title: Title, Location: Location, Rating: Rating, Flags: Flags)
     }

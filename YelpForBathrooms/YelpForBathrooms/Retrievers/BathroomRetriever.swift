@@ -17,37 +17,44 @@ class BathroomRetriever : IBathroomRetriever {
         let url : String = UrlManager.BATHROOM_RETRIEVE
         var bathrooms = [Bathroom]()
         let parameters = GetBathroomRetrievalParametersFromArea(area)
+        print("Bathroom Retrieval Request: \(parameters)")
         httpRetriever.makeRetrievalRequest(url, options: parameters) { data -> Void in
             let json = JSON(data: data)
-            for (_, subJson): (String, JSON) in json {
-                let bathroomId = subJson["BathroomID"].int
-                let lat = subJson["Latitude"].double
-                let long = subJson["Longitude"].double
-                let title = subJson["Title"].string
-                let numOfPublicFlags = subJson["Public"].int
-                let numOfNonExistingFlags = subJson["Non-Existing"].int
-                let numOfHardToFindFlags = subJson["Hard-To-Find"].int
-                let numOfPaidFlags = subJson["Paid"].int
-                
-                let coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
-                var flags = [Flag]()
-                for _ in 0..<numOfPublicFlags! {
-                    flags.append(Flag.PUBLIC)
+            print("Bathroom Retrieval Response: \(json)")
+            if let status = json["response"].string where status == "Success" {
+                for (_, subJson): (String, JSON) in json["info"] {
+                    let bathroomId = subJson["BathroomID"].int
+                    let lat = subJson["Latitude"].double
+                    let long = subJson["Longitude"].double
+                    let title = subJson["Title"].string
+                    let numOfPublicFlags = subJson["Public"].int
+                    let numOfNonExistingFlags = subJson["Non-Existing"].int
+                    let numOfHardToFindFlags = subJson["Hard-To-Find"].int
+                    let numOfPaidFlags = subJson["Paid"].int
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+                    var flags = [Flag]()
+                    for _ in 0..<numOfPublicFlags! {
+                        flags.append(Flag.PUBLIC)
+                    }
+                    for _ in 0..<numOfNonExistingFlags! {
+                        flags.append(Flag.NON_EXISTING)
+                    }
+                    for _ in 0..<numOfHardToFindFlags! {
+                        flags.append(Flag.HARD_TO_FIND)
+                    }
+                    for _ in 0..<numOfPaidFlags! {
+                        flags.append(Flag.PAID)
+                    }
+                    print("Adding in bathroom: id: \(bathroomId) title: \(title) location: \(coordinate)")
+                    let bathroom = Bathroom(Id: bathroomId!, Title: title!, Location: coordinate, Rating: 2, Flags: flags)
+                    bathrooms.append(bathroom)
                 }
-                for _ in 0..<numOfNonExistingFlags! {
-                    flags.append(Flag.NON_EXISTING)
-                }
-                for _ in 0..<numOfHardToFindFlags! {
-                    flags.append(Flag.HARD_TO_FIND)
-                }
-                for _ in 0..<numOfPaidFlags! {
-                    flags.append(Flag.PAID)
-                }
-                print("Adding in bathroom: id: \(bathroomId) title: \(title) location: \(coordinate)")
-                let bathroom = Bathroom(Id: bathroomId!, Title: title!, Location: coordinate, Rating: 2, Flags: flags)
-                bathrooms.append(bathroom)
+               completion(bathrooms);
+            } else {
+                print(json)
+                completion(nil)
             }
-           completion(bathrooms);
         }
     }
     

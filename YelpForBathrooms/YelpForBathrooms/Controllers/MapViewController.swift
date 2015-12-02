@@ -100,8 +100,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let infoWindow = NSBundle.mainBundle().loadNibNamed("BathroomSnippetView", owner: self, options: nil).first! as! BathroomSnippetView
         let bathroom = marker.userData as! Bathroom
         infoWindow.title.text = bathroom.title
-        infoWindow.rating.text = bathroom.rating.description
-        infoWindow.flags.text = bathroom.flags.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
+        infoWindow.rating.text = bathroom.rating?.description
+        infoWindow.flags.text = bathroom.flags?.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
         return infoWindow
     }
     
@@ -116,11 +116,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         bathroomRetriever.GetBathrooms(mapView.projection.visibleRegion()){
             bathrooms in
             print("Received bathrooms: \(bathrooms)")
-            for bathroom in bathrooms! {
-                print("Bathroom : \(bathroom.title)")
-                let marker = GMSMarker(position: bathroom.location)
-                marker.userData = bathroom
-                marker.map = self.mapView
+            if let bathrooms = bathrooms{
+                for bathroom in bathrooms {
+                    print("Bathroom : \(bathroom.title)")
+                    let marker = GMSMarker(position: bathroom.location)
+                    marker.userData = bathroom
+                    marker.map = self.mapView
+                }
             }
         }
     }

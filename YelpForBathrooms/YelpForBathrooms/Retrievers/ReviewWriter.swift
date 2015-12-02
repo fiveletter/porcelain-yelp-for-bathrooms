@@ -33,9 +33,10 @@ class ReviewWriter : IReviewWriter {
         var requestObject = [String:AnyObject]()
         requestObject["token"] = UserManager.sharedInstance.userToken!
         requestObject["info"] = params
-        
+        print("Review Writer Request: \(requestObject)")
         httpRetriever.makeRetrievalRequest(UrlManager.RATING_CREATE, options: requestObject){ data -> Void in
             let json = JSON(data: data)
+            print("Review Writer Response: \(json)")
             var response = [String:AnyObject]()
             if let ratingId = json["RatingID"].int {
                 response["RatingID"] = ratingId

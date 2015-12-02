@@ -22,6 +22,20 @@ class ProfileRetriever : IProfileRetriever {
         }
     }
     
+    func authorize(completion: (Int? -> Void)?){
+        var requestObject = [String:AnyObject]()
+        requestObject["token"] = UserManager.sharedInstance.userToken
+        requestObject["request"] = ""
+        print("Profile Authorize Request: \(requestObject)")
+        httpRetriever.makeRetrievalRequest(UrlManager.PROFILE_AUTH, options: requestObject){ data -> Void in
+            let json = JSON(data: data)
+            print("Profile Authorize Response: \(json)")
+            if let completion = completion {
+                completion(json["ProfileID"].int)
+            }
+        }
+    }
+    
     func createProfile(first: String, last: String, email: String, completion: (Int? -> Void)) {
         var params = [String:AnyObject]()
         params["FirstName"] = first
