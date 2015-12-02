@@ -16,7 +16,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
 // MARK: - PROPERTIES
 
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var buttonBackground: UIView!
+    @IBOutlet weak var searchAreaButton: UIButton!
+    @IBOutlet weak var divider: UIView!
+    @IBOutlet weak var searchAddressButton: UIButton!
+    
     var searchAddress : String = ""
     var model: Int = 1219
     let locationManager = CLLocationManager()
@@ -28,6 +32,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        styleButtonBackground()
+        styleNavigationBar()
+        styleButtons()
+        styleDivider()
        
         gpaViewController.placeDelegate = self
         
@@ -133,12 +141,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
 }
 
-extension MapViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-}
+// MARK: - GOOGLE PLACES DELEGATE
 
 extension MapViewController: GooglePlacesAutocompleteDelegate {
     func placeSelected(place: Place) {
@@ -157,5 +160,31 @@ extension MapViewController: GooglePlacesAutocompleteDelegate {
     func placeViewClosed() {
         dismissViewControllerAnimated(true, completion: nil)
         populateMapWithBathrooms()
+    }
+}
+
+// MARK: - STYLE FUNCTIONS
+
+extension MapViewController {
+    
+    func styleButtonBackground(){
+        buttonBackground.layer.backgroundColor = UIColor.colorFromHexRGBValue(0x59E1A6).CGColor
+    }
+    
+    func styleDivider(){
+        self.divider?.layer.backgroundColor = UIColor.grayColor().CGColor
+    }
+    
+    func styleNavigationBar() {
+        self.navigationController?.navigationBar.barTintColor = UIColor.colorFromHexRGBValue(0x26C27F)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.topItem?.title = "Porcelain"
+    }
+    
+    func styleButtons(){
+        self.searchAddressButton.backgroundColor = UIColor.colorFromHexRGBValue(0x59E1A6)
+        self.searchAreaButton.backgroundColor = UIColor.colorFromHexRGBValue(0x59E1A6)
     }
 }
