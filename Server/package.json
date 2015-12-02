@@ -16,7 +16,9 @@
     "express": "",
     "forever-monitor": "",
     "google-auth-library": "^0.9.7",
+    "image-type": "^2.1.0",
     "jsonschema": "",
-    "mysql": ""
+    "mysql": "",
+    "read-chunk": "^1.0.1"
   }
 }

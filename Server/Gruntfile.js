@@ -36,9 +36,17 @@ module.exports = function(grunt) {
           "require": true, 
           "global": true,
           "module": true
-        }
+        },
+        predef: [
+          "expect",
+          "describe",
+          "it",
+          "after",
+          "before",
+          "assert"
+        ],
       },
-      target: ['Gruntfile.js', 'Server.js']
+      target: ['Gruntfile.js', 'Server.js', 'photo-generator.js', 'test-suite/unit/**/*.js']
     }
   });
   grunt.registerTask('default', ['jshint','mochaTest']);

@@ -9,26 +9,28 @@ var app         = express();
 var bodyParser  = require('body-parser');
 var Validator   = require('jsonschema').Validator;
 var mysql       = require('mysql');
+var PhotoGenerator = require('./photo-generator');
+var photo = new PhotoGenerator();
 //// MySQL Setup
 var connection;
 var db_config = JSON.parse(
 	fs.readFileSync("cred/mysql_db.cred")
 );
 
-function MySQLConnect() {
+function mysqlConnect() {
 	connection = mysql.createConnection(db_config); // Recreate the connection, since
 													// the old one cannot be reused.
 	connection.connect(function(err) {				// The server is either down
 		if(err) {									// or restarting (takes a while sometimes).
 			console.log('error when connecting to db:', err);
-			setTimeout(MySQLConnect, 2000); // We introduce a delay before attempting to reconnect,
+			setTimeout(mysqlConnect, 2000); // We introduce a delay before attempting to reconnect,
 		}									// to avoid a hot loop, and to allow our node script to
 	});										// process asynchronous requests in the meantime.
 											// If you're also serving http, display a 503 error.
 	connection.on('error', function(err) {
 		console.log('db error', err);
 		if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-			MySQLConnect();					// lost due to either server restart, or a
+			mysqlConnect();					// lost due to either server restart, or a
 		} else {							// connnection idle timeout (the wait_timeout
 			throw err;						// server variable configures this)
 		}
@@ -95,10 +97,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // authentication method
 app.use(appAuth);
+// To serve static files using built-in middleware function in Express
+app.use(express.static('fs'));
 // Init validator
 var v = new Validator();
 
-var BathroomFlagSubQuery = `( 
+var BathroomFlagSubQuery = `
+( 
+	SELECT AVG(Rating) 
+	FROM Ratings 
+	WHERE Bathrooms.BathroomID=Ratings.BathroomID 
+) as AverageRating,
+( 
 	SELECT COUNT(RatingFlagID) 
 	FROM RatingFlags, Ratings 
 	WHERE Bathrooms.BathroomID=Ratings.BathroomID 
@@ -152,41 +162,74 @@ app.post('/bathroom/create', function(req, res){
 	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
-		connection.query("INSERT INTO Bathrooms (Longitude, Latitude, Title, ImagePath) VALUES ?",
-		[ [[ info.Longitude, info.Latitude, info.Title, "" ]] ], 
-		function(err, insert) {
-			if (err) { reply(res, false, err); return; }
-			// TODO: Base64 -> jpg conversion and storage
-			connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment) VALUES ?",
-			[ [[ info.Rating, req.body.ProfileID, insert.insertId, info.Comment ]] ],
-			function(err, insertRating) {
-				if (err) { reply(res, false, err); console.log("Create bathroom rating failure"); return; }
-				
-				var inserts = [];
-				if(info["Non-Existing"] === true) 	{ inserts.push([1, insertRating.insertId]); }
-				if(info["Hard-To-Find"] === true) 	{ inserts.push([2, insertRating.insertId]); }
-				if(info["Paid"] === true) 			{ inserts.push([3, insertRating.insertId]); }
-				if(info["Public"] === true) 		{ inserts.push([4, insertRating.insertId]); }
-
-				if(inserts.length !== 0) {
-					var query = connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?",
-					[ inserts ],
-					function(err) { 
-						if(err) { reply(res, false, err); console.log("Create bathroom flag failure"); return; }				
-						console.log("CREATED BATHROOM!!!");
-						reply(res, true, {
-							"BathroomID": insert.insertId, 
-							"RatingID": insertRating.insertId
-						});
-					});
-				} else {
-					reply(res, true, {
-						"BathroomID": insert.insertId, 
-						"RatingID": insertRating.insertId
-					});
-				}
+		var BathroomID = -1;
+		var RatingID = -1;
+		var image_path = "";
+		var savePhoto = function() {
+			return new Promise((resolve) => {
+				photo.savePhoto(info.Picture, function(file_name) {
+					image_path = file_name;
+					resolve();
+				});
 			});
-		});	
+		};
+		var insertBathroom = function() {
+			return new Promise((resolve) => {
+				connection.query("INSERT INTO `Porcelain`.`Bathrooms` (`Longitude`,`Latitude`,`Title`) VALUES ?",
+				[ [[ info.Longitude, info.Latitude, info.Title ]] ], 
+				function(err, insert) {
+					if (err) { reply(res, false, err); return; }
+					BathroomID = insert.insertId;
+					//console.log("BathroomID: ", BathroomID);
+					resolve();
+				});
+			});
+		};
+		var insertRating = function() {
+			return new Promise((resolve) => {
+				connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment, PictureURL) VALUES ?",
+				[ [[ info.Rating, req.body.ProfileID, BathroomID, info.Comment, image_path ]] ],
+				function(err, insert) {
+					if (err) { 
+						reply(res, false, err); 
+						console.log("Create bathroom rating failure"); 
+						return; 
+					}
+					RatingID = insert.insertId;
+					//console.log("RatingID: ", RatingID);
+					var flags = [];
+					if(info["Non-Existing"] === true) 	{ flags.push([1, RatingID]); }
+					if(info["Hard-To-Find"] === true) 	{ flags.push([2, RatingID]); }
+					if(info["Paid"] === true) 			{ flags.push([3, RatingID]); }
+					if(info["Public"] === true) 		{ flags.push([4, RatingID]); }
+
+					if(flags.length !== 0) {
+						resolve(flags);
+					} else {
+						reply(res, true, {
+							"BathroomID": BathroomID, 
+							"RatingID": RatingID,
+							"PictureURL": image_path
+						});
+					}
+				});
+			});
+		};
+		var insertFlags = function(flags) {
+			connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?", [ flags ], function(err) { 
+				if(err) { 
+					reply(res, false, err); 
+					console.log("Create bathroom flag failure"); 
+					return; 
+				}				
+				console.log("CREATED BATHROOM!!!");
+				reply(res, true, {
+					"BathroomID": BathroomID, 
+					"RatingID": RatingID
+				});
+			});
+		};
+		savePhoto().then(insertBathroom).then(insertRating).then(insertFlags);
 	} else {
 		reply(res, false, results.errors);
 	}
@@ -202,16 +245,19 @@ app.post('/bathroom/retrieve', function(req, res){
 		"type": "object",
 		"properties": {
 			"Longitude": { "type": "number" },
-			"Latitude": { "type": "number" },
-			"Radius": { "type": "number" }
+			"Latitude": { "type": "number" },			
+			"MinLat": { "type": "number" },
+            "MaxLat": { "type": "number" },
+            "MinLong": { "type": "number" },
+            "MaxLong": { "type": "number" }
 		},
-		"required": ["Longitude", "Latitude", "Radius" ]
+		"required": ["Longitude", "Latitude", "MinLat", "MaxLat", "MinLong", "MaxLong" ]
 	};
 	// Validate the input data against the schema
 	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
-		connection.query(`SELECT BathroomID, Longitude, Latitude, Title, ImagePath, ${BathroomFlagSubQuery} FROM Bathrooms`, 
+		connection.query(`SELECT BathroomID, Longitude, Latitude, Title, ${BathroomFlagSubQuery} FROM Bathrooms`, 
 		function(err, rows) {
 			if (err) { reply(res, false, err); return; }
 			reply(res, true, rows);
@@ -247,28 +293,58 @@ app.post('/rating/create', function(req, res){
 	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
-		connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment, PictureURL) VALUES ?",
-			[ [[ info.Rating, req.body.ProfileID, info.BathroomID, info.Comment, "" ]] ],
-			function(err, insert) {
-			if (err) { reply(res, false, err); console.log("Create Rating failure"); return; }
-			
-			var inserts = [];
-			if(info["Non-Existing"] === true) 	{ inserts.push([1, insert.insertId]); }
-			if(info["Hard-To-Find"] === true) 	{ inserts.push([2, insert.insertId]); }
-			if(info["Paid"] === true) 			{ inserts.push([3, insert.insertId]); }
-			if(info["Public"] === true) 		{ inserts.push([4, insert.insertId]); }
-
-			if(inserts.length !== 0) {
-				connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?",
-				[ inserts ],
-				function(err) { 
-					if(err) { reply(res, false, err); console.log("Create flag failure"); return; }				
-					console.log("CREATED RATING!!!");
-					reply(res, true, { RatingID: insert.insertId });
+		var image_path = "";
+		var RatingID = -1;
+		var savePhoto = function() {
+			return new Promise((resolve) => {
+				photo.savePhoto(info.Picture, function(file_name) {
+					image_path = file_name;
+					resolve();
 				});
-			}
-			reply(res, true, { RatingID: insert.insertId });
-		});
+			});
+		};
+		var insertRating = function() {
+			return new Promise((resolve) => {
+				connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment, PictureURL) VALUES ?",
+					[ [[ info.Rating, req.body.ProfileID, info.BathroomID, info.Comment, image_path ]] ],
+					function(err, insert) {
+					if (err) {
+						reply(res, false, err);
+						console.log("Create Rating failure");
+						return;
+					}
+					RatingID = insert.insertId;
+					// SETUP Flags
+					var flags = [];
+					if(info["Non-Existing"] === true) 	{ flags.push([1, insert.insertId]); }
+					if(info["Hard-To-Find"] === true) 	{ flags.push([2, insert.insertId]); }
+					if(info["Paid"] === true) 			{ flags.push([3, insert.insertId]); }
+					if(info["Public"] === true) 		{ flags.push([4, insert.insertId]); }
+
+					if(flags.length !== 0) {
+						resolve(flags);
+					} else {
+						reply(res, true, { RatingID: insert.insertId });
+					}
+				});
+			});
+		};
+		var insertFlags = function(flags) {
+			connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?", [ flags ],
+			function(err) { 
+				if(err) { 
+					reply(res, false, err); 
+					console.log("Create flag failure"); 
+					return; 
+				}
+				console.log("CREATED RATING!!!");
+				reply(res, true, { 
+					"RatingID": RatingID,
+					"PictureURL": image_path
+				});
+			});
+		};
+		savePhoto().then(insertRating).then(insertFlags);
 	} else {
 		reply(res, false, results.errors);
 	}
@@ -336,33 +412,97 @@ app.post('/rating/update', function(req, res){
 		// UPDATE Ratings SET Rating=${info.Rating},
 		// 		Comment="${info.Comment}",
 		// 		PictureURL=""
-		// 		WHERE RatingID=${info.RatingID}`, 
-		var query = connection.query("UPDATE Ratings SET ? WHERE ?",
-			[ { "Rating": info.Rating, "Comment": info.Comment }, { "RatingID": info.RatingID} ], 
-			function(err, insert) {
-			if (err) { reply(res, false, err); console.log("UPDATE rating failure"); return; }
-			console.log(insert);
-			var inserts = [];
-			if(info["Non-Existing"] === true) 	{ inserts.push([ 1, info.RatingID ]); }
-			if(info["Hard-To-Find"] === true) 	{ inserts.push([ 2, info.RatingID ]); }
-			if(info["Paid"] === true) 			{ inserts.push([ 3, info.RatingID ]); }
-			if(info["Public"] === true) 		{ inserts.push([ 4, info.RatingID ]); }
+		// 		WHERE RatingID=${info.RatingID}`,
+		var image_path = "";
+		var RatingID = -1;
+		var previousPhoto = "";
 
-			connection.query("DELETE FROM RatingFlags WHERE ?", [ { "RatingID": info.RatingID } ], function() {
-				if(inserts.length !== 0) {
-					connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?",
-					[ inserts ],
-					function(err) { 
-						if(err) { reply(res, false, err); console.log("UPDATE flag failure"); return; }
-						console.log("UPDATED RATING!!!");
-						reply(res, true, {});
-					});
-				} else {
-					reply(res, true, {});
-				}
+		var getPreviousPhoto = function() {
+			return new Promise((resolve, reject) => {
+				connection.query("SELECT PictureURL FROM Ratings WHERE ?",
+					[ { "RatingID": info.RatingID } ],
+					function(err, rows) {
+					if (err) {
+						console.log("Update operation on Rating that does not exist");
+						reply(res, false, err);
+						reject();
+					} else if(rows.length === 0) {
+						reply(res, false, { "error": "Rating does not exist" });
+						reject();
+					} else {
+						previousPhoto = rows[0].PictureURL;
+						resolve();
+					}
+				});
 			});
-		});
-		console.log(query.sql);
+		};
+		var savePhoto = function() {
+			return new Promise((resolve) => {
+				photo.savePhoto(info.Picture, function(file_name) {
+					image_path = file_name;
+					resolve();
+				});
+			});
+		};
+		var deleteOldPhoto = function() {
+			return new Promise((resolve) => {
+				fs.stat(previousPhoto, function(err) {
+					if(err) {
+						// skip, it does not exist
+						resolve();
+					} else {
+						// delete previous photo using path
+						fs.unlink(previousPhoto, function() {
+							resolve();
+						});
+					}
+				});
+			});
+		};
+		var insertRating = function() {
+			return new Promise((resolve, reject) => {
+				connection.query("UPDATE Ratings SET ? WHERE ?",
+					[ { "Rating": info.Rating, "Comment": info.Comment, "PictureURL": image_path }, { "RatingID": info.RatingID} ], 
+					function(err, insert) {
+					RatingID = insert.insertId;
+					if (err) { reply(res, false, err); console.log("UPDATE rating failure"); reject(); }
+					resolve();
+				});
+			});
+		};
+		var deleteOldFlags = function() {
+			return new Promise((resolve) => {
+				connection.query("DELETE FROM RatingFlags WHERE ?", [ { "RatingID": info.RatingID } ], function() {
+					resolve();
+				});
+			});
+		};
+		var createFlagStructure = function() {
+			return new Promise((resolve) => {
+				var flags = [];
+				if(info["Non-Existing"] === true) 	{ flags.push([ 1, info.RatingID ]); }
+				if(info["Hard-To-Find"] === true) 	{ flags.push([ 2, info.RatingID ]); }
+				if(info["Paid"] === true) 			{ flags.push([ 3, info.RatingID ]); }
+				if(info["Public"] === true) 		{ flags.push([ 4, info.RatingID ]); }
+				resolve(flags);
+			});
+		};
+		var insertFlags = function(flags) {
+			if(flags.length !== 0) {
+				connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?", [ flags ],
+				function(err) { 
+					if(err) { reply(res, false, err); console.log("UPDATE flag failure"); return; }
+					console.log("UPDATED RATING!!!");
+					reply(res, true, {
+						"PictureURL": image_path
+					});
+				});
+			} else {
+				reply(res, true, {});
+			}
+		};
+
+		getPreviousPhoto().then(savePhoto).then(deleteOldPhoto).then(insertRating).then(deleteOldFlags).then(createFlagStructure).then(insertFlags);
 	} else {
 		reply(res, false, results.errors);
 	}
@@ -418,7 +558,7 @@ app.post('/profile/delete', function(req, res) {
 });
 
 // Connect to MySQL server
-MySQLConnect();
+mysqlConnect();
 // Listen on PORT
 app.listen(PORT);
 console.log('Listening at on port:' + PORT);

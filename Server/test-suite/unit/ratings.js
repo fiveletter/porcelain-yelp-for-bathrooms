@@ -1,11 +1,12 @@
 "use strict";
 
-
 describe('Ratings', function () {
 	// Loading Libraries
 	var mysql = require('mysql');
 	var http = require('http');
 	var fs = require('fs');
+	var PhotoGenerator = require('../../photo-generator');
+	var photo = new PhotoGenerator();
 
 	var options = {
 		hostname: '127.0.0.1',
@@ -28,6 +29,7 @@ describe('Ratings', function () {
 	describe('Testing CRUD', function () {
 		describe('(C)reate', function () {
 			var RatingID;
+			var deleteTestFile = "";
 			it('should create Rating and Rating Flags in database', function (done) {
 				options.path = '/rating/create';
 				var req = http.request(options, function(res) {
@@ -36,18 +38,38 @@ describe('Ratings', function () {
 						var data = JSON.parse(body);
 						console.log(data);
 						var response_type = data.response;
-						expect(response_type).to.equal('success');
 						RatingID = data.info.RatingID;
+						deleteTestFile = data.info.PictureURL
+						expect(response_type).to.equal('success');
+						expect(RatingID).to.be.a("number");
+						expect(deleteTestFile).to.be.a("string");
 
-						connection.query(`SELECT * FROM Ratings WHERE RatingID=${data.info.RatingID}`, function(err, rows) {
-							if (err) { throw err; return; }
-							expect(rows.length).to.be.above(0);
+						var checkRating = function() {
+							return new Promise((resolve) => {
+								connection.query(`SELECT PictureURL FROM Ratings WHERE RatingID=${data.info.RatingID}`, function(err, rows) {
+									if (err) { throw err; }
+									expect(rows.length).to.be.above(0);
+									expect(rows[0].PictureURL).to.equal(deleteTestFile);
+									resolve();
+								});
+							});
+						};
+						var checkPhoto = function() {
+							return new Promise((resolve) => { 
+								fs.stat(deleteTestFile, function(err) {
+									expect(err).to.be.null;
+									resolve();
+								});
+							});
+						};
+						var checkFlags = function() {
 							connection.query(`SELECT * FROM RatingFlags WHERE RatingID=${data.info.RatingID}`, function(err, rows) {
 								// four rating flag relationships were made
 								expect(rows.length).to.be.equal(4);
 								done();
 							});
-						});
+						};
+						checkRating().then(checkPhoto).then(checkFlags);
 					});
 				});
 
@@ -62,7 +84,7 @@ describe('Ratings', function () {
 						"BathroomID": 1,
 						"ProfileID": 1,
 						"Comment": "UNIT TESTING COMMENT",
-						"Picture": "",
+						"Picture": photo.base64testfile,
 		            	"Non-Existing": true,
 		            	"Hard-To-Find": true,
 		            	"Paid": true,
@@ -74,6 +96,11 @@ describe('Ratings', function () {
 				req.end();
 			});
 			after(function(done) {
+				try { 
+					if(deleteTestFile) {
+						fs.unlink(deleteTestFile); 
+					}
+				} catch(e) {}
 				if(typeof RatingID === "number") {
 					connection.query(`DELETE FROM Ratings WHERE RatingID=${RatingID}`, function() { done(); });
 				} else {
@@ -93,9 +120,8 @@ describe('Ratings', function () {
 			}
 		});
 		it('should return JSON structure fitting the CRUD API', function (done) {
-			connection.query("INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )\
-				VALUES (3, 1, 1, 'UNIT TEST (R)etrieve Via RatingID', '')", function after_query (err, insert) {
-				if (err) { throw err; return; }
+			connection.query("INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL ) VALUES (3, 1, 1, 'UNIT TEST (R)etrieve Via RatingID', '')", function after_query (err, insert) {
+				if (err) { throw err; }
 				InsertID = insert.insertId;
 				options.path = '/rating/retrieve';
 				var req = http.request(options, function(res) {
@@ -271,21 +297,23 @@ describe('Ratings', function () {
 	});
 	describe('(U)pdate', function () {
 		var InsertID;
+		var deleteTestFile = "";
 		before(function(done) {
-			connection.query(`INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )
-				VALUES (3, 1, 1, 'UNIT TEST (U)pdate Via RatingID', '')`, function(err, insert) {
-				if(err) { console.log(err); throw err; }
-				InsertID = insert.insertId;
-				connection.query(`INSERT INTO RatingFlags ( RatingID, FlagID ) VALUES 
-					(${InsertID}, 2), (${InsertID}, 4)`, function(err, insert) {
+			fs.writeFile('fs/update-test-photo.jpg', "", function() {
+				connection.query(`INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )
+					VALUES (3, 1, 1, 'UNIT TEST (U)pdate Via RatingID', 'fs/update-test-photo.jpg')`, function(err, insert) {
 					if(err) { console.log(err); throw err; }
-					done();
+					InsertID = insert.insertId;
+					connection.query(`INSERT INTO RatingFlags ( RatingID, FlagID ) VALUES (${InsertID}, 2), (${InsertID}, 4)`, function(err) {
+						if(err) { console.log(err); throw err; }
+						done();
+					});
 				});
 			});
 		});
 		it('should update rating in database', function (done) {
-			var sendUpdateRequest = function(insertId) {
-				return new Promise(function(resolve, reject) {
+			var sendUpdateRequest = function() {
+				return new Promise(function(resolve) {
 					options.path = '/rating/update';
 					var req = http.request(options, function(res) {
 						res.setEncoding('utf8');
@@ -294,11 +322,11 @@ describe('Ratings', function () {
 							console.log(data);
 							var response_type = data.response;
 							expect(response_type).to.equal('success');
-							expect(data).to.eql({
-								response: "success",
-								info: {}
-							});
-							resolve(insertId);
+							expect(data).to.have.property("response", "success");
+							expect(data.info.PictureURL).to.be.a('string');
+							expect(data.info.PictureURL).to.contain('.jpg');
+							deleteTestFile = data.info.PictureURL;
+							resolve();
 						});
 					});
 
@@ -309,55 +337,75 @@ describe('Ratings', function () {
 					var request = {
 						token: "DEMO-AUTO-AUTH",
 						info: {
-							"RatingID": insertId,
+							"RatingID": InsertID,
 							"Rating": 2,
 							"Comment": "UPDATE UNIT TEST (U)pdate Via RatingID",
-							"Picture": "",
-
+							"Picture": photo.base64testfile,
 							"Non-Existing": true,
 							"Hard-To-Find": false,
 							"Paid": true,
-							"Public": false,
+							"Public": false
 						}
 					};
 					req.write(JSON.stringify(request));
 					req.end();
 				});
 			};
-			var verifyUpdateRequest = function(insertId) {
-				return new Promise(function(resolve, reject) {
-					connection.query(`SELECT RatingID, Timestamp, Rating, ProfileID, BathroomID, Comment, PictureURL FROM Ratings WHERE RatingID=${insertId} LIMIT 1`, function(err, rows) {
-							if(err) { reject(insertId); }
-							expect(rows[0].Comment).to.equal("UPDATE UNIT TEST (U)pdate Via RatingID");
-							expect(rows[0].Rating).to.equal(2);
-							resolve(insertId);
+			var checkPreviousPhotoDeleted = function () {
+				return new Promise(function(resolve) { 
+					fs.stat("fs/update-test-photo.jpg", function(err) {
+						console.log(err);
+						expect(err).to.not.be.null;
+						resolve();
 					});
 				});
 			};
-			var verifyThatOldFlagsDoNotExist = function(insertId) {
-				return new Promise(function(resolve, reject) {
-					connection.query(`SELECT EXISTS(SELECT * FROM RatingFlags WHERE (FlagID=2 OR FlagID=4) AND RatingID=${insertId}) as RESULT`, function(err, rows) {
-							if(err) { reject(insertId); }
-							expect(rows[0].RESULT).to.equal(0);
-							resolve(insertId);
+			var checkNewPhotoCreated = function() {
+				return new Promise(function(resolve) { 
+					fs.stat(deleteTestFile, function(err) {
+						console.log(err);
+						expect(err).to.be.null;
+						resolve();
 					});
 				});
 			};
-			var verifyThatNewFlagsExist = function(insertId) {
+			var verifyUpdateRequest = function() {
 				return new Promise(function(resolve, reject) {
-					connection.query(`SELECT EXISTS(SELECT * FROM RatingFlags WHERE (FlagID=1 OR FlagID=3) AND RatingID=${insertId}) as RESULT`, function(err, rows) {
-							if(err) { reject(insertId); }
-							expect(rows[0].RESULT).to.equal(1);
-							done();
+					connection.query(`SELECT RatingID, Timestamp, Rating, ProfileID, BathroomID, Comment, PictureURL FROM Ratings WHERE RatingID=${InsertID} LIMIT 1`, function(err, rows) {
+						if(err) { reject(InsertID); }
+						expect(rows[0].Comment).to.equal("UPDATE UNIT TEST (U)pdate Via RatingID");
+						expect(rows[0].Rating).to.equal(2);
+						resolve();
 					});
 				});
 			};
-			sendUpdateRequest(InsertID)
-				.then(verifyUpdateRequest)
-				.then(verifyThatOldFlagsDoNotExist)
-				.then(verifyThatNewFlagsExist);
+			var verifyThatOldFlagsDoNotExist = function() {
+				return new Promise(function(resolve, reject) {
+					connection.query(`SELECT EXISTS(SELECT * FROM RatingFlags WHERE (FlagID=2 OR FlagID=4) AND RatingID=${InsertID}) as RESULT`,function(err, rows) {
+						if(err) { reject(InsertID); }
+						expect(rows[0].RESULT).to.equal(0);
+						resolve(InsertID);
+					});
+				});
+			};
+			var verifyThatNewFlagsExist = function() {
+				connection.query(`SELECT EXISTS(SELECT * FROM RatingFlags WHERE (FlagID=1 OR FlagID=3) AND RatingID=${InsertID}) as RESULT`, function(err, rows) {
+					expect(err).to.be.null;
+					expect(rows[0].RESULT).to.equal(1);
+					done();
+				});
+			};
+
+			sendUpdateRequest().then(checkPreviousPhotoDeleted).then(checkNewPhotoCreated).then(verifyUpdateRequest).then(verifyThatOldFlagsDoNotExist).then(verifyThatNewFlagsExist);
 		});
 		after(function(done) {
+			fs.stat("fs/update-test-photo.jpg", function(err) {
+				if(err) {
+					return;
+				} else {
+					fs.unlink("fs/update-test-photo.jpg");
+				}
+			});
 			if(typeof InsertID === "number") {
 				connection.query(`DELETE FROM Ratings WHERE RatingID=${InsertID}`, function() {
 					done();
@@ -371,14 +419,12 @@ describe('Ratings', function () {
 	describe('(D)elete', function () {
 		var InsertID;
 		before(function(done) {
-			var createRatings = new Promise(function(resolve, reject) {
-				connection.query(`INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )
-					VALUES (3, 1, 1, 'UNIT TEST (D)elete Via RatingID', '')`, 
-				function(err, insert) {
-					if(err) { console.log(err); throw err; }
-					InsertID = insert.insertId;
-					done();
-				});
+			connection.query(`INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )
+				VALUES (3, 1, 1, 'UNIT TEST (D)elete Via RatingID', '')`, 
+			function(err, insert) {
+				if(err) { console.log(err); throw err; }
+				InsertID = insert.insertId;
+				done();
 			});
 		});
 		it('should remove Rating from database', function (done) {
