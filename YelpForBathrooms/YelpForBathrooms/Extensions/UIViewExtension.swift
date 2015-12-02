@@ -27,13 +27,5 @@ extension UIView {
             layer.borderWidth = borderWidth
         }
     }
-    @IBInspectable var borderColor: UIColor? {
-        get {
-            return UIColor(CGColor: layer.borderColor!)
-        }
-        set {
-            layer.borderColor = borderColor?.CGColor
-        }
-    }
 }
 

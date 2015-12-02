@@ -24,7 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     var searchAddress : String = ""
     var model: Int = 1219
     let locationManager = CLLocationManager()
-    let bathroomRetriever : IBathroomRetriever = FakeBathroomRetriever()
+    let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
     let gpaViewController = GooglePlacesAutocomplete(apiKey: ConfigManager.GOOGLE_PLACES_API_KEY, placeType: .Address)
     var logged_in = true
 
@@ -109,7 +109,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let bathroom = marker.userData as! Bathroom
         infoWindow.title.text = bathroom.title
         infoWindow.rating.text = bathroom.rating?.description
-        infoWindow.flags.text = bathroom.flags?.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
+        infoWindow.layer.borderColor = UIColor(red: 89/255.0, green: 225/255/0, blue: 166/255.0, alpha: 1).CGColor
+        //infoWindow.flags.text = bathroom.flags?.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
         return infoWindow
     }
     

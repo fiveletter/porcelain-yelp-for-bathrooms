@@ -22,7 +22,7 @@ class BathroomDetailRetriever : IBathroomDetailRetriever {
         httpRetriever.makeRetrievalRequest(url, options: parameters) { data -> Void in
             let json = JSON(data: data)
             print("Bathroom Details Retrieval Response: \(json)")
-            if let status = json["response"].string where status == "Success"{
+            if let status = json["response"].string where status == "uccess"{
                 for (_, subJson): (String, JSON) in json["info"] {
                     let ratingId = subJson["RatingID"].int
                     let rating = subJson["Rating"].double

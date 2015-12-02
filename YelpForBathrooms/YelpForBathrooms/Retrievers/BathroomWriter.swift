@@ -17,9 +17,13 @@ class BathroomWriter : IBathroomWriter {
         params["Longitude"] = bathroom.location.longitude
         params["Latitude"] = bathroom.location.latitude
         params["Title"] = bathroom.title
-        params["Picture"] = review.picture
+        if let picture = review.picture {
+            params["Picture"] = "Picture"
+        } else {
+            params["Picture"] = "nopic"
+        }
         params["Rating"] = review.rating
-        params["ProfileId"] = review.profileId
+        params["ProfileID"] = review.profileId
         params["Comment"] = review.comment
         //TODO: Tell khalil to update bathrom/create api to allow flags sent in
         params["Non-Existing"] = review.flags.contains({$0.DESCRIPTION == Flag.NON_EXISTING.DESCRIPTION})
@@ -29,7 +33,7 @@ class BathroomWriter : IBathroomWriter {
         
         var requestObj = [String:AnyObject]()
         requestObj["token"] = UserManager.sharedInstance.userToken
-        requestObj["request"] = params
+        requestObj["info"] = params
         print("Bathroom Writer Request: \(requestObj)")
         httpRetriever.makeRetrievalRequest(UrlManager.BATHROOM_CREATE, options: requestObj){ data -> Void in
             let json = JSON(data: data)
