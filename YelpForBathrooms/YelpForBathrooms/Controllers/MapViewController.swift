@@ -22,7 +22,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     @IBOutlet weak var searchAddressButton: UIButton!
     
     var searchAddress : String = ""
-    var model: Int = 1219
     let locationManager = CLLocationManager()
     let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
     let gpaViewController = GooglePlacesAutocomplete(apiKey: ConfigManager.GOOGLE_PLACES_API_KEY, placeType: .Address)
@@ -76,9 +75,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         // Pass the selected object to the new view controller.
         if let segueIdentifier = segue.identifier{
             switch segueIdentifier{
-            case "profileSegue":
-                let profileViewController = segue.destinationViewController as! ProfileViewController
-                profileViewController.model = model;
+            case "bathroomDetailsSegue":
+                let marker = sender as! GMSMarker
+                let bathroom = marker.userData as! Bathroom
+                let bathroomDetailsViewController = segue.destinationViewController as! BathroomDetailsViewController
+                bathroomDetailsViewController.bathroom = bathroom
             default:
                 NOOP("UNREACHABLE")
             }

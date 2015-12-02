@@ -189,7 +189,7 @@ extension AddBathroomViewController{
         var flags = [Flag]()
         var title: String?
         var comment: String = ""
-        var location: CLLocationCoordinate2D = marker.position
+        let location: CLLocationCoordinate2D = marker.position
         var picture: UIImage?
         var missingInputs = false
         

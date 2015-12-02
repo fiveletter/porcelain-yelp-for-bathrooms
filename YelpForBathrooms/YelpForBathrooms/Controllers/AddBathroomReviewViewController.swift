@@ -22,11 +22,15 @@ class AddBathroomReviewViewController: UIViewController {
     
     var flagStatusDict = ["Non existing": false, "Hard to find": false, "Paid": false, "Public": false]
     var reviewWriter: IReviewWriter = ReviewWriter()
+    var bathroom: Bathroom!
     
     // MARK: - LIFECYCLE FUNCTIONS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(bathroom.title)
+        
         //Setup functions
         setupNavigationBar()
         setupRatingView()
@@ -188,7 +192,11 @@ extension AddBathroomReviewViewController{
             return
         }
         
-        let review = Review(Id: nil, Rating: Double(rating), ProfileId: 0, UserName: UserManager.sharedInstance.name!, BathroomId: nil, Comment: comment, Picture: picture, Flags: flags)
+        let review = Review(Id: nil, Rating: Double(rating), ProfileId: UserManager.sharedInstance.profileId!, UserName: UserManager.sharedInstance.name!, BathroomId: bathroom!.id, Comment: comment, Picture: picture, Flags: flags)
+        
+        reviewWriter.createReview(review){ dict -> Void in
+            NOOP("")
+        }
         
         print("####### VALUES TO BE SENT #######")
         print(rating)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="knO-Ud-TER">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -24,7 +24,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1k-Bb-lbn" customClass="RatingView" customModule="YelpForBathrooms" customModuleProvider="target">
                                         <rect key="frame" x="89" y="10" width="413" height="58"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="1" green="0.99538483587154636" blue="0.34224271400500172" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="I0A-Ss-qEq"/>
                                             <constraint firstAttribute="width" constant="435" id="rkV-DT-Kjv"/>
@@ -48,37 +47,33 @@
                                         <rect key="frame" x="0.0" y="79" width="590" height="69"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouc-k6-gTi">
-                                                <rect key="frame" x="20" y="5" width="207" height="27"/>
+                                                <rect key="frame" x="20" y="5" width="207" height="28"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="1" green="0.53150955421490842" blue="0.81327552765341804" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Button" image="Non_Existent_washed"/>
                                                 <connections>
                                                     <action selector="flagTapped:" destination="knO-Ud-TER" eventType="touchUpInside" id="0i1-tO-hMu"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rv6-KG-6fz">
-                                                <rect key="frame" x="256" y="5" width="207" height="27"/>
+                                                <rect key="frame" x="257" y="5" width="206" height="28"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="1" green="0.18547599465471276" blue="0.87563549529441254" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Button" image="Hard_to_find_washed"/>
                                                 <connections>
                                                     <action selector="flagTapped:" destination="knO-Ud-TER" eventType="touchUpInside" id="Bk3-qY-yie"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIZ-xf-GsL">
-                                                <rect key="frame" x="60" y="37" width="207" height="28"/>
+                                                <rect key="frame" x="60" y="38" width="207" height="27"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.85963210382596134" green="1" blue="0.66502088921507418" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Button" image="Paid_washed"/>
                                                 <connections>
                                                     <action selector="flagTapped:" destination="knO-Ud-TER" eventType="touchUpInside" id="xKA-xV-RAC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3V-8v-w0J">
-                                                <rect key="frame" x="296" y="37" width="207" height="27"/>
+                                                <rect key="frame" x="297" y="38" width="206" height="27"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="1" green="0.16137877765733344" blue="0.2355454025779451" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Button" image="Public_washed"/>
                                                 <connections>
                                                     <action selector="flagTapped:" destination="knO-Ud-TER" eventType="touchUpInside" id="sCW-39-0WP"/>
                                                 </connections>
@@ -200,4 +195,10 @@
             <point key="canvasLocation" x="1047" y="286"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Hard_to_find_washed" width="380" height="92"/>
+        <image name="Non_Existent_washed" width="380" height="92"/>
+        <image name="Paid_washed" width="380" height="92"/>
+        <image name="Public_washed" width="380" height="92"/>
+    </resources>
 </document>

@@ -9,6 +9,7 @@
 import UIKit
 
 class BathroomDetailsViewController: UIViewController {
+    var bathroom: Bathroom!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +26,20 @@ class BathroomDetailsViewController: UIViewController {
         performSegueWithIdentifier("addBathroomReviewSegue", sender: self)
     }
 
-    /*
-    // MARK: - Navigation
+
+// MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let segueIdentifier = segue.identifier{
+            switch(segueIdentifier){
+            case "addBathroomReviewSegue":
+                let addBathroomReviewViewController = segue.destinationViewController as! AddBathroomReviewViewController
+                addBathroomReviewViewController.bathroom = bathroom
+            default:
+                NOOP("DO NOTHING")
+            }
+        }
     }
-    */
 
 }
