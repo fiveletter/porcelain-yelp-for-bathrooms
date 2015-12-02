@@ -19,7 +19,7 @@ class BathroomWriter : IBathroomWriter {
         params["Title"] = bathroom.title
         params["Picture"] = review.picture
         params["Rating"] = review.rating
-        params["ProfileId"] = UserManager.sharedInstance.profileId!
+        params["ProfileId"] = review.profileId
         params["Comment"] = review.comment
         //TODO: Tell khalil to update bathrom/create api to allow flags sent in
         params["Non-Existing"] = review.flags.contains({$0.DESCRIPTION == Flag.NON_EXISTING.DESCRIPTION})

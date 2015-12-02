@@ -25,13 +25,14 @@ class UserManager {
     var profileId : Int?
 // MARK: - INITIALIZERS
     init(){
-        NOOP("Does nothing")
+        profileId = 1
+        userToken = "DEMO-AUTH-TOKEN"
     }
     
     init(userEmail : String?, userName: String?, id: Int?, token: String?) {
         email = userEmail
         name = userName
-        profileId = id
+        profileId = id ?? 1
         userToken = token
     }
 

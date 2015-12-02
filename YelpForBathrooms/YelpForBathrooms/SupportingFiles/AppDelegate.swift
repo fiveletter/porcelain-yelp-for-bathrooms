@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 GMSServices.provideAPIKey(myDict["GOOGLE_API_KEY"] as! String)
             }
         }
-
         return true
     }
 

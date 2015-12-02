@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnTap = true
+        navigationController?.hidesBarsOnTap = false
         
         // Label style
         setTextColorOfView(UIColor.whiteColor())

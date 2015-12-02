@@ -26,7 +26,8 @@ class AddBathroomViewController: UIViewController {
     var flagStatusDict = ["Non existing": false, "Hard to find": false, "Paid": false, "Public": false]
     var bathroomWriter: IBathroomWriter = BathroomWriter()
     var reviewWriter: IReviewWriter = ReviewWriter()
-
+    let locationManager = CLLocationManager()
+    var marker : GMSMarker = GMSMarker()
 // MARK: - LIFECYCLE FUNCTIONS
     
     override func viewDidLoad() {
@@ -36,11 +37,13 @@ class AddBathroomViewController: UIViewController {
         setupRatingView()
         setupGestureRecognizer()
         setupReviewTextView()
+        setupMapView()
         
         // Delegates
         reviewTextArea?.delegate = self
         titleTextField?.delegate = self
         imageChooserButton?.delegate = self
+        mapView?.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -158,6 +161,21 @@ extension AddBathroomViewController: UITextViewDelegate{
     }
 }
 
+// MARK: - LOCATION
+extension AddBathroomViewController  : GMSMapViewDelegate {
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        mapView.selectedMarker = marker
+        return false
+    }
+    
+    func mapView(mapView: GMSMapView!, didDragMarker marker: GMSMarker!) {
+        
+    }
+    
+    func mapView(mapView: GMSMapView!, didBeginDraggingMarker marker: GMSMarker!) {
+        
+    }
+}
 // MARK: - SETUP VIEWS
 
 extension AddBathroomViewController{
@@ -171,7 +189,7 @@ extension AddBathroomViewController{
         var flags = [Flag]()
         var title: String?
         var comment: String = ""
-//        var location: CLLocationCoordinate2D?
+        var location: CLLocationCoordinate2D = marker.position
         var picture: UIImage?
         var missingInputs = false
         
@@ -215,7 +233,14 @@ extension AddBathroomViewController{
             return
         }
         
-        let review = Review(Id: nil, Rating: Double(rating), ProfileId: 0, UserName: UserManager.sharedInstance.name!, BathroomId: nil, Comment: comment, Picture: picture, Flags: flags)
+        let review = Review(Id: nil, Rating: Double(rating), ProfileId: UserManager.sharedInstance.profileId!, UserName: UserManager.sharedInstance.name!, BathroomId: nil, Comment: comment, Picture: picture, Flags: flags)
+        
+        let bathroom = Bathroom(Id: nil, Title: title!, Location: location, Rating: Double(rating), Flags: flags)
+        
+        bathroomWriter.createBathroom(bathroom, review: review){
+            dict -> Void in
+            NOOP("")
+        }
         
         print("####### VALUES TO BE SENT #######")
         print(rating)
@@ -248,7 +273,17 @@ extension AddBathroomViewController{
 
 // MARK: - STYLES
 
-extension AddBathroomViewController{
+extension AddBathroomViewController {
+    
+    func setupMapView(){
+        mapView?.myLocationEnabled = true
+        if let location = locationManager.location, mapView = mapView {
+            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            marker = GMSMarker(position: location.coordinate)
+            marker.draggable = true
+            marker.map = mapView
+        }
+    }
     
     func styleImageChooserButton(){
         self.imageChooserButton?.buttonBackgroundColor = UIColor.colorFromHexRGBValue(0x59E1A6).CGColor
