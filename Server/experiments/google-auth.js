@@ -27,3 +27,5 @@ var GoogleAuth = require('google-auth-library');
     });
   }
 });
+
+//ALTER TABLE `Porcelain`.`Bathrooms` CHANGE COLUMN `Longitude` `Longitude` FLOAT(28,21) NOT NULL , CHANGE COLUMN `Latitude` `Latitude` FLOAT(28,21) NOT NULL;

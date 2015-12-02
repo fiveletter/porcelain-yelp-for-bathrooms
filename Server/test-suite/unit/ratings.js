@@ -93,8 +93,8 @@ describe('Ratings', function () {
 			}
 		});
 		it('should return JSON structure fitting the CRUD API', function (done) {
-			connection.query(`INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )
-				VALUES (3, 1, 1, 'UNIT TEST (R)etrieve Via RatingID', '')`, function after_query (err, insert) {
+			connection.query("INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )\
+				VALUES (3, 1, 1, 'UNIT TEST (R)etrieve Via RatingID', '')", function after_query (err, insert) {
 				if (err) { throw err; return; }
 				InsertID = insert.insertId;
 				options.path = '/rating/retrieve';

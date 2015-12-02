@@ -24,8 +24,8 @@ describe('Bathrooms: Testing CRUD API', function () {
 
 	connection.connect();
 
-	connection.query(`DELETE FROM Bathrooms WHERE Title='UNIT-TEST'`);
-	connection.query(`DELETE FROM Ratings WHERE Comment='UNIT-TESTING-COMMENT'`);
+	connection.query("DELETE FROM Bathrooms WHERE Title='UNIT-TEST'");
+	connection.query("DELETE FROM Ratings WHERE Comment='UNIT-TESTING-COMMENT'");
 
 	describe('(C)reate', function () {
 		it('should successfully create bathroom', function (done) {
@@ -43,37 +43,52 @@ describe('Bathrooms: Testing CRUD API', function () {
 					expect(BathroomID).to.be.a('number');
 					expect(RatingID).to.be.a('number');
 					
+				  	console.log(data);
+
 					var checkBathroom = new Promise((resolve, reject) => {
-						connection.query(`SELECT Longitude, Latitude, Title FROM Bathrooms WHERE BathroomID=${BathroomID}`, function(err, rows, fields) {
-						  	if (err) { throw err; }
+						var query = connection.query("SELECT Longitude, Latitude, Title FROM Bathrooms WHERE ?",
+							[ { "BathroomID": BathroomID } ], 
+							(err, rows) => {
+						  	if (err) { throw err; }	
+						  	console.log(rows);
 						  	resolve({
-						  		BathroomRow: rows[0], 
-						  		RatingID: RatingID, 
-						  		BathroomID: BathroomID
+						  		BathroomRow: rows[0]
 						  	});
 						});
+						console.log("query.sql:::::", query.sql);
 					});
 
 					checkBathroom.then((handoff) => {
-						connection.query(`SELECT Rating, ProfileID, BathroomID, Comment, PictureURL FROM Ratings WHERE RatingID=${handoff.RatingID}`, (err, rows, fields) => {
+						return new Promise((resolve, reject) => { 
+							connection.query("SELECT Rating, ProfileID, BathroomID, Comment, PictureURL FROM Ratings WHERE ? ", 
+								[ { "RatingID": RatingID } ], 
+								(err, rows) => {
+									if (err) { throw err; }
+									console.log(rows);
+									handoff.RatingRow = rows[0];
+									resolve(handoff);
+								}
+							);
+						});
+					}).then((handoff) => {
+						connection.query("SELECT * FROM RatingFlags WHERE ? ", 
+							[ { "RatingID": RatingID }, { "BathroomID": BathroomID } ],
+							(err, rows) => {
 							if (err) { throw err; }
+						  	console.log(rows);
 							expect(handoff.BathroomRow).to.eql({
 								"Longitude": -121,
 								"Latitude": 37,
 								"Title": "UNIT-TEST"
 							});
-							console.log(rows);
-							expect(rows[0]).to.eql({
+							expect(handoff.RatingRow).to.eql({
 								"Rating": 3, 
 								"ProfileID": 1, 
-								"BathroomID": handoff.BathroomID, 
+								"BathroomID": BathroomID, 
 								"Comment": "UNIT-TESTING-COMMENT", 
 								"PictureURL": null
 							});
-
-							connection.query(`DELETE FROM Bathrooms WHERE Title='UNIT-TEST'`);
-							connection.query(`DELETE FROM Ratings WHERE Comment='UNIT-TESTING-COMMENT'`);
-
+							expect(rows.length).to.equal(4);
 							done();
 						});
 					});
@@ -93,13 +108,21 @@ describe('Bathrooms: Testing CRUD API', function () {
 					"Picture": "",
 					"Rating": 3,
 					"ProfileID": 1,
-					"Comment": "UNIT-TESTING-COMMENT"
+					"Comment": "UNIT-TESTING-COMMENT",
+					"Non-Existing": true,
+					"Hard-To-Find": true,
+					"Paid": true,
+					"Public": true
 				}
 			};
 
 			req.write(JSON.stringify(request));
 			req.end();
 		});
+		after(function() {
+			connection.query("DELETE FROM Bathrooms WHERE Title='UNIT-TEST'");
+			connection.query("DELETE FROM Ratings WHERE Comment='UNIT-TESTING-COMMENT'");
+		})
 	});
 	describe('(R)etrieve', function () {
 		it('should return array of bathrooms', function (done) {

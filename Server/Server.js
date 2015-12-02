@@ -144,10 +144,9 @@ app.post('/bathroom/create', function(req, res){
 			"Title": { "type": "string" },
 			"Picture": { "type": "string" },
 			"Rating": { "type": "number" },
-			"ProfileID": { "type": "number" },
 			"Comment": { "type": "string" }
 		},
-		"required": ["Longitude", "Latitude", "Title", "Picture", "Rating", "ProfileID", "Comment" ]
+		"required": ["Longitude", "Latitude", "Title", "Picture", "Rating", "Comment" ]
 	};
 	// Validate the input data against the schema
 	var results = v.validate(info, schema);
@@ -161,13 +160,31 @@ app.post('/bathroom/create', function(req, res){
 			connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment) VALUES ?",
 			[ [[ info.Rating, req.body.ProfileID, insert.insertId, info.Comment ]] ],
 			function(err, insertRating) {
-				if (err) { reply(res, false, err); return; }
-				var jres = {
-					"BathroomID": insert.insertId, 
-					"RatingID": insertRating.insertId
-				};
-				console.log("CREATED BATHROOM!!!");
-				reply(res, true, jres);
+				if (err) { reply(res, false, err); console.log("Create bathroom rating failure"); return; }
+				
+				var inserts = [];
+				if(info["Non-Existing"] === true) 	{ inserts.push([1, insertRating.insertId]); }
+				if(info["Hard-To-Find"] === true) 	{ inserts.push([2, insertRating.insertId]); }
+				if(info["Paid"] === true) 			{ inserts.push([3, insertRating.insertId]); }
+				if(info["Public"] === true) 		{ inserts.push([4, insertRating.insertId]); }
+
+				if(inserts.length !== 0) {
+					var query = connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?",
+					[ inserts ],
+					function(err) { 
+						if(err) { reply(res, false, err); console.log("Create bathroom flag failure"); return; }				
+						console.log("CREATED BATHROOM!!!");
+						reply(res, true, {
+							"BathroomID": insert.insertId, 
+							"RatingID": insertRating.insertId
+						});
+					});
+				} else {
+					reply(res, true, {
+						"BathroomID": insert.insertId, 
+						"RatingID": insertRating.insertId
+					});
+				}
 			});
 		});	
 	} else {
@@ -217,7 +234,6 @@ app.post('/rating/create', function(req, res){
 		"properties": {
 			"Rating": { "type": "number" },
 			"BathroomID": { "type": "number" },
-			"ProfileID": { "type": "number" },
 			"Comment": { "type": "string" },
 			"Picture": { "type": "string" },
 			"Non-Existing": { "type": "boolean" },
@@ -225,7 +241,7 @@ app.post('/rating/create', function(req, res){
 			"Paid": { "type": "boolean" },
 			"Public": { "type": "boolean" }
 		},
-		"required": [ "Rating", "BathroomID", "ProfileID", "Comment", "Picture", "Non-Existing", "Hard-To-Find", "Paid", "Public" ]
+		"required": [ "Rating", "BathroomID", "Comment", "Picture", "Non-Existing", "Hard-To-Find", "Paid", "Public" ]
 	};
 	// Validate the input data against the schema
 	var results = v.validate(info, schema);
@@ -341,6 +357,8 @@ app.post('/rating/update', function(req, res){
 						console.log("UPDATED RATING!!!");
 						reply(res, true, {});
 					});
+				} else {
+					reply(res, true, {});
 				}
 			});
 		});
