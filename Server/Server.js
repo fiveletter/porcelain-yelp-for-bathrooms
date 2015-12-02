@@ -66,7 +66,8 @@ function appAuth (req, res, next) {
 		'/bathroom/retrieve',
 		'/rating/retrieve',
 		'/profile/retrieve',
-		'/profile/auth'
+		'/profile/auth',
+		''
 	];
 	console.log("BFAUTH: ", req.body, req.originalUrl);
 	if (req.method === 'POST') {
@@ -87,8 +88,11 @@ function appAuth (req, res, next) {
 				return;
 			}
 		}
+	} else if(req.method === 'GET') {
+		next();
+	} else {
+		reply(res, false, { error: "NO AUTH" });
 	}
-	reply(res, false, { error: "NO AUTH" });
 }
 
 // parse application/x-www-form-urlencoded
