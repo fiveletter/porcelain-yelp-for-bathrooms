@@ -1,5 +1,7 @@
+"use strict";
 //// Constants
 const PORT = 10000;
+const DEBUG = true;
 //// Requires
 var express     = require('express');
 var fs          = require('fs');
@@ -7,17 +9,92 @@ var app         = express();
 var bodyParser  = require('body-parser');
 var Validator   = require('jsonschema').Validator;
 var mysql       = require('mysql');
-//// Setup
-var connection = mysql.createConnection(
-	JSON.parse(
-		fs.readFileSync("cred/mysql_db.cred")
-	)
+//// MySQL Setup
+var connection;
+var db_config = JSON.parse(
+	fs.readFileSync("cred/mysql_db.cred")
 );
-connection.connect();
+
+function MySQLConnect() {
+	connection = mysql.createConnection(db_config); // Recreate the connection, since
+													// the old one cannot be reused.
+	connection.connect(function(err) {				// The server is either down
+		if(err) {									// or restarting (takes a while sometimes).
+			console.log('error when connecting to db:', err);
+			setTimeout(MySQLConnect, 2000); // We introduce a delay before attempting to reconnect,
+		}									// to avoid a hot loop, and to allow our node script to
+	});										// process asynchronous requests in the meantime.
+											// If you're also serving http, display a 503 error.
+	connection.on('error', function(err) {
+		console.log('db error', err);
+		if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+			MySQLConnect();					// lost due to either server restart, or a
+		} else {							// connnection idle timeout (the wait_timeout
+			throw err;						// server variable configures this)
+		}
+	});
+}
+
+function reply(res, isSuccess, info) {
+	var rep = { "response": "", "info": {} };
+	rep.response = (isSuccess) ? "success" : "failure";
+	rep.info = info;
+	res.end(JSON.stringify(rep));
+}
+
+/* SESSION STRUCTURE: 
+	[
+		{
+			token: "",
+			profile: <number>
+		}
+	]
+*/
+var sessions = [];
+
+if(DEBUG) {
+	sessions.push({
+		token: "DEMO-AUTO-AUTH",
+		profile: 1
+	});
+}
+
+function appAuth (req, res, next) {
+	var nonAuthRequests = [
+		'/bathroom/retrieve',
+		'/rating/retrieve',
+		'/profile/retrieve',
+		'/profile/auth'
+	];
+	console.log("FIREWALL: ", req.body, req.originalUrl);
+	if (req.method === 'POST') {
+		// Check if the address is one that does not require authentication
+		for (let i = 0; i < nonAuthRequests.length; i++) {
+			if(nonAuthRequests[i] === req.originalUrl) {
+				// keep executing the router middleware
+				next();
+				return;
+			}
+		}
+		// If the request does require authentication, check if a session exists.
+		for (let i = 0; i < sessions.length; i++) {
+			if(req.body.token === sessions[i].token) {
+				req.body.ProfileID = sessions[i].profile;
+				console.log("FIREWALL2: ", req.body);
+				next();
+				return;
+			}
+		}
+	}
+	reply(res, false, { error: "NO AUTH" });
+}
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+// authentication method
+app.use(appAuth);
 // Init validator
 var v = new Validator();
 
@@ -50,12 +127,12 @@ var BathroomFlagSubQuery = `(
 	AND RatingFlags.FlagID=4 
 ) as "Public"`;
 
-
 /* =============== bathroom =============== */
 app.post('/bathroom/create', function(req, res){
 	console.log('POST /bathroom/create');
 	console.log(req.body);
-	
+	var info = req.body.info;
+
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	// Structure that the input data must conform to 
@@ -73,33 +150,34 @@ app.post('/bathroom/create', function(req, res){
 		"required": ["Longitude", "Latitude", "Title", "Picture", "Rating", "ProfileID", "Comment" ]
 	};
 	// Validate the input data against the schema
-	var results = v.validate(req.body, schema);
+	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
 		connection.query("INSERT INTO Bathrooms (Longitude, Latitude, Title, ImagePath) VALUES ?",
-		[ [[ req.body.Longitude, req.body.Latitude, req.body.Title, "" ]] ], 
+		[ [[ info.Longitude, info.Latitude, info.Title, "" ]] ], 
 		function(err, insert) {
-			if (err) { res.end(JSON.stringify(err)); return; }
+			if (err) { reply(res, false, err); return; }
 			// TODO: Base64 -> jpg conversion and storage
 			connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment) VALUES ?",
-			[ [[ req.body.Rating, req.body.ProfileID, insert.insertId, req.body.Comment ]] ],
+			[ [[ info.Rating, info.ProfileID, insert.insertId, info.Comment ]] ],
 			function(err, insertRating) {
-				if (err) { res.end(JSON.stringify(err)); return; }
+				if (err) { reply(res, false, err); return; }
 				var jres = {
 					"BathroomID": insert.insertId, 
 					"RatingID": insertRating.insertId
 				};
 				console.log("CREATED BATHROOM!!!");
-				res.end(JSON.stringify(jres));
+				reply(res, true, jres);
 			});
 		});	
 	} else {
-		res.end(JSON.stringify(results.errors));
+		reply(res, false, results.errors);
 	}
 });
 app.post('/bathroom/retrieve', function(req, res){
 	console.log('POST /bathroom/retrieve');
-	
+	console.log(req.body);
+	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	// Structure that the input data must conform to 
@@ -113,16 +191,16 @@ app.post('/bathroom/retrieve', function(req, res){
 		"required": ["Longitude", "Latitude", "Radius" ]
 	};
 	// Validate the input data against the schema
-	var results = v.validate(req.body, schema);
+	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
 		connection.query(`SELECT BathroomID, Longitude, Latitude, Title, ImagePath, ${BathroomFlagSubQuery} FROM Bathrooms`, 
 		function(err, rows) {
-			if (err) { res.end(JSON.stringify(err)); return; }
-			res.end(JSON.stringify(rows));
+			if (err) { reply(res, false, err); return; }
+			reply(res, true, rows);
 		});
 	} else {
-		res.end(JSON.stringify(results.errors));
+		reply(res, false, results.errors);
 	}
 });
 
@@ -130,6 +208,7 @@ app.post('/bathroom/retrieve', function(req, res){
 app.post('/rating/create', function(req, res){
 	console.log('POST /rating/create');
 	console.log(req.body);
+	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	// Structure that the input data must conform to 
@@ -149,41 +228,41 @@ app.post('/rating/create', function(req, res){
 		"required": [ "Rating", "BathroomID", "ProfileID", "Comment", "Picture", "Non-Existing", "Hard-To-Find", "Paid", "Public" ]
 	};
 	// Validate the input data against the schema
-	var results = v.validate(req.body, schema);
+	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
 		connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment, PictureURL) VALUES ?",
-			[ [[ req.body.Rating, req.body.ProfileID, req.body.BathroomID, req.body.Comment, "" ]] ],
+			[ [[ info.Rating, info.ProfileID, info.BathroomID, info.Comment, "" ]] ],
 			function(err, insert) {
-			if (err) { res.end(JSON.stringify(err)); console.log("Create Rating failure"); return; }
+			if (err) { reply(res, false, err); console.log("Create Rating failure"); return; }
 			
 			var inserts = [];
-			if(req.body["Non-Existing"] === true) 	{ inserts.push([1, insert.insertId]); }
-			if(req.body["Hard-To-Find"] === true) 	{ inserts.push([2, insert.insertId]); }
-			if(req.body["Paid"] === true) 			{ inserts.push([3, insert.insertId]); }
-			if(req.body["Public"] === true) 		{ inserts.push([4, insert.insertId]); }
+			if(info["Non-Existing"] === true) 	{ inserts.push([1, insert.insertId]); }
+			if(info["Hard-To-Find"] === true) 	{ inserts.push([2, insert.insertId]); }
+			if(info["Paid"] === true) 			{ inserts.push([3, insert.insertId]); }
+			if(info["Public"] === true) 		{ inserts.push([4, insert.insertId]); }
 
-			if(inserts.length != 0) {
+			if(inserts.length !== 0) {
 				connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?",
 				[ inserts ],
 				function(err) { 
-					if(err) { res.end(JSON.stringify(err)); console.log("Create flag failure"); return; }				
+					if(err) { reply(res, false, err); console.log("Create flag failure"); return; }				
 					console.log("CREATED RATING!!!");
-					res.end(JSON.stringify({ RatingID: insert.insertId }));
+					reply(res, true, { RatingID: insert.insertId });
 				});
 			}
-			res.end(JSON.stringify({ RatingID: insert.insertId }));
+			reply(res, true, { RatingID: insert.insertId });
 		});
 	} else {
-		res.end(JSON.stringify(results.errors));
+		reply(res, false, results.errors);
 	}
 });
-app.post('/rating/retrieve', function(req, res){
+app.post('/rating/retrieve', function(req, res) {
 	console.log('POST /rating/retrieve');
-	
+	console.log(req.body);
+	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
-
 	var flagSubQuery = `
 		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=1) as "Non-Existing",
 		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=2) as "Hard-To-Find",
@@ -194,23 +273,24 @@ app.post('/rating/retrieve', function(req, res){
 	var query = `SELECT RatingID, Timestamp, Rating, ProfileID, BathroomID, Comment, PictureURL, ${flagSubQuery} FROM Ratings WHERE ? LIMIT 1`;
 
 	var returnResults = function(err, rows) {
-		if (err) { res.end(JSON.stringify(err)); return; }
-		res.end(JSON.stringify(rows));
-	}
+		if (err) { reply(res, false, err); return; }
+		reply(res, true, rows);
+	};
 
-	if(req.body.hasOwnProperty("RatingID")) {
-		connection.query(query, [ { "RatingID": req.body.RatingID } ], returnResults);
-	} else if(req.body.hasOwnProperty("BathroomID")) {
-		connection.query(query, [ { "BathroomID": req.body.BathroomID } ], returnResults);
-	} else if(req.body.hasOwnProperty("ProfileID")) {
-		connection.query(query, [ { "ProfileID": req.body.ProfileID } ], returnResults);
+	if(info.hasOwnProperty("RatingID")) {
+		connection.query(query, [ { "RatingID": info.RatingID } ], returnResults);
+	} else if(info.hasOwnProperty("BathroomID")) {
+		connection.query(query, [ { "BathroomID": info.BathroomID } ], returnResults);
+	} else if(info.hasOwnProperty("ProfileID")) {
+		connection.query(query, [ { "ProfileID": info.ProfileID } ], returnResults);
 	} else {
-		res.end(JSON.stringify({ "error": "invalid request format" }));
+		reply(res, false, { "error": "invalid request format" });
 	}
 });
 app.post('/rating/update', function(req, res){
 	console.log('POST /rating/update');
 	console.log(req.body);
+	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	// Structure that the input data must conform to 	
@@ -229,44 +309,45 @@ app.post('/rating/update', function(req, res){
 		"required": [ "RatingID", "Rating", "Comment", "Picture", "Non-Existing", "Hard-To-Find", "Paid", "Public" ]
 	};
 	// Validate the input data against the schema
-	var results = v.validate(req.body, schema);
+	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
-		// UPDATE Ratings SET Rating=${req.body.Rating},
-		// 		Comment="${req.body.Comment}",
+		// UPDATE Ratings SET Rating=${info.Rating},
+		// 		Comment="${info.Comment}",
 		// 		PictureURL=""
-		// 		WHERE RatingID=${req.body.RatingID}`, 
+		// 		WHERE RatingID=${info.RatingID}`, 
 		var query = connection.query("UPDATE Ratings SET ? WHERE ?",
-			[ { "Rating": req.body.Rating, "Comment": req.body.Comment }, { "RatingID": req.body.RatingID} ], 
+			[ { "Rating": info.Rating, "Comment": info.Comment }, { "RatingID": info.RatingID} ], 
 			function(err, insert) {
-			if (err) { res.end(JSON.stringify(err)); console.log("UPDATE rating failure"); return; }
+			if (err) { reply(res, false, err); console.log("UPDATE rating failure"); return; }
 			console.log(insert);
 			var inserts = [];
-			if(req.body["Non-Existing"] === true) 	{ inserts.push([ 1, req.body.RatingID ]); }
-			if(req.body["Hard-To-Find"] === true) 	{ inserts.push([ 2, req.body.RatingID ]); }
-			if(req.body["Paid"] === true) 			{ inserts.push([ 3, req.body.RatingID ]); }
-			if(req.body["Public"] === true) 		{ inserts.push([ 4, req.body.RatingID ]); }
+			if(info["Non-Existing"] === true) 	{ inserts.push([ 1, info.RatingID ]); }
+			if(info["Hard-To-Find"] === true) 	{ inserts.push([ 2, info.RatingID ]); }
+			if(info["Paid"] === true) 			{ inserts.push([ 3, info.RatingID ]); }
+			if(info["Public"] === true) 		{ inserts.push([ 4, info.RatingID ]); }
 
-			connection.query("DELETE FROM RatingFlags WHERE ?", [ { "RatingID": req.body.RatingID } ], function(err) {
-				if(inserts.length != 0) {
+			connection.query("DELETE FROM RatingFlags WHERE ?", [ { "RatingID": info.RatingID } ], function() {
+				if(inserts.length !== 0) {
 					connection.query("INSERT INTO RatingFlags (FlagID, RatingID) VALUES ?",
 					[ inserts ],
-					function(err, insert) { 
-						if(err) { res.end(JSON.stringify(err)); console.log("UPDATE flag failure"); return; }
+					function(err) { 
+						if(err) { reply(res, false, err); console.log("UPDATE flag failure"); return; }
 						console.log("UPDATED RATING!!!");
-						res.end(JSON.stringify({ "response": "success" }));
+						reply(res, true, {});
 					});
 				}
 			});
 		});
 		console.log(query.sql);
 	} else {
-		res.end(JSON.stringify(results.errors));
+		reply(res, false, results.errors);
 	}
 });
 app.post('/rating/delete', function(req, res){
 	console.log('POST /rating/delete');
 	console.log(req.body);
+	var info = req.body.info;
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	// Structure that the input data must conform to 	
 	var schema = {
@@ -278,44 +359,43 @@ app.post('/rating/delete', function(req, res){
 	};
 	// Validate the input data against the schema
 	// Validate the input data against the schema
-	var results = v.validate(req.body, schema);
+	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
-		connection.query("DELETE FROM Ratings WHERE ?", [ { "RatingID": req.body.RatingID } ], function(err) {
-			if(err) { res.end(JSON.stringify(err)); return; }
-			res.end(JSON.stringify({ "response": "success" }));
+		connection.query("DELETE FROM Ratings WHERE ?", [ { "RatingID": info.RatingID } ], function(err) {
+			if(err) { reply(res, false, err); return; }
+			reply(res, true, {});
 		});
 	} else {
-		res.end(JSON.stringify(results.errors));
+		reply(res, false, results.errors);
 	}
 });
 
-
 /* =============== User =============== */
-app.post('/profile/create', function(req, res){
+app.post('/profile/auth', function(req, res) {
 	console.log('POST /profile/create');
 	console.log(req.body);
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	res.end('thanks');
 });
-app.post('/profile/retrieve', function(req, res){
+
+// https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=XYZ123
+
+app.post('/profile/retrieve', function(req, res) {
 	console.log('POST /profile/retrieve');
 	console.log(req.body);
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	res.end('thanks');
 });
-app.post('/profile/update', function(req, res){
-	console.log('POST /profile/update');
-	console.log(req.body);
-	res.writeHead(200, {'Content-Type': 'application/json'});
-	res.end('thanks');
-});
-app.post('/profile/delete', function(req, res){
+app.post('/profile/delete', function(req, res) {
 	console.log('POST /profile/delete');
 	console.log(req.body);
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	res.end('thanks');
 });
 
+// Connect to MySQL server
+MySQLConnect();
+// Listen on PORT
 app.listen(PORT);
-console.log('Listening at http://localhost:' + PORT);
+console.log('Listening at on port:' + PORT);

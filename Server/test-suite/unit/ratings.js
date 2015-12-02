@@ -28,21 +28,21 @@ describe('Ratings', function () {
 	describe('Testing CRUD', function () {
 		describe('(C)reate', function () {
 			var RatingID;
-			it('After request should find Rating and Rating Flag in database', function (done) {
+			it('should create Rating and Rating Flags in database', function (done) {
 				options.path = '/rating/create';
 				var req = http.request(options, function(res) {
 					res.setEncoding('utf8');
 					res.on('data', function (body) {
-						var response = JSON.parse(body);
-						console.log(response);
-						expect(response).to.include.keys('RatingID');
-						expect(response.RatingID).to.be.a('number');
-						RatingID = response.RatingID;
-						
-						connection.query(`SELECT * FROM Ratings WHERE RatingID=${response.RatingID}`, function(err, rows) {
+						var data = JSON.parse(body);
+						console.log(data);
+						var response_type = data.response;
+						expect(response_type).to.equal('success');
+						RatingID = data.info.RatingID;
+
+						connection.query(`SELECT * FROM Ratings WHERE RatingID=${data.info.RatingID}`, function(err, rows) {
 							if (err) { throw err; return; }
 							expect(rows.length).to.be.above(0);
-							connection.query(`SELECT * FROM RatingFlags WHERE RatingID=${response.RatingID}`, function(err, rows) {
+							connection.query(`SELECT * FROM RatingFlags WHERE RatingID=${data.info.RatingID}`, function(err, rows) {
 								// four rating flag relationships were made
 								expect(rows.length).to.be.equal(4);
 								done();
@@ -56,15 +56,18 @@ describe('Ratings', function () {
 				});
 
 				var request = {
-					"Rating": 3,
-					"BathroomID": 1,
-					"ProfileID": 1,
-					"Comment": "UNIT TESTING COMMENT",
-					"Picture": "",
-	            	"Non-Existing": true,
-	            	"Hard-To-Find": true,
-	            	"Paid": true,
-	            	"Public": true
+					token: "DEMO-AUTO-AUTH",
+					info: {
+						"Rating": 3,
+						"BathroomID": 1,
+						"ProfileID": 1,
+						"Comment": "UNIT TESTING COMMENT",
+						"Picture": "",
+		            	"Non-Existing": true,
+		            	"Hard-To-Find": true,
+		            	"Paid": true,
+		            	"Public": true
+					}
 				};
 
 				req.write(JSON.stringify(request));
@@ -80,7 +83,7 @@ describe('Ratings', function () {
 		});
 	});
 
-	describe('(R)etrieve single', function () {
+	describe('(R)etrieve via RatingID', function () {
 		var InsertID;
 		after(function(done) {
 			if(typeof InsertID === "number") {
@@ -89,7 +92,7 @@ describe('Ratings', function () {
 				done();
 			}
 		});
-		it('Via RatingID, should return JSON structure fitting the CRUD API', function (done) {
+		it('should return JSON structure fitting the CRUD API', function (done) {
 			connection.query(`INSERT INTO Ratings ( Rating, ProfileID, BathroomID, Comment, PictureURL )
 				VALUES (3, 1, 1, 'UNIT TEST (R)etrieve Via RatingID', '')`, function after_query (err, insert) {
 				if (err) { throw err; return; }
@@ -98,7 +101,11 @@ describe('Ratings', function () {
 				var req = http.request(options, function(res) {
 				res.setEncoding('utf8');
 					res.on('data', function (body) {
-						var response = JSON.parse(body)[0];
+						var data = JSON.parse(body);
+						console.log(data);
+						var response_type = data.response;
+						expect(response_type).to.equal('success');
+						var response = data.info[0];
 
 						expect(response['RatingID']).to.be.a('number');
 						expect(response['Rating']).to.equal(3);
@@ -120,7 +127,8 @@ describe('Ratings', function () {
 				});
 
 				var request = {
-					"RatingID": insert.insertId,
+					token: "DEMO-AUTO-AUTH",
+					info: { "RatingID": insert.insertId }
 				};
 				req.write(JSON.stringify(request));
 				req.end();
@@ -133,7 +141,11 @@ describe('Ratings', function () {
 			var req = http.request(options, function(res) {
 			res.setEncoding('utf8');
 				res.on('data', function (body) {
-					var response = JSON.parse(body);
+					var data = JSON.parse(body);
+					console.log(data);
+					var response_type = data.response;
+					expect(response_type).to.equal('failure');
+					var response = data.info;
 					expect(response).to.eql({ "error": "invalid request format" });
 					done();
 				});
@@ -144,7 +156,8 @@ describe('Ratings', function () {
 			});
 
 			var request = {
-				"SomethingRandom": new Date(),
+				token: "DEMO-AUTO-AUTH",
+				info: { "SomethingRandom": new Date() }
 			};
 
 			req.write(JSON.stringify(request));
@@ -152,12 +165,16 @@ describe('Ratings', function () {
 		});
 	});
 	describe('(R)etrieve array', function () {
-		it('(R)etrieve Via BathroomID', function (done) {
+		it('should retrieve rating using BathroomID', function (done) {
 			options.path = '/rating/retrieve';
 			var req = http.request(options, function(res) {
 				res.setEncoding('utf8');
 				res.on('data', function (body) {
-					var response = JSON.parse(body);
+					var data = JSON.parse(body);
+					console.log(data);
+					var response_type = data.response;
+					expect(response_type).to.equal('success');
+					var response = data.info;
 
 					expect(response).to.be.a('array');
 					expect(response[0]).to.be.a('object');
@@ -192,18 +209,25 @@ describe('Ratings', function () {
 			});
 
 			var request = {
-				"BathroomID": 1,
+				token: "DEMO-AUTO-AUTH",
+				info: {
+					"BathroomID": 1,
+				}
 			};
 			req.write(JSON.stringify(request));
 			req.end();
 		});
-
-		it('(R)etrieve Via ProfileID', function (done) {
+	
+		it('should retrieve rating using ProfileID', function (done) {
 			options.path = '/rating/retrieve';
 			var req = http.request(options, function(res) {
 				res.setEncoding('utf8');
 				res.on('data', function (body) {
-					var response = JSON.parse(body);
+					var data = JSON.parse(body);
+					console.log(data);
+					var response_type = data.response;
+					expect(response_type).to.equal('success');
+					var response = data.info;
 
 					expect(response).to.be.a('array');
 					expect(response[0]).to.be.a('object');
@@ -238,7 +262,10 @@ describe('Ratings', function () {
 			});
 
 			var request = {
-				"ProfileID": 1,
+				token: "DEMO-AUTO-AUTH",
+				info: {
+					"ProfileID": 1,
+				}
 			};
 			req.write(JSON.stringify(request));
 			req.end();
@@ -258,17 +285,20 @@ describe('Ratings', function () {
 				});
 			});
 		});
-		it('(U)pdate Via RatingID', function (done) {
+		it('should update rating in database', function (done) {
 			var sendUpdateRequest = function(insertId) {
 				return new Promise(function(resolve, reject) {
 					options.path = '/rating/update';
 					var req = http.request(options, function(res) {
 						res.setEncoding('utf8');
 						res.on('data', function (body) {
-							console.log(body);
-							var response = JSON.parse(body);
-							expect(response).to.eql({
-								response: "success"
+							var data = JSON.parse(body);
+							console.log(data);
+							var response_type = data.response;
+							expect(response_type).to.equal('success');
+							expect(data).to.eql({
+								response: "success",
+								info: {}
 							});
 							resolve(insertId);
 						});
@@ -279,15 +309,18 @@ describe('Ratings', function () {
 					});
 
 					var request = {
-						"RatingID": insertId,
-						"Rating": 2,
-						"Comment": "UPDATE UNIT TEST (U)pdate Via RatingID",
-						"Picture": "",
+						token: "DEMO-AUTO-AUTH",
+						info: {
+							"RatingID": insertId,
+							"Rating": 2,
+							"Comment": "UPDATE UNIT TEST (U)pdate Via RatingID",
+							"Picture": "",
 
-						"Non-Existing": true,
-						"Hard-To-Find": false,
-						"Paid": true,
-						"Public": false,
+							"Non-Existing": true,
+							"Hard-To-Find": false,
+							"Paid": true,
+							"Public": false,
+						}
 					};
 					req.write(JSON.stringify(request));
 					req.end();
@@ -350,15 +383,18 @@ describe('Ratings', function () {
 				});
 			});
 		});
-		it('(D)elete Via RatingID', function (done) {
+		it('should remove Rating from database', function (done) {
 			options.path = '/rating/delete';
 			var req = http.request(options, function(res) {
 				res.setEncoding('utf8');
 				res.on('data', function (body) {
-					console.log(body);
-					var response = JSON.parse(body);
-					expect(response).to.eql({
-						response: "success"
+					var data = JSON.parse(body);
+					console.log(data);
+					var response_type = data.response;
+					expect(response_type).to.equal('success');
+					expect(data).to.eql({
+						response: "success",
+						info: {}
 					});
 					connection.query("SELECT * FROM Ratings WHERE ?", [ { "RatingID": InsertID } ], function(err, rows) {
 						if(err) { console.log(err); throw err; }
@@ -372,7 +408,10 @@ describe('Ratings', function () {
 				assert.notOk('everything', e);
 			});
 
-			var request = { "RatingID": InsertID };
+			var request = {
+				token: "DEMO-AUTO-AUTH",
+				info: { "RatingID": InsertID }
+			};
 			req.write(JSON.stringify(request));
 			req.end();
 

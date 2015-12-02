@@ -10,12 +10,13 @@
     "mocha": ""
   },
   "dependencies": {
+    "body-parser": "",
     "colors": "",
     "colorspace": "",
     "express": "",
-    "mysql": "",
     "forever-monitor": "",
-    "body-parser": "",
-    "jsonschema": ""
+    "google-auth-library": "^0.9.7",
+    "jsonschema": "",
+    "mysql": ""
   }
 }
