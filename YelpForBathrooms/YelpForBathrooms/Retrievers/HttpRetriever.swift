@@ -12,10 +12,8 @@ import Alamofire
 
 class HttpRetriever : IHttpRetriever {
     func makeRetrievalRequest(url: String, options: Dictionary<String, AnyObject>, success: ((data: NSData!) ->Void)) {
-        print(options)
         Alamofire.request(.POST, url, parameters: options, encoding: .JSON).responseJSON() {
             (response) in
-            print(response)
             success(data: response.data!)
         }
     }

@@ -24,7 +24,13 @@ class UrlManager {
             
         }
     }
-    
+    class var PROFILE_AUTH : String {
+        get {
+            return BASE_URL + "/profile/auth"
+        } set {
+            
+        }
+    }
     class var BATHROOM_CREATE : String {
         get {
         return BASE_URL + "/bathroom/create"

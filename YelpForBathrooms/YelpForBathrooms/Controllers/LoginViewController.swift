@@ -46,18 +46,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             var fullNameArr = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")
             let firstName = fullNameArr![0]
             let lastName = fullNameArr![1]
-            profileRetriever.getProfileId(user.profile.email){
-                profileId -> Void in
-                if let id = profileId {
-                    UserManager.sharedInstance.profileId = id
-                } else {
-                    self.profileRetriever.createProfile(firstName, last: lastName, email: UserManager.sharedInstance.email!){
-                        (profileId) -> Void in
-                        if let id = profileId {
-                            UserManager.sharedInstance.profileId = id
-                        }
-                    }
-                }
+            profileRetriever.authorize{ id -> Void in
+                UserManager.sharedInstance.profileId = id
             }
             self.performSegueWithIdentifier("profileSegue", sender: self)
         }

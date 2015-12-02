@@ -30,9 +30,10 @@ class BathroomWriter : IBathroomWriter {
         var requestObj = [String:AnyObject]()
         requestObj["token"] = UserManager.sharedInstance.userToken
         requestObj["request"] = params
-        
+        print("Bathroom Writer Request: \(requestObj)")
         httpRetriever.makeRetrievalRequest(UrlManager.BATHROOM_CREATE, options: requestObj){ data -> Void in
             let json = JSON(data: data)
+            print("Bathroom Writer Response: \(json)")
             var response = [String:AnyObject]()
             if let bathroomId = json["BathroomID"].int {
                 response["BathroomID"] = bathroomId
