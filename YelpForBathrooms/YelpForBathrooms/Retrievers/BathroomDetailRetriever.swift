@@ -26,7 +26,11 @@ class BathroomDetailRetriever : IBathroomDetailRetriever {
                 let profileId = subJson["ProfileID"].int
                 let bathroomId = subJson["BathroomID"].int
                 let comment = subJson["Comment"].string
-                let picture = subJson["PictureURL"].string
+                let pictureURL = subJson["PictureURL"].string
+                var picture : UIImage?
+                if let imageURL = NSURL(string: pictureURL!), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
+                    picture = image
+                }
                 let firstName = subJson["FirstName"].string
                 let lastName = subJson["LastName"].string
                 let nonExisting = subJson["Non-Existing"].boolValue
@@ -48,7 +52,7 @@ class BathroomDetailRetriever : IBathroomDetailRetriever {
                     flags.append(Flag.PAID)
                 }
                 
-                let review = Review(Id: ratingId, Rating: rating!, ProfileId: profileId!, UserName: firstName! + " " + lastName!, BathroomId: bathroomId!, Comment: comment!, Picture: picture!, Flags: flags)
+                let review = Review(Id: ratingId, Rating: rating!, ProfileId: profileId!, UserName: firstName! + " " + lastName!, BathroomId: bathroomId!, Comment: comment!, Picture: picture, Flags: flags)
                 reviews.append(review)
             }
             bathroomDetail.reviews = reviews

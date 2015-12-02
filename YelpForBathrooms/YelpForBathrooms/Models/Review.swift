@@ -16,7 +16,7 @@ class Review {
     var username : String
     var bathroomId : Int
     var comment : String
-    var picture : String //base64
+    var picture : UIImage? //base64
     var flags : [Flag]
     
 //  MARK: - INITIALIZERS
@@ -27,11 +27,11 @@ class Review {
         username = ""
         bathroomId = 0
         comment = ""
-        picture = ""
+        picture = nil
         flags = []
     }
     
-    init(Id : Int?, Rating: Double, ProfileId : Int, UserName: String, BathroomId: Int, Comment: String, Picture: String, Flags:  [Flag]){
+    init(Id : Int?, Rating: Double, ProfileId : Int, UserName: String, BathroomId: Int, Comment: String, Picture: UIImage?, Flags:  [Flag]){
         id = Id
         rating = Rating
         profileId = ProfileId

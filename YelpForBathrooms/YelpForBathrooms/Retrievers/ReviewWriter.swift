@@ -18,7 +18,13 @@ class ReviewWriter : IReviewWriter {
         params["BathroomID"] = review.bathroomId
         params["ProfileID"] = review.profileId
         params["Comment"] = review.comment
-        params["Picture"] = review.picture
+        if let picture = review.picture{
+            let pictureData = UIImageJPEGRepresentation(picture, 0)
+            let base64string = pictureData?.base64EncodedDataWithOptions(.Encoding64CharacterLineLength)
+            params["Picture"] = base64string
+        } else{
+            params["Picture"] = ""
+        }
         params["Non-Existing"] = review.flags.contains({$0.DESCRIPTION == Flag.NON_EXISTING.DESCRIPTION})
         params["Hard-To-Find"] = review.flags.contains({$0.DESCRIPTION == Flag.HARD_TO_FIND.DESCRIPTION})
         params["Public"] = review.flags.contains({$0.DESCRIPTION == Flag.PUBLIC.DESCRIPTION})

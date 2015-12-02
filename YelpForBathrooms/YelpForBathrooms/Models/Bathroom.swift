@@ -12,7 +12,7 @@ import GoogleMaps
 class Bathroom {
 
 //  MARK: - PROPERTIES
-    var id : Int
+    var id : Int?
     var title : String
     var location : CLLocationCoordinate2D
     var rating : Double
@@ -27,7 +27,7 @@ class Bathroom {
         flags = [];
     }
     
-    init(Id: Int, Title: String, Location: CLLocationCoordinate2D, Rating : Double, Flags: [Flag]){
+    init(Id: Int?, Title: String, Location: CLLocationCoordinate2D, Rating : Double, Flags: [Flag]){
         id = Id
         title = Title
         location = Location
