@@ -66,7 +66,7 @@ function appAuth (req, res, next) {
 		'/profile/retrieve',
 		'/profile/auth'
 	];
-	console.log("FIREWALL: ", req.body, req.originalUrl);
+	console.log("BFAUTH: ", req.body, req.originalUrl);
 	if (req.method === 'POST') {
 		// Check if the address is one that does not require authentication
 		for (let i = 0; i < nonAuthRequests.length; i++) {
@@ -80,7 +80,7 @@ function appAuth (req, res, next) {
 		for (let i = 0; i < sessions.length; i++) {
 			if(req.body.token === sessions[i].token) {
 				req.body.ProfileID = sessions[i].profile;
-				console.log("FIREWALL2: ", req.body);
+				console.log("AUTHED: ", req.body);
 				next();
 				return;
 			}
@@ -159,7 +159,7 @@ app.post('/bathroom/create', function(req, res){
 			if (err) { reply(res, false, err); return; }
 			// TODO: Base64 -> jpg conversion and storage
 			connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment) VALUES ?",
-			[ [[ info.Rating, info.ProfileID, insert.insertId, info.Comment ]] ],
+			[ [[ info.Rating, req.body.ProfileID, insert.insertId, info.Comment ]] ],
 			function(err, insertRating) {
 				if (err) { reply(res, false, err); return; }
 				var jres = {
@@ -232,7 +232,7 @@ app.post('/rating/create', function(req, res){
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
 		connection.query("INSERT INTO Ratings (Rating, ProfileID, BathroomID, Comment, PictureURL) VALUES ?",
-			[ [[ info.Rating, info.ProfileID, info.BathroomID, info.Comment, "" ]] ],
+			[ [[ info.Rating, req.body.ProfileID, info.BathroomID, info.Comment, "" ]] ],
 			function(err, insert) {
 			if (err) { reply(res, false, err); console.log("Create Rating failure"); return; }
 			
@@ -281,9 +281,14 @@ app.post('/rating/retrieve', function(req, res) {
 		connection.query(query, [ { "RatingID": info.RatingID } ], returnResults);
 	} else if(info.hasOwnProperty("BathroomID")) {
 		connection.query(query, [ { "BathroomID": info.BathroomID } ], returnResults);
-	} else if(info.hasOwnProperty("ProfileID")) {
-		connection.query(query, [ { "ProfileID": info.ProfileID } ], returnResults);
 	} else {
+		for (let i = 0; i < sessions.length; i++) {
+			if(req.body.token === sessions[i].token) {
+				req.body.ProfileID = sessions[i].profile;
+				connection.query(query, [ { "ProfileID": req.body.ProfileID } ], returnResults);
+				return;
+			}
+		}
 		reply(res, false, { "error": "invalid request format" });
 	}
 });

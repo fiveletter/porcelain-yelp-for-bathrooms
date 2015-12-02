@@ -135,35 +135,35 @@ describe('Ratings', function () {
 			});
 		});
 	});
-	describe('(R)etrieve Failure', function () {
-		it('Sending invalid property to server should return error statement.', function (done) {
-			options.path = '/rating/retrieve';
-			var req = http.request(options, function(res) {
-			res.setEncoding('utf8');
-				res.on('data', function (body) {
-					var data = JSON.parse(body);
-					console.log(data);
-					var response_type = data.response;
-					expect(response_type).to.equal('failure');
-					var response = data.info;
-					expect(response).to.eql({ "error": "invalid request format" });
-					done();
-				});
-			});
+	// describe('(R)etrieve Failure', function () {
+	// 	it('Sending invalid property to server should return error statement.', function (done) {
+	// 		options.path = '/rating/retrieve';
+	// 		var req = http.request(options, function(res) {
+	// 		res.setEncoding('utf8');
+	// 			res.on('data', function (body) {
+	// 				var data = JSON.parse(body);
+	// 				console.log(data);
+	// 				var response_type = data.response;
+	// 				expect(response_type).to.equal('failure');
+	// 				var response = data.info;
+	// 				expect(response).to.eql({ "error": "invalid request format" });
+	// 				done();
+	// 			});
+	// 		});
 
-			req.on('error', function (e) {
-				assert.notOk('everything', e);
-			});
+	// 		req.on('error', function (e) {
+	// 			assert.notOk('everything', e);
+	// 		});
 
-			var request = {
-				token: "DEMO-AUTO-AUTH",
-				info: { "SomethingRandom": new Date() }
-			};
+	// 		var request = {
+	// 			token: "DEMO-AUTO-AUTH",
+	// 			info: { "SomethingRandom": new Date() }
+	// 		};
 
-			req.write(JSON.stringify(request));
-			req.end();
-		});
-	});
+	// 		req.write(JSON.stringify(request));
+	// 		req.end();
+	// 	});
+	// });
 	describe('(R)etrieve array', function () {
 		it('should retrieve rating using BathroomID', function (done) {
 			options.path = '/rating/retrieve';
@@ -263,9 +263,7 @@ describe('Ratings', function () {
 
 			var request = {
 				token: "DEMO-AUTO-AUTH",
-				info: {
-					"ProfileID": 1,
-				}
+				info: {}
 			};
 			req.write(JSON.stringify(request));
 			req.end();
