@@ -18,14 +18,17 @@
 		903CEAB31C014701003BC6FF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB11C014701003BC6FF /* Login.storyboard */; };
 		903CEAB51C014ADB003BC6FF /* AddBathroom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */; };
 		903CEAB81C014E1E003BC6FF /* BathroomDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */; };
-		903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */; };
 		903CEABD1C0152C7003BC6FF /* AddBathroomReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEABB1C0152C7003BC6FF /* AddBathroomReview.storyboard */; };
 		903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */; };
 		903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC01C0154D6003BC6FF /* LoginViewController.swift */; };
 		903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */; };
 		90548B2E1C0D1178008E2DAD /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90548B2D1C0D1178008E2DAD /* RatingView.swift */; };
 		90548B301C0D8FE7008E2DAD /* ImageChooserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */; };
-		9082CB3E1C0F951B00B38969 /* DetailsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082CB3D1C0F951B00B38969 /* DetailsViewDataSource.swift */; };
+		906BE2A81C102F560085067F /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BE2A71C102F560085067F /* MapCell.swift */; };
+		906BE2AA1C1042AF0085067F /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BE2A91C1042AF0085067F /* PhotosCell.swift */; };
+		906BE2B01C105B770085067F /* BathroomDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BE2AF1C105B770085067F /* BathroomDetailsTableViewController.swift */; };
+		906BE2B21C106AB90085067F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BE2B11C106AB90085067F /* ReviewCell.swift */; };
+		906BE2B41C106DA60085067F /* photoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BE2B31C106DA60085067F /* photoCollectionViewCell.swift */; };
 		9082CB401C10167500B38969 /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082CB3F1C10167500B38969 /* DetailsHeaderView.swift */; };
 		90842D1A1C02DB6B00E20655 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90842D191C02DB6B00E20655 /* Common.swift */; };
 		90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */; };
@@ -76,14 +79,17 @@
 		903CEAB21C014701003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddBathroom.storyboard; sourceTree = "<group>"; };
 		903CEAB71C014E1E003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BathroomDetails.storyboard; sourceTree = "<group>"; };
-		903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetailsViewController.swift; sourceTree = "<group>"; };
 		903CEABC1C0152C7003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddBathroomReview.storyboard; sourceTree = "<group>"; };
 		903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomReviewViewController.swift; sourceTree = "<group>"; };
 		903CEAC01C0154D6003BC6FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBathroomViewController.swift; sourceTree = "<group>"; };
 		90548B2D1C0D1178008E2DAD /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageChooserButton.swift; sourceTree = "<group>"; };
-		9082CB3D1C0F951B00B38969 /* DetailsViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewDataSource.swift; sourceTree = "<group>"; };
+		906BE2A71C102F560085067F /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		906BE2A91C1042AF0085067F /* PhotosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		906BE2AF1C105B770085067F /* BathroomDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomDetailsTableViewController.swift; sourceTree = "<group>"; };
+		906BE2B11C106AB90085067F /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		906BE2B31C106DA60085067F /* photoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoCollectionViewCell.swift; sourceTree = "<group>"; };
 		9082CB3F1C10167500B38969 /* DetailsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
 		90842D191C02DB6B00E20655 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -205,10 +211,9 @@
 				9A8DAC141C0AD43600E22C67 /* MapViewController.swift */,
 				903CEABE1C0154A0003BC6FF /* AddBathroomReviewViewController.swift */,
 				903CEAC21C015514003BC6FF /* AddBathroomViewController.swift */,
-				903CEAB91C015230003BC6FF /* BathroomDetailsViewController.swift */,
 				903CEAC01C0154D6003BC6FF /* LoginViewController.swift */,
 				90DF30341BFD18EF00A82A9E /* ProfileViewController.swift */,
-				9082CB3D1C0F951B00B38969 /* DetailsViewDataSource.swift */,
+				906BE2AF1C105B770085067F /* BathroomDetailsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,6 +255,10 @@
 				90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */,
 				9082CB3F1C10167500B38969 /* DetailsHeaderView.swift */,
 				902D713A1C1028110022EDF9 /* FlagsCell.swift */,
+				906BE2A71C102F560085067F /* MapCell.swift */,
+				906BE2A91C1042AF0085067F /* PhotosCell.swift */,
+				906BE2B11C106AB90085067F /* ReviewCell.swift */,
+				906BE2B31C106DA60085067F /* photoCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,7 +442,6 @@
 			files = (
 				903CEAC11C0154D6003BC6FF /* LoginViewController.swift in Sources */,
 				9A6028EB1C057912000D42DF /* FakeBathroomRetriever.swift in Sources */,
-				9082CB3E1C0F951B00B38969 /* DetailsViewDataSource.swift in Sources */,
 				90DF30381BFD2A5600A82A9E /* UIColorExtension.swift in Sources */,
 				90548B2E1C0D1178008E2DAD /* RatingView.swift in Sources */,
 				9A1C7DFF1C04F84600B0D410 /* BathroomRetriever.swift in Sources */,
@@ -445,6 +453,7 @@
 				9A6028F11C057CA2000D42DF /* Review.swift in Sources */,
 				9AC1615E1C0D767200925DB6 /* ReviewWriter.swift in Sources */,
 				9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */,
+				906BE2B01C105B770085067F /* BathroomDetailsTableViewController.swift in Sources */,
 				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
 				903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */,
 				903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */,
@@ -456,18 +465,21 @@
 				9A8D56271C02A67500648C18 /* NavigationReplacementSegue.swift in Sources */,
 				9A6028EF1C05798D000D42DF /* BathroomDetailRetriever.swift in Sources */,
 				9AFA9D321C0AB031003F45FE /* UrlManager.swift in Sources */,
+				906BE2A81C102F560085067F /* MapCell.swift in Sources */,
 				9AFA9D2E1C0A9408003F45FE /* FakeHttpRetriever.swift in Sources */,
 				9A6028ED1C057920000D42DF /* FakeBathroomDetailRetriever.swift in Sources */,
 				9082CB401C10167500B38969 /* DetailsHeaderView.swift in Sources */,
 				9AF9EC461C02621200A7F7CE /* UserManager.swift in Sources */,
 				9A9260301C0A6256005F8FC8 /* UIViewExtension.swift in Sources */,
 				9A1C7E011C04F8A400B0D410 /* HttpRetriever.swift in Sources */,
+				906BE2B41C106DA60085067F /* photoCollectionViewCell.swift in Sources */,
 				90548B301C0D8FE7008E2DAD /* ImageChooserButton.swift in Sources */,
-				903CEABA1C015230003BC6FF /* BathroomDetailsViewController.swift in Sources */,
 				9A77058A1C060D070021CC24 /* BathroomSnippetView.swift in Sources */,
+				906BE2B21C106AB90085067F /* ReviewCell.swift in Sources */,
 				9AFA9D2C1C0A93D0003F45FE /* IHttpRetriever.swift in Sources */,
 				9A8DAC171C0CA2C100E22C67 /* BathroomWriter.swift in Sources */,
 				9A8D56291C03706200648C18 /* Flags.swift in Sources */,
+				906BE2AA1C1042AF0085067F /* PhotosCell.swift in Sources */,
 				9AC1615C1C0D756D00925DB6 /* ConfigManager.swift in Sources */,
 				9A9EE91C1C0EC13700D2A14E /* LocationManager.swift in Sources */,
 				902D713B1C1028110022EDF9 /* FlagsCell.swift in Sources */,

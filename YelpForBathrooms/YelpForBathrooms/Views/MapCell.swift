@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import GoogleMaps
 
-class FlagsCell: UITableViewCell{
-
+class MapCell: UITableViewCell{
     
+    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+
 }

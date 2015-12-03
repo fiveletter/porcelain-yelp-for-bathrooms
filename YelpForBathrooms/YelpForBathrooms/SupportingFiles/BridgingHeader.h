@@ -14,3 +14,4 @@
 #import "../../Pods/YLTableView/Classes/YLTableViewDataSourceSubclass.h"
 #import "../../Pods/YLTableView/Classes/YLTableViewHeaderFooterView.h"
 #import "../../Pods/YLTableView/Classes/YLTableViewPrivate.h"
+#import "../../Pods/YLTableView/Classes/YLTableViewChildViewControllerCell.h"
