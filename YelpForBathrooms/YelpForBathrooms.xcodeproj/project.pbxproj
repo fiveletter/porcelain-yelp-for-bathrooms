@@ -47,6 +47,7 @@
 		9A8DAC171C0CA2C100E22C67 /* BathroomWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DAC161C0CA2C100E22C67 /* BathroomWriter.swift */; };
 		9A9260301C0A6256005F8FC8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92602F1C0A6256005F8FC8 /* UIViewExtension.swift */; };
 		9A9EE91C1C0EC13700D2A14E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EE91B1C0EC13700D2A14E /* LocationManager.swift */; };
+		9A9EE91E1C10120F00D2A14E /* ServerNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9EE91D1C10120F00D2A14E /* ServerNameManager.swift */; };
 		9AC1615C1C0D756D00925DB6 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1615B1C0D756D00925DB6 /* ConfigManager.swift */; };
 		9AC1615E1C0D767200925DB6 /* ReviewWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1615D1C0D767200925DB6 /* ReviewWriter.swift */; };
 		9AC161601C0D7D5300925DB6 /* IBathroomWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1615F1C0D7D5300925DB6 /* IBathroomWriter.swift */; };
@@ -103,6 +104,7 @@
 		9A8DAC161C0CA2C100E22C67 /* BathroomWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomWriter.swift; sourceTree = "<group>"; };
 		9A92602F1C0A6256005F8FC8 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9A9EE91B1C0EC13700D2A14E /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9A9EE91D1C10120F00D2A14E /* ServerNameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerNameManager.swift; sourceTree = "<group>"; };
 		9AC1615B1C0D756D00925DB6 /* ConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		9AC1615D1C0D767200925DB6 /* ReviewWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriter.swift; sourceTree = "<group>"; };
 		9AC1615F1C0D7D5300925DB6 /* IBathroomWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBathroomWriter.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				9AFA9D311C0AB031003F45FE /* UrlManager.swift */,
 				9AF9EC451C02621200A7F7CE /* UserManager.swift */,
 				9A9EE91B1C0EC13700D2A14E /* LocationManager.swift */,
+				9A9EE91D1C10120F00D2A14E /* ServerNameManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				9A1C7DF91C04F72800B0D410 /* IBathroomRetriever.swift in Sources */,
 				90DF30351BFD18EF00A82A9E /* ProfileViewController.swift in Sources */,
 				903CEABF1C0154A0003BC6FF /* AddBathroomReviewViewController.swift in Sources */,
+				9A9EE91E1C10120F00D2A14E /* ServerNameManager.swift in Sources */,
 				903CEAC31C015514003BC6FF /* AddBathroomViewController.swift in Sources */,
 				9A8DAC151C0AD43600E22C67 /* MapViewController.swift in Sources */,
 				9A88883E1C0ACA4500BFF3C5 /* ProfileRetriever.swift in Sources */,

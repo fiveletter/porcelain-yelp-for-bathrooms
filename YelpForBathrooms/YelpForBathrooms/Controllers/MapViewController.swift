@@ -25,7 +25,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     let locationManager = CLLocationManager()
     let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
     let gpaViewController = GooglePlacesAutocomplete(apiKey: ConfigManager.GOOGLE_PLACES_API_KEY, placeType: .Address)
-    var logged_in = true
 
 // MARK: - LIFECYCLE FUNCTIONS
 
@@ -35,15 +34,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         styleNavigationBar()
         styleButtons()
         styleDivider()
-       
-        gpaViewController.placeDelegate = self
+        styleGooglePlacesAutoCompleteBar()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
+        gpaViewController.placeDelegate = self
         mapView.delegate = self
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        populateMapWithBathrooms()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -157,7 +159,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @IBAction func addBathroom() {
-        performSegueWithIdentifier("addBathroomSegue", sender: self)
+        if UserManager.sharedInstance.IsSignedIn {
+            performSegueWithIdentifier("addBathroomSegue", sender: self)
+        } else {
+            let ac = UIAlertController(title: "Sign in to create a bathroom.", message: "Not signed in.", preferredStyle: UIAlertControllerStyle.Alert)
+            ac.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
     }
 }
 
@@ -193,6 +202,15 @@ extension MapViewController {
     
     func styleDivider(){
         self.divider?.layer.backgroundColor = UIColor.grayColor().CGColor
+    }
+    
+    func styleGooglePlacesAutoCompleteBar() {
+        self.gpaViewController.navigationBar.barTintColor = UIColor.colorFromHexRGBValue(0x26C27F)
+        self.gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
+        self.gpaViewController.navigationBar.translucent = false
+        self.gpaViewController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.gpaViewController.navigationBar.topItem?.title = "Where Do You Need to Poo?"
+        gpaViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: gpaViewController, action: "close")
     }
     
     func styleNavigationBar() {

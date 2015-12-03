@@ -18,20 +18,23 @@ class BathroomDetailRetriever : IBathroomDetailRetriever {
         var reviews = [Review]()
         var parameters = [String: AnyObject]()
         parameters["BathroomID"] = bathroomId
-        print("Bathroom Details Retrieval Request: \(parameters)")
-        httpRetriever.makeRetrievalRequest(url, options: parameters) { data -> Void in
+        
+        var requestObj = [String:AnyObject]()
+        requestObj["info"] = parameters
+        print("Bathroom Details Retrieval Request: \(requestObj)")
+        httpRetriever.makeRetrievalRequest(url, options: requestObj) { data -> Void in
             let json = JSON(data: data)
             print("Bathroom Details Retrieval Response: \(json)")
-            if let status = json["response"].string where status == "uccess"{
+            if let status = json["response"].string where status == "success"{
                 for (_, subJson): (String, JSON) in json["info"] {
                     let ratingId = subJson["RatingID"].int
                     let rating = subJson["Rating"].double
                     let profileId = subJson["ProfileID"].int
                     let bathroomId = subJson["BathroomID"].int
                     let comment = subJson["Comment"].string
-                    let pictureURL = subJson["PictureURL"].string
+                    let pictureURL = ServerNameManager.KAMMCE_IO_10000 + subJson["PictureURL"].string!
                     var picture : UIImage?
-                    if let imageURL = NSURL(string: pictureURL!), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
+                    if let imageURL = NSURL(string: pictureURL), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
                         picture = image
                     }
                     let firstName = subJson["FirstName"].string
@@ -55,7 +58,7 @@ class BathroomDetailRetriever : IBathroomDetailRetriever {
                         flags.append(Flag.PAID)
                     }
                     
-                    let review = Review(Id: ratingId, Rating: rating!, ProfileId: profileId!, UserName: firstName! + " " + lastName!, BathroomId: bathroomId!, Comment: comment!, Picture: picture, Flags: flags)
+                    let review = Review(Id: ratingId, Rating: rating!, ProfileId: profileId!, UserName: " ", BathroomId: bathroomId!, Comment: comment!, Picture: picture, Flags: flags)
                     reviews.append(review)
                 }
                 bathroomDetail.reviews = reviews

@@ -197,12 +197,17 @@ extension AddBathroomReviewViewController{
         reviewWriter.createReview(review){ dict -> Void in
             NOOP("")
         }
-        
+    
         print("####### VALUES TO BE SENT #######")
         print(rating)
         print(flags)
         print(comment)
         print(picture)
+        
+        var controllers = self.navigationController?.viewControllers
+        var previous = (controllers?.count)! - 2
+        var previousController = controllers![previous]
+        self.navigationController?.popToViewController(previousController, animated: true)
     }
     
     func setupRatingView(){
