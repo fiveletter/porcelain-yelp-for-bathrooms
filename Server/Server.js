@@ -261,7 +261,9 @@ app.post('/bathroom/retrieve', function(req, res){
 	var results = v.validate(info, schema);
 	// If results show that there are no errors, then do action
 	if(results.errors.length === 0) {
-		connection.query(`SELECT BathroomID, Longitude, Latitude, Title, ${BathroomFlagSubQuery} FROM Bathrooms`, 
+		connection.query(`SELECT BathroomID, Longitude, Latitude, Title, ${BathroomFlagSubQuery} FROM Bathrooms WHERE 
+			Longitude <= ? AND Longitude >= ? AND Latitude <= ? AND Latitude >= ?`,
+		[ info.MaxLong, info.MinLong, info.MaxLat, info.MinLat ], 
 		function(err, rows) {
 			if (err) { reply(res, false, err); return; }
 			reply(res, true, rows);
