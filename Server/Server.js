@@ -98,11 +98,11 @@ function appAuth (req, res, next) {
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb'}));
 // authentication method
 app.use(appAuth);
 // To serve static files using built-in middleware function in Express
-app.use(express.static('fs'));
+app.use("/fs", express.static('fs'));
 // Init validator
 var v = new Validator();
 
@@ -366,7 +366,7 @@ app.post('/rating/retrieve', function(req, res) {
 		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=4) as "Public"
 	`;
 	
-	var query = `SELECT RatingID, Timestamp, Rating, ProfileID, BathroomID, Comment, PictureURL, ${flagSubQuery} FROM Ratings WHERE ? LIMIT 1`;
+	var query = `SELECT RatingID, Timestamp, Rating, ProfileID, BathroomID, Comment, PictureURL, ${flagSubQuery} FROM Ratings WHERE ? `;
 
 	var returnResults = function(err, rows) {
 		if (err) { reply(res, false, err); return; }
