@@ -1,0 +1,6 @@
+framework module YLTableView {
+  umbrella header "YLTableView-umbrella.h"
+
+  export *
+  module * { export * }
+}

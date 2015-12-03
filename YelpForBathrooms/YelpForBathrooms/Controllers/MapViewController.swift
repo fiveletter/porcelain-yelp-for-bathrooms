@@ -50,7 +50,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
 // MARK: - VIEW CONTROLLER
     @IBAction func searchBathrooms(sender: UIButton) {
-        populateMapWithBathrooms()
+//        populateMapWithBathrooms()
+        performSegueWithIdentifier("bathroomDetailsSegue", sender: self)
     }
     
     @IBAction func searchAddress(sender: UIButton) {

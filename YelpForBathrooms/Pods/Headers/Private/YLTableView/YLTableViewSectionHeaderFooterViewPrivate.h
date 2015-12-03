@@ -1,0 +1,1 @@
+../../../YLTableView/Classes/YLTableViewSectionHeaderFooterView/YLTableViewSectionHeaderFooterViewPrivate.h

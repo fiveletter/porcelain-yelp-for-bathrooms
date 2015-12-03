@@ -8,4 +8,5 @@ target 'YelpForBathrooms' do
   pod 'SwiftHTTP', '~> 1.0.2'
   pod 'Alamofire', '~> 3.0'
   pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
+  pod 'YLTableView', '~> 1.0'
 end
