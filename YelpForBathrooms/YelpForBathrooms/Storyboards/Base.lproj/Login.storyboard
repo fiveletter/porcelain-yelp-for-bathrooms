@@ -17,6 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4b-ik-IF8">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google +" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-9A-Nfa">
                                 <rect key="frame" x="220" y="102" width="160" height="20.5"/>
                                 <animations/>
@@ -36,14 +41,25 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="x4b-ik-IF8" secondAttribute="trailing" id="2qT-e1-gFF"/>
+                            <constraint firstItem="x4b-ik-IF8" firstAttribute="top" secondItem="ceE-9A-Nfa" secondAttribute="top" id="66I-6L-X0p"/>
                             <constraint firstItem="83H-l1-Ky2" firstAttribute="top" secondItem="qFt-WC-NMZ" secondAttribute="bottom" constant="290" id="7e0-e2-xiB"/>
+                            <constraint firstItem="x4b-ik-IF8" firstAttribute="top" secondItem="Uqr-yf-C5P" secondAttribute="bottom" id="BqY-d6-tkd"/>
                             <constraint firstItem="ceE-9A-Nfa" firstAttribute="top" secondItem="Uqr-yf-C5P" secondAttribute="bottom" constant="82" id="Gdx-OV-0Ve"/>
+                            <constraint firstItem="x4b-ik-IF8" firstAttribute="leading" secondItem="oA0-1D-x2X" secondAttribute="leading" id="KOw-aa-lOb"/>
+                            <constraint firstItem="83H-l1-Ky2" firstAttribute="top" secondItem="x4b-ik-IF8" secondAttribute="bottom" id="eAA-Vo-8cu"/>
                             <constraint firstItem="qFt-WC-NMZ" firstAttribute="top" secondItem="ceE-9A-Nfa" secondAttribute="bottom" constant="59" id="jKe-oB-mph"/>
                             <constraint firstItem="ceE-9A-Nfa" firstAttribute="centerX" secondItem="oA0-1D-x2X" secondAttribute="centerX" id="lOf-Hl-AXp"/>
                             <constraint firstItem="qFt-WC-NMZ" firstAttribute="centerX" secondItem="oA0-1D-x2X" secondAttribute="centerX" id="mPG-SW-R9L"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="66I-6L-X0p"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundWebView" destination="x4b-ik-IF8" id="eAp-aY-OQw"/>
                         <outlet property="signInButton" destination="qFt-WC-NMZ" id="Bku-2w-D6P"/>
                         <segue destination="0fF-fC-QPK" kind="showDetail" identifier="profileSegue" customClass="NavigationReplacementSegue" customModule="YelpForBathrooms" customModuleProvider="target" action="showViewController:sender:" id="NSY-Pc-aDd"/>
                     </connections>

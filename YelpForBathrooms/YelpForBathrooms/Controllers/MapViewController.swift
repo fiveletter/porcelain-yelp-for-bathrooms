@@ -78,7 +78,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             case "bathroomDetailsSegue":
                 let marker = sender as! GMSMarker
                 let bathroom = marker.userData as! Bathroom
-                let bathroomDetailsViewController = segue.destinationViewController as! BathroomDetailsViewController
+                let bathroomDetailsViewController = segue.destinationViewController as! BathroomDetailsTableViewController
                 bathroomDetailsViewController.bathroom = bathroom
             default:
                 NOOP("UNREACHABLE")

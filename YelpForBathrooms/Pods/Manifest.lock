@@ -19,6 +19,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0.0)
   - SwiftHTTP (1.0.2)
   - SwiftyJSON (2.3.1)
+  - YLTableView (1.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - GoogleSignIn (~> 2.4.0)
   - SwiftHTTP (~> 1.0.2)
   - SwiftyJSON (~> 2.3)
+  - YLTableView (~> 1.0)
 
 EXTERNAL SOURCES:
   GooglePlacesAutocomplete:
@@ -49,5 +51,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   SwiftHTTP: 6d8ca031a9ce613a01e8f18b497503887b0b50c0
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  YLTableView: 0b10cf1d3af0c871a6836f525768b5153750e68a
 
 COCOAPODS: 0.39.0

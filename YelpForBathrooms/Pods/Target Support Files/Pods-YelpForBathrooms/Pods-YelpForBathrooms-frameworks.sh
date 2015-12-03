@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-YelpForBathrooms/GooglePlacesAutocomplete.framework"
   install_framework "Pods-YelpForBathrooms/SwiftHTTP.framework"
   install_framework "Pods-YelpForBathrooms/SwiftyJSON.framework"
+  install_framework "Pods-YelpForBathrooms/YLTableView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-YelpForBathrooms/Alamofire.framework"
   install_framework "Pods-YelpForBathrooms/GooglePlacesAutocomplete.framework"
   install_framework "Pods-YelpForBathrooms/SwiftHTTP.framework"
   install_framework "Pods-YelpForBathrooms/SwiftyJSON.framework"
+  install_framework "Pods-YelpForBathrooms/YLTableView.framework"
 fi

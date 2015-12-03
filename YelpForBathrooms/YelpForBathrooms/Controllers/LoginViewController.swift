@@ -13,12 +13,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
 // MARK: - PROPERTIES
     
     @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var backgroundWebView: UIWebView!
+    
     var profileRetriever : IProfileRetriever = ProfileRetriever()
 // MARK: - LIFECYCLE FUNCTIONS
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setupBackground()
         
         if let path = NSBundle.mainBundle().pathForResource("GoogleService-Info", ofType: "plist") {
             if let myDict = NSDictionary(contentsOfFile: path) {
@@ -59,7 +62,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         }
     }
     
-    
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
         if let err = error {
             print("Error disconnection \(err)")
@@ -67,5 +69,21 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             
         }
     }
+}
 
+// MARK: - SETUP FUNCTIONS
+
+extension LoginViewController{
+    func setupBackground(){
+        let filePath = NSBundle.mainBundle().pathForResource("giphy", ofType: ".gif")!
+        print(filePath)
+        let gif = NSData(contentsOfFile: filePath)
+        if gif == nil{
+            print("Can't find file!")
+        }
+        self.backgroundWebView.loadData(gif!, MIMEType: "image/gif", textEncodingName: "utf-8", baseURL: NSURL())
+        self.backgroundWebView.userInteractionEnabled = false
+        
+        
+    }
 }
