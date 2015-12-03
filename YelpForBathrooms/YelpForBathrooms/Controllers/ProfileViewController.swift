@@ -13,15 +13,9 @@ class ProfileViewController: UIViewController {
 // MARK: - PROPERTIES
 
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var dislikesLabel: UILabel!
-    @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var numOfDislikesLabel: UILabel!
-    @IBOutlet weak var numOfLikesLabel: UILabel!
-    @IBOutlet weak var numOfReviewsLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var reviewLabel: UILabel!
 
 // MARK: - LIFECYCLE FUNCTIONS
     
@@ -30,6 +24,17 @@ class ProfileViewController: UIViewController {
         
         // Set label strings
         nameLabel.text = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")[0].capitalizedString
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: "profilePicTapped")
+        profileImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @IBAction func profilePicTapped(){
+        let ac = UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        ac.addAction(UIAlertAction(title: "Gallery", style: .Default, handler: choosePhoto))
+        ac.addAction(UIAlertAction(title: "Camera", style: .Default, handler: newPhoto))
+        ac.addAction(UIAlertAction(title: "Close", style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,13 +69,38 @@ class ProfileViewController: UIViewController {
     
     func setTextColorOfView(color: UIColor){
         nameLabel.textColor = color
-        numOfReviewsLabel.textColor = color
-        numOfLikesLabel.textColor = color
-        numOfDislikesLabel.textColor = color
-        reviewLabel.textColor = color
-        likesLabel.textColor = color
-        dislikesLabel.textColor = color
         logoutButton.titleLabel?.textColor = color
     }
     
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        let profileImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        profileImageView.image = profileImage
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func choosePhoto(action: UIAlertAction!){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            picker.sourceType = .PhotoLibrary
+            presentViewController(picker, animated: true, completion: nil)
+        }
+    }
+    
+    func newPhoto(action: UIAlertAction!){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            picker.sourceType = .Camera
+            presentViewController(picker, animated: true, completion: nil)
+        }
+    }
 }
