@@ -16,6 +16,7 @@
     "express": "",
     "forever-monitor": "",
     "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.6",
     "image-type": "^2.1.0",
     "jsonschema": "",
     "mysql": "",

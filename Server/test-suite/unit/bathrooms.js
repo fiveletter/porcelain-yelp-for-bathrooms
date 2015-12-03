@@ -188,10 +188,10 @@ describe('Bathrooms: Testing CRUD API', function () {
 				info: {
 					"Longitude": -121.88130950927734000000,
 					"Latitude": 37.33691787719726600000,
-					"MinLat": 10,
-		            "MaxLat": 10,
-		            "MinLong": 10,
-		            "MaxLong": 10
+					"MinLat": 30,
+		            "MaxLat": 40,
+		            "MinLong": -150,
+		            "MaxLong": -100
 				}
 			};
 			req.write(JSON.stringify(request));

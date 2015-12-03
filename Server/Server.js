@@ -11,6 +11,13 @@ var Validator   = require('jsonschema').Validator;
 var mysql       = require('mysql');
 var PhotoGenerator = require('./photo-generator');
 var photo = new PhotoGenerator();
+var google = require('googleapis');
+var plus = google.plus('v1');
+var OAuth2 = google.auth.OAuth2;
+const CLIENT_ID = "32596942715-55efrjhgepaqloiaoakaua1eoin9n9cp.apps.googleusercontent.com"
+//"672822966449-efaa1229enfq2o5kfbbr1p82k7vdacm5.apps.googleusercontent.com";
+const CLIENT_SECRET = "eJ2XyXoAUl5eF9fzy4SX3qwf";
+
 //// MySQL Setup
 var connection;
 var db_config = JSON.parse(
@@ -542,10 +549,84 @@ app.post('/rating/delete', function(req, res){
 
 /* =============== User =============== */
 app.post('/profile/auth', function(req, res) {
-	console.log('POST /profile/create');
+	console.log('POST /profile/auth');
+	
 	console.log(req.body);
+	var info = req.body.info;
+	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
-	res.end('thanks');
+	// Structure that the input data must conform to 
+	var schema = {
+		"type": "object",
+		"properties": {
+			"access_token": { "type": "string" },
+			"refresh_token": { "type": "string" },
+		},
+		"required": [ "access_token", "refresh_token" ]
+	};
+	// Validate the input data against the schema
+	var results = v.validate(info, schema);
+	// If results show that there are no errors, then do action
+	if(results.errors.length === 0) {
+		var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET);
+		// Retrieve tokens via token exchange explained above or set them:
+		oauth2Client.setCredentials({
+		  access_token:   info.access_token,
+		  refresh_token:  info.refresh_token
+		});
+
+		var FirstName, LastName, Email, ProfileID;
+
+		var grabUserInfo = function() {
+			return new Promise(function(resolve) {
+				plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+					if(err) { reply(res, false, { "error": "FAILED TO AUTHENTICATE" } ); }
+					// handle err and response
+					FirstName = response.name.familyName;
+					LastName = response.name.givenName;
+					Email = response.emails[0].value;
+					console.log(err);
+					console.log(response);
+					resolve();
+				});
+			});
+		};
+		var checkDatabaseForUser = function() {
+			return new Promise(function(resolve) {
+				connection.query("SELECT ProfileID FROM Profiles WHERE ?", [ { "Email": Email } ], function(err, rows) {
+					if(err) { reply(res, false, { "error": "FAILED TO AUTHENTICATE" }); return; }
+					if(rows.length != 0) {
+						resolve(true);
+					} else {
+						ProfileID = rows[0].ProfileID;
+						resolve(false);
+					}
+				});
+			});
+		};
+		var addUserToDatabase = function(isInServer) {
+			return new Promise(function(resolve) {
+				if(isInServer) {
+					resolve();
+				} else {
+					connection.query("INSERT INTO Profiles (Email, FirstName, LastName) VALUES ? ", [ [[ Email, FirstName, LastName ]] ], function(err, insert) {
+						if(err) { reply(res, false, { "error": "FAILED TO CREATE USER" }); return; }
+						ProfileID = insert.insertId;
+						resolve();
+					});
+				}
+			});
+		};
+		var pushUserIntoSessions = function() {
+			sessions.push({
+				token: info.access_token,
+				refresh: info.refresh_token,
+				profile: ProfileID
+			});
+		};
+	} else {
+		reply(res, false, results.errors);
+	}
 });
 
 // https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=XYZ123

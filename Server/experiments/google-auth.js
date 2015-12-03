@@ -1,31 +1,19 @@
-var GoogleAuth = require('google-auth-library');
+var google = require('googleapis');
+var plus = google.plus('v1');
+var OAuth2 = google.auth.OAuth2;
+const CLIENT_ID = "32596942715-55efrjhgepaqloiaoakaua1eoin9n9cp.apps.googleusercontent.com"
+//"672822966449-efaa1229enfq2o5kfbbr1p82k7vdacm5.apps.googleusercontent.com";
+const CLIENT_SECRET = "eJ2XyXoAUl5eF9fzy4SX3qwf";
+var oauth2Client = new OAuth2(CLIENT_ID, CLIENT_SECRET);
 
-// Get the environment configured authorization
-(new GoogleAuth).getApplicationDefault(function(err, authClient) {
-  if (err === null) {
-    // Inject scopes if they have not been injected by the environment
-    if (authClient.createScopedRequired && authClient.createScopedRequired()) {
-      var scopes = [  
-      	'https://www.googleapis.com/auth/plus.login',
-  		'https://www.googleapis.com/auth/plus.profile.emails.read'
-      ];
-      authClient = authClient.createScoped(scopes);
-    }
-
-    // Fetch the access token
-    var _ = require(lodash);
-    var optionalUri = null;  // optionally specify the URI being authorized
-    var reqHeaders = {};
-
-    authClient.getRequestMetadata(optionalUri, function(err, headers) {
-      if (err === null) {
-        // Use authorization headers
-        reqHeaders = _.merge(allHeaders, headers);
-      }
-      console.log(err);
-      console.log(headers);
-    });
-  }
+// Retrieve tokens via token exchange explained above or set them:
+oauth2Client.setCredentials({
+  access_token:   'ya29.PwKHlTsQ-MNhgkQU4o9kTbctpIbx7TPcFSbMkKdcIkYXKToUiD7QsmZow-gdNxMBeyL4',
+  refresh_token:  '1/O5maj_aFiGSgqu9XsHqOKYHNkoKMUhaoPtV65s42tjo'
 });
 
-//ALTER TABLE `Porcelain`.`Bathrooms` CHANGE COLUMN `Longitude` `Longitude` FLOAT(28,21) NOT NULL , CHANGE COLUMN `Latitude` `Latitude` FLOAT(28,21) NOT NULL;
+plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+  // handle err and response
+  console.log(err);
+  console.log(response);
+});
