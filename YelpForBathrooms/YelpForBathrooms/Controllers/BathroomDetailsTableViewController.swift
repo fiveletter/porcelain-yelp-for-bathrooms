@@ -13,34 +13,47 @@ class BathroomDetailsTableViewController: UITableViewController {
     var bathroom: Bathroom!
     var reviews: [Review]!
     var photos = [UIImage]()
+    var bathroomDetailsRetriever : IBathroomDetailRetriever = BathroomDetailRetriever()
+    var isLoadingReviews = false;
     
     func populateData(){
         // POPULATE DATA FOR REVIEWS HERE!!!
-        let latDelta: Double = 100
-        let longDelta: Double = 100
-        let center = CLLocationCoordinate2D(latitude: (100 + 100)/2, longitude: (100 + 100)/2)
-        bathroom = Bathroom(Id: 0, Title: "SJSU ENGR 2nd Floor", Location: CLLocationCoordinate2D(latitude: center.latitude + Double(Double(arc4random()) / Double(UINT32_MAX)) * latDelta, longitude: center.longitude + Double(Double(arc4random()) / Double(UINT32_MAX)) * longDelta), Rating: 4.0, Flags: nil)
-        reviews = [Review(Id: 10, Rating: 5, ProfileId: 12, UserName: "Big booty Bitch", BathroomId: 0, Comment: "FUCKIN UP ALL NIGHT", Picture: UIImage(named: "Doge"), Flags: [Flag.HARD_TO_FIND, Flag.PAID]), Review(Id: 10, Rating: 4, ProfileId: 12, UserName: "ASS CRACK", BathroomId: 0, Comment: "GOTTA GET THIS SHIT DONE!!!", Picture: UIImage(named: "Doge"), Flags: [Flag.HARD_TO_FIND, Flag.PAID]), Review(Id: 10, Rating: 3, ProfileId: 12, UserName: "ALMOST MORNING JR", BathroomId: 0, Comment: "SOMETIMES I WANT TO CRAWL INTO BED AND CRY MY HEART OUT BECAUSE HOLY GOSH AM I STILL AWAKE TO SEEE THE DAY TURN BACK TO DAY!!! I FINISHED THE BASIC IMPLMENTATION BITCHESSSSSS", Picture: UIImage(named: "Doge"), Flags: [Flag.HARD_TO_FIND, Flag.PAID]), Review(Id: 10, Rating: 2, ProfileId: 12, UserName: "Sorry", BathroomId: 0, Comment: "Sorry for all the profanity that came from this. I'm just glad that I finished the basic implementation.", Picture: UIImage(named: "Doge"), Flags: [Flag.HARD_TO_FIND, Flag.PAID])]
+        isLoadingReviews = true;
         
-        // Grabs Photos from reviews
-        getPhotosFromReviews(reviews)
+        bathroomDetailsRetriever.GetBathroomDetail(bathroom.id!){ bathroomDetails -> Void in
+            if let bathroomDetails = bathroomDetails{
+                self.reviews = bathroomDetails.reviews
+                self.getPhotosFromReviews(self.reviews)
+            }
+            self.isLoadingReviews = false
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
     }
 
 // MARK: - LIFETIME FUNCTIONS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateData()
+        self.setupTableView()
         styleNagivationBar()
         
         setupNavigationBar()
-        setupTableView()
+        populateData()
     }
     
 // MARK: - HELPER FUNCTIONS
     
     func addReview(){
-        performSegueWithIdentifier("addReview", sender: self)
+        if UserManager.sharedInstance.IsSignedIn {
+            performSegueWithIdentifier("addReview", sender: self)
+        } else {
+            let ac = UIAlertController(title: "Sign in to add a review", message: "User not signed in", preferredStyle: UIAlertControllerStyle.Alert)
+            ac.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
     }
     
     func getPhotosFromReviews(reviewsList: [Review]){
@@ -92,7 +105,11 @@ class BathroomDetailsTableViewController: UITableViewController {
         case 0:
             numberOfRows = 4
         case 1:
-            numberOfRows = reviews.count
+            if isLoadingReviews {
+                numberOfRows = 0
+            } else {
+                numberOfRows = reviews.count
+            }
         default:
             NOOP("SHOULD NOT GET HERE!!")
         }
@@ -103,55 +120,117 @@ class BathroomDetailsTableViewController: UITableViewController {
 // I KNOW ITS A LONG FUNCTION BUT WHATEVER! >:(
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCellWithIdentifier("reviewCell") as! ReviewCell
-            let review = reviews[indexPath.row]
-            cell.nameLabel.text = review.username
-            cell.commentTextArea.text = review.comment
-            cell.ratingView.notSelectedImages = [
-                UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
-                UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
-            cell.ratingView.fullSelectedImage = [
-                UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
-                UIImage(named: "Silver")!, UIImage(named: "Porcelain")!]
-            cell.ratingView.editable = false
-            cell.ratingView.rating = Int(review.rating)
-            cell.frameView.layer.borderColor = UIColor.blackColor().CGColor
-            cell.frameView.layer.borderWidth = 1.0
-            cell.frameView.layer.cornerRadius = 10
-            return cell
+        if !isLoadingReviews {
+            if indexPath.section == 1{
+                let cell = tableView.dequeueReusableCellWithIdentifier("reviewCell") as! ReviewCell
+                let review = reviews[indexPath.row]
+                cell.nameLabel.text = review.username
+                cell.commentTextArea.text = review.comment
+                cell.ratingView.notSelectedImages = [
+                    UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
+                    UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
+                cell.ratingView.fullSelectedImage = [
+                    UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
+                    UIImage(named: "Silver")!, UIImage(named: "Porcelain")!] 
+                cell.ratingView.rating = Int(review.rating)
+                cell.ratingView.editable = false
+                cell.frameView.layer.borderColor = UIColor.blackColor().CGColor
+                cell.frameView.layer.borderWidth = 1.0
+                cell.frameView.layer.cornerRadius = 10
+                return cell
 
-        }
-        
-        switch(indexPath.item){
-        case 0:
-            let headerCell = tableView.dequeueReusableCellWithIdentifier("header") as! DetailsHeaderView
-            headerCell.titleLabel.text = bathroom.title
-            headerCell.headerImageView.image = reviews[0].picture ?? UIImage(named: "Doge")
-            headerCell.ratingView.notSelectedImages = [
-                UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
-                UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
-            headerCell.ratingView.fullSelectedImage = [
-                UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
-                UIImage(named: "Silver")!, UIImage(named: "Porcelain")!]
-            headerCell.ratingView.editable = false
-            headerCell.ratingView.rating = Int(bathroom.rating!)
-            headerCell.imageView?.image?.alpha(0.6)
-            return headerCell
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("flagCell") as! FlagsCell
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("mapCell") as! MapCell
-            cell.mapView.settings.setAllGesturesEnabled(false)
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier("photosCell") as! PhotosCell
-            cell.collectionView.backgroundColor = UIColor.whiteColor()
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("aCell")!
-            return cell
+            }
+            
+            switch(indexPath.item){
+            case 0:
+                let headerCell = tableView.dequeueReusableCellWithIdentifier("header") as! DetailsHeaderView
+                headerCell.titleLabel.text = bathroom.title
+                let picReviews = reviews.filter(){
+                    if let _ = $0.picture {
+                        return true;
+                    }
+                    return false
+                }
+                headerCell.headerImageView.image = picReviews.first?.picture ?? UIImage(named: "Doge")
+                headerCell.ratingView.notSelectedImages = [
+                    UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
+                    UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
+                headerCell.ratingView.fullSelectedImage = [
+                    UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
+                    UIImage(named: "Silver")!, UIImage(named: "Porcelain")!]
+                headerCell.ratingView.editable = false
+                headerCell.ratingView.rating = Int(bathroom.rating!)
+                headerCell.imageView?.image?.alpha(0.6)
+                return headerCell
+            case 1:
+                let cell = tableView.dequeueReusableCellWithIdentifier("flagCell") as! FlagsCell
+                
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCellWithIdentifier("mapCell") as! MapCell
+                cell.mapView.settings.setAllGesturesEnabled(false)
+                cell.mapView.animateToLocation(bathroom.location)
+                cell.mapView.animateToZoom(15)
+                let marker = GMSMarker(position: bathroom.location)
+                marker.map = cell.mapView
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCellWithIdentifier("photosCell") as! PhotosCell
+                cell.collectionView.backgroundColor = UIColor.whiteColor()
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCellWithIdentifier("aCell")!
+                return cell
+            }
+        } else {
+            if indexPath.section == 1 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("reviewCell") as! ReviewCell
+                return cell
+            }
+            switch(indexPath.item){
+            case 0:
+                let headerCell = tableView.dequeueReusableCellWithIdentifier("header") as! DetailsHeaderView
+                headerCell.titleLabel.text = bathroom.title
+                headerCell.headerImageView.image = UIImage(named: "Doge")
+                headerCell.ratingView.notSelectedImages = [
+                    UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
+                    UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
+                headerCell.ratingView.fullSelectedImage = [
+                    UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
+                    UIImage(named: "Silver")!, UIImage(named: "Porcelain")!]
+                headerCell.ratingView.editable = false
+                headerCell.ratingView.rating = Int(bathroom.rating!)
+                headerCell.imageView?.image?.alpha(0.6)
+                
+                return headerCell
+            case 1:
+                let cell = tableView.dequeueReusableCellWithIdentifier("flagCell") as! FlagsCell
+                if let flags = bathroom.flags {
+                    for flag in flags {
+                        if flag.FLAG_ID == Flag.HARD_TO_FIND.FLAG_ID {
+                            cell.hardToFindFlag.image = UIImage(named: "Hard_to_find")
+                        } else if flag.FLAG_ID == Flag.NON_EXISTING.FLAG_ID {
+                            cell.nonExistentFlag.image = UIImage(named: "Non_Existent")
+                        } else if flag.FLAG_ID == Flag.PAID.FLAG_ID {
+                            cell.paidFlag.image = UIImage(named: "Paid")
+                        } else if flag.FLAG_ID == Flag.PUBLIC.FLAG_ID{
+                            cell.publicFlag.image = UIImage(named: "Public")
+                        }
+                    }
+                }
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCellWithIdentifier("mapCell") as! MapCell
+                cell.mapView.settings.setAllGesturesEnabled(false)
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCellWithIdentifier("photosCell") as! PhotosCell
+                cell.collectionView.backgroundColor = UIColor.whiteColor()
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCellWithIdentifier("aCell")!
+                return cell
+            }
         }
     }
     

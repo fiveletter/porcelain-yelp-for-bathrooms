@@ -45,8 +45,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         } else {
             UserManager.sharedInstance.email = user.profile.email
             UserManager.sharedInstance.name = user.profile.name
-            UserManager.sharedInstance.userToken = "DEMO-AUTO-AUTH"
+            UserManager.sharedInstance.userToken = user.authentication.accessToken
+            UserManager.sharedInstance.refreshToken = user.authentication.refreshToken
             UserManager.sharedInstance.profileId = 1
+            if user.profile.hasImage {
+                if let  imageURL = user.profile.imageURLWithDimension(50), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data)
+                {
+                    UserManager.sharedInstance.profilePic = image;
+                }
+            }
             print("User manager shared instance:  ID: \(UserManager.sharedInstance.profileId)   Name: \(UserManager.sharedInstance.name)")
             var fullNameArr = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")
             let firstName = fullNameArr![0]

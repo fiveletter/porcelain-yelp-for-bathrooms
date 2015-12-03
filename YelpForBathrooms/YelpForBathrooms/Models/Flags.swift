@@ -21,7 +21,7 @@ struct Flag  {
     static let NON_EXISTING = Flag(FLAG_ID: 1, DESCRIPTION: NON_EXISTING_DESCRIPTION)
     static let HARD_TO_FIND = Flag(FLAG_ID: 2, DESCRIPTION: HARD_TO_FIND_DESCRIPTION)
     static let PAID = Flag(FLAG_ID: 3, DESCRIPTION: PAID_DESCRIPTION)
-    static let PUBLIC = Flag(FLAG_ID: 4, DESCRIPTION: PAID_DESCRIPTION)
+    static let PUBLIC = Flag(FLAG_ID: 4, DESCRIPTION: PUBLIC_DESCRIPTION)
     
     //MARK : Flag resolver
     static func flagFromId(id : Int) -> Flag  {
