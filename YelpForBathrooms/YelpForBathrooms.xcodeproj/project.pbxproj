@@ -14,6 +14,7 @@
 		902088AB1BF80C25006F0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902088A91BF80C25006F0808 /* LaunchScreen.storyboard */; };
 		902088B61BF811B3006F0808 /* Bathroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902088B51BF811B3006F0808 /* Bathroom.swift */; };
 		902B80AC1C013FB2002041CE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 902B80AB1C013FB2002041CE /* Profile.storyboard */; };
+		902D713B1C1028110022EDF9 /* FlagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D713A1C1028110022EDF9 /* FlagsCell.swift */; };
 		903CEAB31C014701003BC6FF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB11C014701003BC6FF /* Login.storyboard */; };
 		903CEAB51C014ADB003BC6FF /* AddBathroom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */; };
 		903CEAB81C014E1E003BC6FF /* BathroomDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903CEAB61C014E1E003BC6FF /* BathroomDetails.storyboard */; };
@@ -71,6 +72,7 @@
 		902088AC1BF80C25006F0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902088B51BF811B3006F0808 /* Bathroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bathroom.swift; sourceTree = "<group>"; };
 		902B80AB1C013FB2002041CE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		902D713A1C1028110022EDF9 /* FlagsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagsCell.swift; sourceTree = "<group>"; };
 		903CEAB21C014701003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		903CEAB41C014ADB003BC6FF /* AddBathroom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddBathroom.storyboard; sourceTree = "<group>"; };
 		903CEAB71C014E1E003BC6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BathroomDetails.storyboard; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				9A7705891C060D070021CC24 /* BathroomSnippetView.swift */,
 				90548B2F1C0D8FE7008E2DAD /* ImageChooserButton.swift */,
 				9082CB3F1C10167500B38969 /* DetailsHeaderView.swift */,
+				902D713A1C1028110022EDF9 /* FlagsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				9A8D56291C03706200648C18 /* Flags.swift in Sources */,
 				9AC1615C1C0D756D00925DB6 /* ConfigManager.swift in Sources */,
 				9A9EE91C1C0EC13700D2A14E /* LocationManager.swift in Sources */,
+				902D713B1C1028110022EDF9 /* FlagsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
