@@ -10,22 +10,48 @@ import UIKit
 
 class BathroomDetailsViewController: UIViewController {
     var bathroom: Bathroom!
-
+    var reviews: [Review]?
+    var bathroomDetailRetriever : IBathroomDetailRetriever = BathroomDetailRetriever()
+    @IBOutlet weak var firstPic: UIImageView!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        bathroomDetailRetriever.GetBathroomDetail(bathroom.id!){ bathroomDetail -> Void in
+            if let reviews = bathroomDetail?.reviews{
+                self.reviews = reviews
+                print(reviews)
+                var review = reviews.filter(){
+                    if let picture = $0.picture {
+                        return true;
+                    }
+                    return false
+                }
+                self.firstPic.image = review.first?.picture
+            }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func openAddReview() {
-        performSegueWithIdentifier("addBathroomReviewSegue", sender: self)
+        if UserManager.sharedInstance.IsSignedIn{
+            performSegueWithIdentifier("addBathroomReviewSegue", sender: self)
+        } else {
+            let ac = UIAlertController(title: "Sign in to add a review", message: "Not signed in.", preferredStyle: UIAlertControllerStyle.Alert)
+            ac.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
+        
     }
 
+    func populateDetailScreen() {
+        //Do shit with bathroom details
+    }
 
 // MARK: - Navigation
 
