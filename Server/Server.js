@@ -359,14 +359,13 @@ app.post('/rating/retrieve', function(req, res) {
 	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
-	var flagSubQuery = `
+	var query = `SELECT RatingID, Timestamp, Rating, Ratings.ProfileID, BathroomID, Comment, PictureURL, 
 		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=1) as "Non-Existing",
 		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=2) as "Hard-To-Find",
 		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=3) as "Paid",
-		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=4) as "Public"
-	`;
-	
-	var query = `SELECT RatingID, Timestamp, Rating, ProfileID, BathroomID, Comment, PictureURL, ${flagSubQuery} FROM Ratings WHERE ? `;
+		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=4) as "Public",
+		FirstName, LastName
+		FROM Ratings, Profiles WHERE ?`;
 
 	var returnResults = function(err, rows) {
 		if (err) { reply(res, false, err); return; }
@@ -374,14 +373,15 @@ app.post('/rating/retrieve', function(req, res) {
 	};
 
 	if(info.hasOwnProperty("RatingID")) {
-		connection.query(query, [ { "RatingID": info.RatingID } ], returnResults);
+		connection.query(query, [ { "Ratings.RatingID": info.RatingID } ], returnResults);
 	} else if(info.hasOwnProperty("BathroomID")) {
-		connection.query(query, [ { "BathroomID": info.BathroomID } ], returnResults);
+		connection.query(query, [ { "Ratings.BathroomID": info.BathroomID } ], returnResults);
 	} else {
 		for (let i = 0; i < sessions.length; i++) {
 			if(req.body.token === sessions[i].token) {
 				req.body.ProfileID = sessions[i].profile;
-				connection.query(query, [ { "ProfileID": req.body.ProfileID } ], returnResults);
+				query = connection.query(query, [ { "Ratings.ProfileID": req.body.ProfileID } ], returnResults);
+				console.log("sql = ", query);
 				return;
 			}
 		}
@@ -390,7 +390,7 @@ app.post('/rating/retrieve', function(req, res) {
 });
 app.post('/rating/update', function(req, res){
 	console.log('POST /rating/update');
-	console.log(req.body);
+	//console.log(req.body);
 	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
