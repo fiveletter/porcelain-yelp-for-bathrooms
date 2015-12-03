@@ -66,6 +66,18 @@ class BathroomDetailsTableViewController: UITableViewController {
         }
         return reuseIdentifier
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueIdentifier = segue.identifier{
+            switch segueIdentifier{
+            case "addReview":
+                let addBathroomReviewViewController = segue.destinationViewController as! AddBathroomReviewViewController
+                addBathroomReviewViewController.bathroom = bathroom
+            default:
+                NOOP("UNREACHABLE")
+            }
+        }
+    }
 
 // MARK: - Table view data source
 

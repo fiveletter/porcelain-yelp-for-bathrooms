@@ -34,42 +34,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Title For a Bathroom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8bO-ty-ui1">
                                                     <rect key="frame" x="5" y="0.0" width="360" height="41.5"/>
                                                     <animations/>
-<<<<<<< 944f63ab1bbf62a5b01063758da273ea678b6f09
-                                                </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BvM-Eq-vY7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Title For a Bathroom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Ys-mZ-e47">
-                                                            <rect key="frame" x="5" y="5" width="360" height="41.5"/>
-                                                            <animations/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bor-cB-8h9" customClass="RatingView" customModule="YelpForBathrooms" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="51.5" width="288" height="41.5"/>
-                                                            <animations/>
-                                                        </view>
-                                                    </subviews>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstItem="bor-cB-8h9" firstAttribute="leading" secondItem="BvM-Eq-vY7" secondAttribute="leading" constant="5" id="2AL-aq-10s"/>
-                                                        <constraint firstItem="5Ys-mZ-e47" firstAttribute="width" secondItem="BvM-Eq-vY7" secondAttribute="width" multiplier="6:10" id="49A-qg-Bds"/>
-                                                        <constraint firstItem="bor-cB-8h9" firstAttribute="height" secondItem="5Ys-mZ-e47" secondAttribute="height" id="4I8-bE-tX3"/>
-                                                        <constraint firstItem="5Ys-mZ-e47" firstAttribute="leading" secondItem="BvM-Eq-vY7" secondAttribute="leading" constant="5" id="6gI-Yr-42u"/>
-                                                        <constraint firstItem="bor-cB-8h9" firstAttribute="width" secondItem="5Ys-mZ-e47" secondAttribute="width" multiplier="8:10" id="HCu-Iy-0Lg"/>
-                                                        <constraint firstItem="bor-cB-8h9" firstAttribute="top" secondItem="BvM-Eq-vY7" secondAttribute="top" constant="5" id="PpJ-kh-fdh"/>
-                                                        <constraint firstItem="bor-cB-8h9" firstAttribute="top" secondItem="5Ys-mZ-e47" secondAttribute="bottom" constant="5" id="YmR-ic-h0d"/>
-                                                        <constraint firstItem="5Ys-mZ-e47" firstAttribute="top" secondItem="BvM-Eq-vY7" secondAttribute="top" constant="5" id="deU-tn-rGv"/>
-                                                        <constraint firstItem="bor-cB-8h9" firstAttribute="leading" secondItem="BvM-Eq-vY7" secondAttribute="leading" constant="5" id="glZ-Wx-L9e"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="2AL-aq-10s"/>
-                                                            <exclude reference="PpJ-kh-fdh"/>
-                                                        </mask>
-                                                    </variation>
-=======
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -77,7 +41,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73e-fA-A5a" customClass="RatingView" customModule="YelpForBathrooms" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="41.5" width="288" height="41.5"/>
                                                     <animations/>
->>>>>>> Almost fully functional Details Screen
                                                 </view>
                                             </subviews>
                                             <animations/>
@@ -94,8 +57,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="u3j-k4-MNl"/>
                                                     <exclude reference="kTc-AK-JiJ"/>
+                                                    <exclude reference="u3j-k4-MNl"/>
                                                 </mask>
                                             </variation>
                                         </view>
@@ -117,10 +80,10 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="1RE-CX-gZM"/>
                                             <exclude reference="2OR-v6-hEg"/>
                                             <exclude reference="Dnu-ow-sQB"/>
                                             <exclude reference="SjG-UB-H9f"/>
-                                            <exclude reference="1RE-CX-gZM"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

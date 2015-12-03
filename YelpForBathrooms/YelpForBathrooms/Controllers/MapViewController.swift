@@ -50,8 +50,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
 // MARK: - VIEW CONTROLLER
     @IBAction func searchBathrooms(sender: UIButton) {
-//        populateMapWithBathrooms()
-        performSegueWithIdentifier("bathroomDetailsSegue", sender: self)
+        populateMapWithBathrooms()
     }
     
     @IBAction func searchAddress(sender: UIButton) {
@@ -79,7 +78,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             case "bathroomDetailsSegue":
                 let marker = sender as! GMSMarker
                 let bathroom = marker.userData as! Bathroom
-                let bathroomDetailsViewController = segue.destinationViewController as! BathroomDetailsViewController
+                let bathroomDetailsViewController = segue.destinationViewController as! BathroomDetailsTableViewController
                 bathroomDetailsViewController.bathroom = bathroom
             default:
                 NOOP("UNREACHABLE")
