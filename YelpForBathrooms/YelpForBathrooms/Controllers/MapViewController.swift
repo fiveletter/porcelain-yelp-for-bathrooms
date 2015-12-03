@@ -109,9 +109,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let infoWindow = NSBundle.mainBundle().loadNibNamed("BathroomSnippetView", owner: self, options: nil).first! as! BathroomSnippetView
         let bathroom = marker.userData as! Bathroom
         infoWindow.title.text = bathroom.title
-        infoWindow.rating.text = bathroom.rating?.description
+        infoWindow.ratingView.notSelectedImages = [
+            UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
+            UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
+        infoWindow.ratingView.fullSelectedImage = [
+            UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
+            UIImage(named: "Silver")!, UIImage(named: "Porcelain")!]
+        infoWindow.ratingView.rating = Int(bathroom.rating!)
         infoWindow.layer.borderColor = UIColor(red: 89/255.0, green: 225/255/0, blue: 166/255.0, alpha: 1).CGColor
-        //infoWindow.flags.text = bathroom.flags?.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
+        if let flags = bathroom.flags {
+            for flag in flags {
+                if flag.FLAG_ID == Flag.HARD_TO_FIND.FLAG_ID {
+                    infoWindow.hardToFindFlag.alpha = 1;
+                } else if flag.FLAG_ID == Flag.NON_EXISTING.FLAG_ID {
+                    infoWindow.nonExistentFlag.alpha = 1
+                } else if flag.FLAG_ID == Flag.PAID.FLAG_ID {
+                    infoWindow.paidFlag.alpha = 1
+                } else if flag.FLAG_ID == Flag.PUBLIC.FLAG_ID{
+                    infoWindow.publicFlag.alpha = 1
+                }
+            }
+        }
         return infoWindow
     }
     

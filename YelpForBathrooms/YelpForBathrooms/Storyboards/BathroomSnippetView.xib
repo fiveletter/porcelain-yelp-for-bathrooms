@@ -11,54 +11,37 @@
             <rect key="frame" x="0.0" y="0.0" width="290" height="172"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-Gs-NAW">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GAs-Gs-NAW">
                     <rect key="frame" x="20" y="8" width="200" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wmj-uz-NCi">
-                    <rect key="frame" x="20" y="37" width="200" height="21"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" red="0.34901960780000002" green="0.88235294119999996" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RwG-IL-9Td">
-                    <rect key="frame" x="8" y="44" width="252" height="135"/>
+                    <rect key="frame" x="20" y="84" width="252" height="80"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Non_Existent_washed" translatesAutoresizingMaskIntoConstraints="NO" id="lic-0Z-naw">
-                            <rect key="frame" x="8" y="23" width="89" height="31"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Non_Existent" translatesAutoresizingMaskIntoConstraints="NO" id="lic-0Z-naw">
+                            <rect key="frame" x="8" y="0.0" width="89" height="31"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hard_to_find_washed" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-5E-Y4b">
-                            <rect key="frame" x="124" y="23" width="82" height="31"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hard_to_find" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-5E-Y4b">
+                            <rect key="frame" x="124" y="0.0" width="82" height="31"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paid_washed" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-yq-fTS">
-                            <rect key="frame" x="37" y="62" width="89" height="33"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paid" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-yq-fTS">
+                            <rect key="frame" x="37" y="39" width="89" height="33"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Public_washed" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-Nc-4dN">
-                            <rect key="frame" x="151" y="62" width="93" height="33"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Public" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-Nc-4dN">
+                            <rect key="frame" x="151" y="39" width="93" height="33"/>
                         </imageView>
                     </subviews>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zo1-Kw-giP" customClass="RatingView" customModule="YelpForBathrooms" customModuleProvider="target">
+                    <rect key="frame" x="10" y="31" width="273" height="45"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="wmj-uz-NCi" secondAttribute="bottom" constant="47" id="Cy8-k3-LRw"/>
-                <constraint firstItem="wmj-uz-NCi" firstAttribute="leading" secondItem="GAs-Gs-NAW" secondAttribute="leading" id="Hd0-bh-lM1"/>
-                <constraint firstItem="wmj-uz-NCi" firstAttribute="trailing" secondItem="GAs-Gs-NAW" secondAttribute="trailing" id="Lzx-3b-2Yk"/>
-                <constraint firstAttribute="trailing" secondItem="wmj-uz-NCi" secondAttribute="trailing" id="USF-HP-UAu"/>
-                <constraint firstItem="wmj-uz-NCi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dUz-pf-qlk"/>
-                <constraint firstItem="wmj-uz-NCi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fjO-I7-bd6"/>
-                <constraint firstItem="wmj-uz-NCi" firstAttribute="top" secondItem="GAs-Gs-NAW" secondAttribute="bottom" constant="1" id="tDD-YR-eP3"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -72,22 +55,21 @@
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
             </userDefinedRuntimeAttributes>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="fjO-I7-bd6"/>
-                </mask>
-            </variation>
             <connections>
-                <outlet property="rating" destination="wmj-uz-NCi" id="xXn-2c-ZpR"/>
+                <outlet property="hardToFindFlag" destination="gdE-5E-Y4b" id="PXT-8U-XJb"/>
+                <outlet property="nonExistentFlag" destination="lic-0Z-naw" id="4Zk-0e-hj5"/>
+                <outlet property="paidFlag" destination="S3u-yq-fTS" id="itO-Wi-XMc"/>
+                <outlet property="publicFlag" destination="mJp-Nc-4dN" id="H0s-yz-l4F"/>
+                <outlet property="ratingView" destination="Zo1-Kw-giP" id="SL5-Kp-Dcf"/>
                 <outlet property="title" destination="GAs-Gs-NAW" id="Lad-6B-L9c"/>
             </connections>
             <point key="canvasLocation" x="562" y="326"/>
         </view>
     </objects>
     <resources>
-        <image name="Hard_to_find_washed" width="380" height="92"/>
-        <image name="Non_Existent_washed" width="380" height="92"/>
-        <image name="Paid_washed" width="380" height="92"/>
-        <image name="Public_washed" width="380" height="92"/>
+        <image name="Hard_to_find" width="380" height="92"/>
+        <image name="Non_Existent" width="380" height="92"/>
+        <image name="Paid" width="380" height="92"/>
+        <image name="Public" width="380" height="92"/>
     </resources>
 </document>

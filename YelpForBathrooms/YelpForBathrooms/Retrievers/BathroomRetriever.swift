@@ -31,6 +31,7 @@ class BathroomRetriever : IBathroomRetriever {
                     let numOfNonExistingFlags = subJson["Non-Existing"].int
                     let numOfHardToFindFlags = subJson["Hard-To-Find"].int
                     let numOfPaidFlags = subJson["Paid"].int
+                    let rating = subJson["AverageRating"].int
                     
                     let coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
                     var flags = [Flag]()
@@ -47,7 +48,7 @@ class BathroomRetriever : IBathroomRetriever {
                         flags.append(Flag.PAID)
                     }
                     print("Adding in bathroom: id: \(bathroomId) title: \(title) location: \(coordinate)")
-                    let bathroom = Bathroom(Id: bathroomId!, Title: title!, Location: coordinate, Rating: 2, Flags: flags)
+                    let bathroom = Bathroom(Id: bathroomId!, Title: title!, Location: coordinate, Rating: Double(rating!), Flags: flags)
                     bathrooms.append(bathroom)
                 }
                completion(bathrooms);
