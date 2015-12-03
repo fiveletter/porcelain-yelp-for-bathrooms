@@ -129,14 +129,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-6y-GdS">
-                                        <rect key="frame" x="5" y="187" width="580" height="135.5"/>
+                                        <rect key="frame" x="5" y="187" width="580" height="87"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTa-qK-Ne7" customClass="GMSMapView">
-                                        <rect key="frame" x="5" y="328" width="580" height="175"/>
+                                        <rect key="frame" x="5" y="279" width="580" height="224"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -169,7 +169,7 @@
                                     <constraint firstItem="4gM-uU-CaU" firstAttribute="leading" secondItem="sxX-Pw-aRT" secondAttribute="leading" constant="5" id="ccp-5C-s1x"/>
                                     <constraint firstItem="xTa-qK-Ne7" firstAttribute="leading" secondItem="sxX-Pw-aRT" secondAttribute="leading" constant="5" id="gyL-T2-OfK"/>
                                     <constraint firstItem="4gM-uU-CaU" firstAttribute="top" secondItem="QP6-mb-SVh" secondAttribute="bottom" constant="5" id="imh-Mw-Ju8"/>
-                                    <constraint firstAttribute="bottom" secondItem="qOT-6y-GdS" secondAttribute="bottom" constant="247" id="kIS-Bg-XcR"/>
+                                    <constraint firstAttribute="bottom" secondItem="qOT-6y-GdS" secondAttribute="bottom" constant="296" id="kIS-Bg-XcR"/>
                                     <constraint firstItem="xTa-qK-Ne7" firstAttribute="top" secondItem="qOT-6y-GdS" secondAttribute="bottom" constant="5" id="m2u-Nm-0O8"/>
                                     <constraint firstItem="Vce-72-OpM" firstAttribute="height" secondItem="sxX-Pw-aRT" secondAttribute="height" multiplier="1:10" constant="1" id="m3v-Pj-rTC"/>
                                     <constraint firstItem="qOT-6y-GdS" firstAttribute="top" secondItem="4gM-uU-CaU" secondAttribute="bottom" constant="5" id="o9Z-Ql-Uab"/>
