@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var numOfReviewsLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var reviewLabel: UILabel!
-    var model: Int = 0
 
 // MARK: - LIFECYCLE FUNCTIONS
     
