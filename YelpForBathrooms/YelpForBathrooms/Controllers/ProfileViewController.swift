@@ -24,9 +24,14 @@ class ProfileViewController: UIViewController {
         
         // Set label strings
         nameLabel.text = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")[0].capitalizedString
-        let tapGesture = UITapGestureRecognizer()
-        tapGesture.addTarget(self, action: "profilePicTapped")
-        profileImageView.addGestureRecognizer(tapGesture)
+        //let tapGesture = UITapGestureRecognizer()
+        //tapGesture.addTarget(self, action: "profilePicTapped")
+        //profileImageView.addGestureRecognizer(tapGesture)
+        if let image = UserManager.sharedInstance.profilePic {
+            profileImageView.image = image
+        } else {
+            profileImageView.image = UIImage(named: "Doge")
+        }
     }
     
     @IBAction func profilePicTapped(){
@@ -42,20 +47,20 @@ class ProfileViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
         
         // Label style
-        setTextColorOfView(UIColor.whiteColor())
+        setTextColorOfView(UIColor.blackColor())
 
         // Background style
-        backgroundImageView.layer.backgroundColor = UIColor.colorFromHexRGBValue(0x233046).CGColor
+        //backgroundImageView.layer.backgroundColor = UIColor.colorFromHexRGBValue(0x233046).CGColor
         
         // Button style
         logoutButton.layer.cornerRadius = profileImageView.frame.size.width/10
-        logoutButton.backgroundColor = UIColor.colorFromHexRGBValue(0x15A8A7)
+        logoutButton.backgroundColor = UIColor.colorFromHexRGBValue(0x26C27F)
         
         // Round image view
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
         profileImageView.clipsToBounds = true
         profileImageView.layer.borderWidth = 3.0
-        profileImageView.layer.borderColor = UIColor.colorFromHexRGBValue(0x16ADA7).CGColor
+        profileImageView.layer.borderColor = UIColor.colorFromHexRGBValue(0x26C27F).CGColor
     }
     
 // MARK: - VIEW CONTROLLER

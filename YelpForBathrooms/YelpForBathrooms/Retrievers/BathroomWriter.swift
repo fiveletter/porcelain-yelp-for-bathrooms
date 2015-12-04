@@ -17,10 +17,12 @@ class BathroomWriter : IBathroomWriter {
         params["Longitude"] = bathroom.location.longitude
         params["Latitude"] = bathroom.location.latitude
         params["Title"] = bathroom.title
-        if let picture = review.picture {
-            params["Picture"] = "Picture"
-        } else {
-            params["Picture"] = "nopic"
+        if let picture = review.picture{
+            let pictureData = UIImageJPEGRepresentation(picture, 0)
+            let base64string = pictureData?.base64EncodedDataWithOptions(.Encoding64CharacterLineLength)
+            params["Picture"] = NSString(data: base64string!, encoding: NSUTF8StringEncoding)
+        } else{
+            params["Picture"] = ""
         }
         params["Rating"] = review.rating
         params["ProfileID"] = review.profileId

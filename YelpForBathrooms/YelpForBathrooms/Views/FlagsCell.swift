@@ -9,6 +9,9 @@
 import UIKit
 
 class FlagsCell: UITableViewCell{
-
+    @IBOutlet weak var nonExistentFlag: UIImageView!
+    @IBOutlet weak var publicFlag: UIImageView!
+    @IBOutlet weak var paidFlag: UIImageView!
+    @IBOutlet weak var hardToFindFlag: UIImageView!
     
 }

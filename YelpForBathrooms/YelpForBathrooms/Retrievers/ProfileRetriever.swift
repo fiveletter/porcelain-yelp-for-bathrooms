@@ -24,8 +24,8 @@ class ProfileRetriever : IProfileRetriever {
     
     func authorize(completion: (Int? -> Void)?){
         var requestObject = [String:AnyObject]()
-        requestObject["token"] = UserManager.sharedInstance.userToken
-        requestObject["request"] = ""
+        requestObject["access_token"] = UserManager.sharedInstance.userToken
+        requestObject["refresh_token"] = UserManager.sharedInstance.refreshToken
         print("Profile Authorize Request: \(requestObject)")
         httpRetriever.makeRetrievalRequest(UrlManager.PROFILE_AUTH, options: requestObject){ data -> Void in
             let json = JSON(data: data)

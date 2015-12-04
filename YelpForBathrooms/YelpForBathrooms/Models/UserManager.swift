@@ -22,7 +22,9 @@ class UserManager {
     }
     var name : String?
     var userToken : String?
+    var refreshToken: String?
     var profileId : Int?
+    var profilePic: UIImage?
 // MARK: - INITIALIZERS
     init(){
         profileId = 1

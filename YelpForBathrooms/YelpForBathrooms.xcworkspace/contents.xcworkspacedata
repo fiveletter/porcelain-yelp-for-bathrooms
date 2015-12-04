@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:YelpForBathrooms.xcodeproj">
+      location = "group:/Users/mitchellwaldman/Documents/iOS/belp-yelp-for-bathrooms/YelpForBathrooms/Porcelain.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

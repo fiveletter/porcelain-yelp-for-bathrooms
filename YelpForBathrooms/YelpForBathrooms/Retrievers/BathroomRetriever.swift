@@ -17,11 +17,14 @@ class BathroomRetriever : IBathroomRetriever {
         let url : String = UrlManager.BATHROOM_RETRIEVE
         var bathrooms = [Bathroom]()
         let parameters = GetBathroomRetrievalParametersFromArea(area)
-        print("Bathroom Retrieval Request: \(parameters)")
-        httpRetriever.makeRetrievalRequest(url, options: parameters) { data -> Void in
-            let json = JSON(data: data)
-            print("Bathroom Retrieval Response: \(json)")
-            if let status = json["response"].string where status == "success" {
+        var reqObj = [String:AnyObject]()
+        reqObj["info"] = parameters
+        print("Bathroom Retrieval Request: \(reqObj)")
+        
+        httpRetriever.makeRetrievalRequest(url, options: reqObj) { data -> Void in
+        let json = JSON(data: data)
+        print("Bathroom Retrieval Response: \(json)")
+        if let status = json["response"].string where status == "success" {
                 for (_, subJson): (String, JSON) in json["info"] {
                     let bathroomId = subJson["BathroomID"].int
                     let lat = subJson["Latitude"].double
@@ -31,6 +34,7 @@ class BathroomRetriever : IBathroomRetriever {
                     let numOfNonExistingFlags = subJson["Non-Existing"].int
                     let numOfHardToFindFlags = subJson["Hard-To-Find"].int
                     let numOfPaidFlags = subJson["Paid"].int
+                    let rating = subJson["AverageRating"].int
                     
                     let coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
                     var flags = [Flag]()
@@ -47,7 +51,7 @@ class BathroomRetriever : IBathroomRetriever {
                         flags.append(Flag.PAID)
                     }
                     print("Adding in bathroom: id: \(bathroomId) title: \(title) location: \(coordinate)")
-                    let bathroom = Bathroom(Id: bathroomId!, Title: title!, Location: coordinate, Rating: 2, Flags: flags)
+                    let bathroom = Bathroom(Id: bathroomId!, Title: title!, Location: coordinate, Rating: Double(rating!), Flags: flags)
                     bathrooms.append(bathroom)
                 }
                completion(bathrooms);
@@ -64,11 +68,11 @@ class BathroomRetriever : IBathroomRetriever {
         let minLat = min(area.farLeft.latitude, area.farRight.latitude, area.nearLeft.latitude, area.nearRight.latitude)
         let maxLong = max(area.farLeft.longitude, area.farRight.longitude, area.nearLeft.longitude, area.nearRight.longitude)
         let minLong = min(area.farLeft.longitude, area.farRight.longitude, area.nearLeft.longitude, area.nearRight.longitude)
-        //params["MinLat"] = minLat.description
-        //params["MaxLat"] = maxLat.description
-        //params["MinLong"] = minLong.description
-        //params["MaxLong"] = maxLong.description
-        params["Radius"] = 1
+        params["MinLat"] = minLat
+        params["MaxLat"] = maxLat
+        params["MinLong"] = minLong
+        params["MaxLong"] = maxLong
+//        params["Radius"] = 1
         params["Latitude"] = maxLat
         params["Longitude"] = maxLong
         return params

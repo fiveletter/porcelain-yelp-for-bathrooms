@@ -11,7 +11,7 @@ import GoogleMaps
 import Alamofire
 import GooglePlacesAutocomplete
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GIDSignInUIDelegate, GIDSignInDelegate{
     
 // MARK: - PROPERTIES
 
@@ -24,8 +24,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     var searchAddress : String = ""
     let locationManager = CLLocationManager()
     let bathroomRetriever : IBathroomRetriever = BathroomRetriever()
+    let profileRetriever : IProfileRetriever = ProfileRetriever()
     let gpaViewController = GooglePlacesAutocomplete(apiKey: ConfigManager.GOOGLE_PLACES_API_KEY, placeType: .Address)
-    var logged_in = true
 
 // MARK: - LIFECYCLE FUNCTIONS
 
@@ -35,15 +35,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         styleNavigationBar()
         styleButtons()
         styleDivider()
-       
-        gpaViewController.placeDelegate = self
+        styleGooglePlacesAutoCompleteBar()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
+        gpaViewController.placeDelegate = self
         mapView.delegate = self
+        
+        if let path = NSBundle.mainBundle().pathForResource("GoogleService-Info", ofType: "plist") {
+            if let myDict = NSDictionary(contentsOfFile: path) {
+                GIDSignIn.sharedInstance().clientID = myDict["CLIENT_ID"] as! String
+            }
+        }
+        GIDSignIn.sharedInstance().signInSilently()
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        populateMapWithBathrooms()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -85,6 +97,47 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
         }
     }
+    
+// MARK: - GIDSIGNIN DELEGATE
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        if let err = error {
+            print("Error signing in \(err)")
+        } else {
+            UserManager.sharedInstance.email = user.profile.email
+            UserManager.sharedInstance.name = user.profile.name
+            UserManager.sharedInstance.userToken = user.authentication.accessToken
+            UserManager.sharedInstance.refreshToken = user.authentication.refreshToken
+            UserManager.sharedInstance.profileId = 1
+            if user.profile.hasImage {
+                if let  imageURL = user.profile.imageURLWithDimension(50), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data)
+                {
+                    UserManager.sharedInstance.profilePic = image;
+                }
+            }
+            print("User manager shared instance:  ID: \(UserManager.sharedInstance.profileId)   Name: \(UserManager.sharedInstance.name)")
+            var fullNameArr = UserManager.sharedInstance.name?.componentsSeparatedByString(" ")
+            let firstName = fullNameArr![0]
+            let lastName = fullNameArr![1]
+            profileRetriever.authorize{ id -> Void in
+                if let id = id {
+                    UserManager.sharedInstance.profileId = id
+                } else {
+                    UserManager.sharedInstance.profileId = 1
+                }
+            }
+        }
+    }
+    
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
+        if let err = error {
+            print("Error disconnection \(err)")
+        } else {
+            
+        }
+    }
+    
 // MARK: - CLLOCATION MANAGER DELEGATE
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -109,9 +162,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let infoWindow = NSBundle.mainBundle().loadNibNamed("BathroomSnippetView", owner: self, options: nil).first! as! BathroomSnippetView
         let bathroom = marker.userData as! Bathroom
         infoWindow.title.text = bathroom.title
-        infoWindow.rating.text = bathroom.rating?.description
+        infoWindow.ratingView.notSelectedImages = [
+            UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
+            UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
+        infoWindow.ratingView.fullSelectedImage = [
+            UIImage(named: "Brown")!, UIImage(named: "Bronze")!, UIImage(named: "Gold")!,
+            UIImage(named: "Silver")!, UIImage(named: "Porcelain")!]
+        infoWindow.ratingView.rating = Int(bathroom.rating!)
         infoWindow.layer.borderColor = UIColor(red: 89/255.0, green: 225/255/0, blue: 166/255.0, alpha: 1).CGColor
-        //infoWindow.flags.text = bathroom.flags?.map{"\($0.DESCRIPTION)"}.reduce("", combine: {$0 + " " + $1})
+        if let flags = bathroom.flags {
+            for flag in flags {
+                if flag.FLAG_ID == Flag.HARD_TO_FIND.FLAG_ID {
+                    infoWindow.hardToFindFlag.image = UIImage(named: "Hard_to_find")
+                } else if flag.FLAG_ID == Flag.NON_EXISTING.FLAG_ID {
+                    infoWindow.nonExistentFlag.image = UIImage(named: "Non_Existent")
+                } else if flag.FLAG_ID == Flag.PAID.FLAG_ID {
+                    infoWindow.paidFlag.image = UIImage(named: "Paid")
+                } else if flag.FLAG_ID == Flag.PUBLIC.FLAG_ID{
+                    infoWindow.publicFlag.image = UIImage(named: "Public")
+                }
+            }
+        }
         return infoWindow
     }
     
@@ -139,7 +210,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @IBAction func addBathroom() {
-        performSegueWithIdentifier("addBathroomSegue", sender: self)
+        if UserManager.sharedInstance.IsSignedIn {
+            performSegueWithIdentifier("addBathroomSegue", sender: self)
+        } else {
+            let ac = UIAlertController(title: "Sign in to create a bathroom.", message: "Not signed in.", preferredStyle: UIAlertControllerStyle.Alert)
+            ac.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
     }
 }
 
@@ -175,6 +253,15 @@ extension MapViewController {
     
     func styleDivider(){
         self.divider?.layer.backgroundColor = UIColor.grayColor().CGColor
+    }
+    
+    func styleGooglePlacesAutoCompleteBar() {
+        self.gpaViewController.navigationBar.barTintColor = UIColor.colorFromHexRGBValue(0x26C27F)
+        self.gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
+        self.gpaViewController.navigationBar.translucent = false
+        self.gpaViewController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.gpaViewController.navigationBar.topItem?.title = "Where Do You Need to Poo?"
+        gpaViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: gpaViewController, action: "close")
     }
     
     func styleNavigationBar() {

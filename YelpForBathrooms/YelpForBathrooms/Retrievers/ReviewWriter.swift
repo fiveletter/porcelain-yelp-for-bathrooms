@@ -21,7 +21,7 @@ class ReviewWriter : IReviewWriter {
         if let picture = review.picture{
             let pictureData = UIImageJPEGRepresentation(picture, 0)
             let base64string = pictureData?.base64EncodedDataWithOptions(.Encoding64CharacterLineLength)
-            params["Picture"] = base64string
+            params["Picture"] = NSString(data: base64string!, encoding: NSUTF8StringEncoding)
         } else{
             params["Picture"] = ""
         }
