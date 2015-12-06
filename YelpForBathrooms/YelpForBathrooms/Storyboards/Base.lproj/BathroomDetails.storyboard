@@ -10,14 +10,14 @@
         <!--Bathroom Details Table View Controller-->
         <scene sceneID="Mng-X3-RhQ">
             <objects>
-                <tableViewController id="X92-sm-0bs" customClass="BathroomDetailsTableViewController" customModule="YelpForBathrooms" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="X92-sm-0bs" customClass="BathroomDetailsTableViewController" customModule="Porcelain" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xHo-ws-5AS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="header" rowHeight="150" id="0r2-TT-c0u" customClass="DetailsHeaderView" customModule="YelpForBathrooms" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="header" rowHeight="150" id="0r2-TT-c0u" customClass="DetailsHeaderView" customModule="Porcelain" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0r2-TT-c0u" id="yeJ-dr-2Zi">
@@ -38,7 +38,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73e-fA-A5a" customClass="RatingView" customModule="YelpForBathrooms" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73e-fA-A5a" customClass="RatingView" customModule="Porcelain" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="42" width="288" height="42"/>
                                                     <animations/>
                                                 </view>
@@ -94,7 +94,7 @@
                                     <outlet property="titleLabel" destination="8bO-ty-ui1" id="HYr-HR-O2Z"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="flagCell" rowHeight="100" id="fUp-pF-9rp" customClass="FlagsCell" customModule="YelpForBathrooms" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="flagCell" rowHeight="100" id="fUp-pF-9rp" customClass="FlagsCell" customModule="Porcelain" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="178" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fUp-pF-9rp" id="Tub-Vj-FJA">
@@ -168,7 +168,7 @@
                                     <outlet property="publicFlag" destination="G33-1L-ni6" id="dW6-Bl-VDe"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mapCell" rowHeight="280" id="v0k-H6-6gN" customClass="MapCell" customModule="YelpForBathrooms" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mapCell" rowHeight="280" id="v0k-H6-6gN" customClass="MapCell" customModule="Porcelain" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="278" width="600" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v0k-H6-6gN" id="lRi-EN-1as">
@@ -179,7 +179,7 @@
                                             <rect key="frame" x="0.0" y="5" width="600" height="247"/>
                                             <animations/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 Washington Square" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Zh-nW1">
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 Washington Square" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6h-Zh-nW1">
                                             <rect key="frame" x="0.0" y="252" width="600" height="28"/>
                                             <animations/>
                                             <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
@@ -212,7 +212,7 @@
                                     <outlet property="mapView" destination="DzL-zE-1ui" id="k9w-Nx-L9f"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="photosCell" rowHeight="250" id="orR-Ja-XvI" customClass="PhotosCell" customModule="YelpForBathrooms" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="photosCell" rowHeight="250" id="orR-Ja-XvI" customClass="PhotosCell" customModule="Porcelain" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="558" width="600" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="orR-Ja-XvI" id="qhE-Me-JKl">
@@ -229,7 +229,7 @@
                                                 <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCollectionCell" id="ZXE-VF-7hz" customClass="photoCollectionViewCell" customModule="YelpForBathrooms" customModuleProvider="target">
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCollectionCell" id="ZXE-VF-7hz" customClass="photoCollectionViewCell" customModule="Porcelain" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="6" width="200" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -288,7 +288,7 @@
                                     <outlet property="collectionView" destination="w3S-2V-YHD" id="12e-aX-hQA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewCell" rowHeight="150" id="0Dv-Ge-imp" customClass="ReviewCell" customModule="YelpForBathrooms" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewCell" rowHeight="150" id="0Dv-Ge-imp" customClass="ReviewCell" customModule="Porcelain" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="808" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Dv-Ge-imp" id="VpG-2A-eLO">
@@ -305,7 +305,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="irF-lF-kg9" customClass="RatingView" customModule="YelpForBathrooms" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="irF-lF-kg9" customClass="RatingView" customModule="Porcelain" customModuleProvider="target">
                                                     <rect key="frame" x="438" y="0.0" width="147" height="21"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

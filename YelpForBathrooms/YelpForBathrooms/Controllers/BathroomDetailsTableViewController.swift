@@ -151,7 +151,7 @@ class BathroomDetailsTableViewController: UITableViewController {
                     }
                     return false
                 }
-                headerCell.headerImageView.image = picReviews.first?.picture ?? UIImage(named: "Doge")
+                headerCell.headerImageView.image = picReviews.last?.picture ?? UIImage(named: "Doge")
                 headerCell.ratingView.notSelectedImages = [
                     UIImage(named: "Brown_washed")!, UIImage(named: "Bronze_washed")!, UIImage(named: "Gold_washed")!,
                     UIImage(named: "Silver_washed")!, UIImage(named: "Porcelain_washed")!]
@@ -169,6 +169,7 @@ class BathroomDetailsTableViewController: UITableViewController {
             case 2:
                 let cell = tableView.dequeueReusableCellWithIdentifier("mapCell") as! MapCell
                 cell.mapView.settings.setAllGesturesEnabled(false)
+                cell.mapView.myLocationEnabled = true
                 cell.mapView.animateToLocation(bathroom.location)
                 cell.mapView.animateToZoom(15)
                 let marker = GMSMarker(position: bathroom.location)

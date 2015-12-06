@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        setupBackground()
+        //setupBackground()
         
         if let path = NSBundle.mainBundle().pathForResource("GoogleService-Info", ofType: "plist") {
             if let myDict = NSDictionary(contentsOfFile: path) {

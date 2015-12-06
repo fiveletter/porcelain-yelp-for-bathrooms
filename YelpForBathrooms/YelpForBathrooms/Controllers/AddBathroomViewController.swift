@@ -175,6 +175,10 @@ extension AddBathroomViewController  : GMSMapViewDelegate {
     func mapView(mapView: GMSMapView!, didBeginDraggingMarker marker: GMSMarker!) {
         
     }
+    
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        marker.position = coordinate
+    }
 }
 // MARK: - SETUP VIEWS
 
@@ -281,12 +285,15 @@ extension AddBathroomViewController{
 extension AddBathroomViewController {
     
     func setupMapView(){
-        mapView?.myLocationEnabled = true
+        
         if let location = locationManager.location, mapView = mapView {
+            mapView.myLocationEnabled = true
+            mapView.settings.myLocationButton = true
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             marker = GMSMarker(position: location.coordinate)
             marker.draggable = true
             marker.map = mapView
+            
         }
     }
     
