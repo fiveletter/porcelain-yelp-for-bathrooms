@@ -368,13 +368,14 @@ app.post('/rating/retrieve', function(req, res) {
 	var info = req.body.info;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
-	var query = `SELECT RatingID, Timestamp, Rating, Ratings.ProfileID, BathroomID, Comment, PictureURL, 
-		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=1) as "Non-Existing",
-		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=2) as "Hard-To-Find",
-		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=3) as "Paid",
-		EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=4) as "Public",
-		FirstName, LastName
-		FROM Ratings, Profiles WHERE ?`;
+	var query = `SELECT RatingID, Timestamp, Rating, Ratings.ProfileID, BathroomID, Comment, PictureURL,
+EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=1) as "Non-Existing",
+EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=2) as "Hard-To-Find",
+EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=3) as "Paid",
+EXISTS(SELECT 1 FROM RatingFlags WHERE RatingFlags.RatingID=Ratings.RatingID AND RatingFlags.FlagID=4) as "Public",
+IFNULL((SELECT FirstName FROM Profiles WHERE Profiles.ProfileID=Ratings.ProfileID), '') as FirstName, 
+IFNULL((SELECT LastName FROM Profiles WHERE Profiles.ProfileID=Ratings.ProfileID), '') as LastName
+FROM Ratings WHERE ?`;
 
 	var returnResults = function(err, rows) {
 		if (err) { reply(res, false, err); return; }
@@ -382,9 +383,11 @@ app.post('/rating/retrieve', function(req, res) {
 	};
 
 	if(info.hasOwnProperty("RatingID")) {
-		connection.query(query, [ { "Ratings.RatingID": info.RatingID } ], returnResults);
+		var query = connection.query(query, [ { "Ratings.RatingID": info.RatingID } ], returnResults);
+		console.log("sql: ", query.sql);
 	} else if(info.hasOwnProperty("BathroomID")) {
-		connection.query(query, [ { "Ratings.BathroomID": info.BathroomID } ], returnResults);
+		var query = connection.query(query, [ { "Ratings.BathroomID": info.BathroomID } ], returnResults);
+		console.log("sql: ", query.sql);
 	} else {
 		for (let i = 0; i < sessions.length; i++) {
 			if(req.body.token === sessions[i].token) {
@@ -552,7 +555,7 @@ app.post('/profile/auth', function(req, res) {
 	console.log('POST /profile/auth');
 	
 	console.log(req.body);
-	var info = req.body.info;
+	var info = req.body;
 	// Set MIME Type of data returned to client to JSON
 	res.writeHead(200, {'Content-Type': 'application/json'});
 	// Structure that the input data must conform to 
@@ -582,8 +585,8 @@ app.post('/profile/auth', function(req, res) {
 				plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
 					if(err) { reply(res, false, { "error": "FAILED TO AUTHENTICATE" } ); }
 					// handle err and response
-					FirstName = response.name.familyName;
-					LastName = response.name.givenName;
+					LastName = response.name.familyName;
+					FirstName = response.name.givenName;
 					Email = response.emails[0].value;
 					console.log(err);
 					console.log(response);
@@ -596,9 +599,9 @@ app.post('/profile/auth', function(req, res) {
 				connection.query("SELECT ProfileID FROM Profiles WHERE ?", [ { "Email": Email } ], function(err, rows) {
 					if(err) { reply(res, false, { "error": "FAILED TO AUTHENTICATE" }); return; }
 					if(rows.length != 0) {
+						ProfileID = rows[0].ProfileID;
 						resolve(true);
 					} else {
-						ProfileID = rows[0].ProfileID;
 						resolve(false);
 					}
 				});
@@ -623,7 +626,9 @@ app.post('/profile/auth', function(req, res) {
 				refresh: info.refresh_token,
 				profile: ProfileID
 			});
+			reply(res, true, { "ProfileID": ProfileID });
 		};
+		grabUserInfo().then(checkDatabaseForUser).then(addUserToDatabase).then(pushUserIntoSessions);
 	} else {
 		reply(res, false, results.errors);
 	}
